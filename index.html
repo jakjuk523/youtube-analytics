@@ -1,0 +1,882 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YTMetrics — YouTube Analytics</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:        #080c10;
+      --surface:   #0e1318;
+      --border:    #1a2230;
+      --accent:    #e8ff47;
+      --accent2:   #47c8ff;
+      --text:      #dde4ef;
+      --muted:     #4a5568;
+      --red:       #ff4757;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+    }
+
+    /* ━━━━━━━━ LOGIN SCREEN ━━━━━━━━ */
+    #login-screen {
+      position: fixed; inset: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg);
+    }
+
+    .login-card {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 56px 48px;
+      width: 420px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .login-card::before {
+      content: '';
+      position: absolute; top: -80px; left: 50%; transform: translateX(-50%);
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,255,71,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-mark {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 64px; height: 64px; border-radius: 16px;
+      background: var(--accent); color: var(--bg);
+      font-size: 28px; font-weight: 800; margin-bottom: 24px;
+    }
+
+    .login-title {
+      font-size: 28px; font-weight: 800; letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+
+    .login-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 13px; color: var(--muted);
+      margin-bottom: 36px; line-height: 1.6;
+    }
+
+    .google-btn {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      width: 100%; padding: 15px 24px;
+      background: var(--accent); color: var(--bg);
+      border: none; border-radius: 12px;
+      font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700;
+      cursor: pointer; text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .google-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(232,255,71,0.3);
+    }
+
+    .login-badge {
+      margin-top: 20px;
+      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted);
+    }
+
+    /* ━━━━━━━━ DASHBOARD LAYOUT ━━━━━━━━ */
+    #dashboard {
+      display: flex; min-height: 100vh;
+      position: relative; z-index: 1;
+    }
+
+    /* ── Sidebar ── */
+    #sidebar {
+      width: 240px; flex-shrink: 0;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex; flex-direction: column;
+      padding: 28px 0;
+      position: sticky; top: 0; height: 100vh;
+    }
+
+    .sidebar-logo {
+      display: flex; align-items: center; gap: 10px;
+      padding: 0 24px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-logo-mark {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: var(--accent); color: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800;
+    }
+
+    .sidebar-logo-name {
+      font-size: 16px; font-weight: 800; letter-spacing: -0.3px;
+    }
+
+    .sidebar-logo-name span {
+      color: var(--accent);
+    }
+
+    nav { padding: 24px 12px; flex: 1; }
+
+    .nav-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 11px 14px; border-radius: 10px;
+      font-size: 14px; font-weight: 600;
+      color: var(--muted); cursor: pointer;
+      transition: all 0.15s;
+      margin-bottom: 4px;
+    }
+
+    .nav-item:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+
+    .nav-item.active {
+      color: var(--bg); background: var(--accent);
+    }
+
+    .nav-item.active .nav-icon { color: var(--bg); }
+
+    .nav-icon { font-size: 18px; width: 22px; text-align: center; }
+
+    .sidebar-user {
+      margin: 0 12px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .user-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--border); object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .user-avatar-placeholder {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--accent); color: var(--bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; flex-shrink: 0;
+    }
+
+    .user-info { overflow: hidden; }
+
+    .user-name {
+      font-size: 13px; font-weight: 700;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    .user-email {
+      font-family: 'DM Mono', monospace;
+      font-size: 10px; color: var(--muted);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    /* ── Main content ── */
+    #main {
+      flex: 1; overflow-y: auto;
+      padding: 36px 40px;
+      background: var(--bg);
+    }
+
+    /* ━━━━━━━━ TABS ━━━━━━━━ */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ━━━━━━━━ PAGE HEADER ━━━━━━━━ */
+    .page-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .page-title {
+      font-size: 26px; font-weight: 800; letter-spacing: -0.5px;
+    }
+
+    .page-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .badge-live {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(232,255,71,0.1); border: 1px solid rgba(232,255,71,0.25);
+      border-radius: 20px; padding: 6px 14px;
+      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent);
+    }
+
+    .badge-live::before {
+      content: '';
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    /* ━━━━━━━━ METRIC CARDS ━━━━━━━━ */
+    .metrics-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .metric-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 22px 24px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .metric-card:hover { border-color: var(--accent); }
+
+    .metric-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .metric-card:hover::after { opacity: 1; }
+
+    .metric-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; color: var(--muted); letter-spacing: 0.05em;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+
+    .metric-value {
+      font-size: 30px; font-weight: 800; letter-spacing: -1px;
+      margin-bottom: 6px;
+    }
+
+    .metric-delta {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+    }
+
+    .delta-up { color: var(--accent); }
+    .delta-down { color: var(--red); }
+
+    .metric-icon {
+      position: absolute; top: 20px; right: 20px;
+      font-size: 22px; opacity: 0.15;
+    }
+
+    /* ━━━━━━━━ CHART CARD ━━━━━━━━ */
+    .chart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .chart-card-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .chart-title {
+      font-size: 15px; font-weight: 700;
+    }
+
+    .chart-sub {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; color: var(--muted); margin-top: 2px;
+    }
+
+    .chart-legend {
+      display: flex; gap: 16px;
+    }
+
+    .legend-item {
+      display: flex; align-items: center; gap: 6px;
+      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted);
+    }
+
+    .legend-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+    }
+
+    /* ━━━━━━━━ AI TIPS CARDS ━━━━━━━━ */
+    .tips-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+
+    .tip-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+
+    .tip-card:hover {
+      border-color: rgba(232,255,71,0.4);
+      transform: translateY(-2px);
+    }
+
+    .tip-tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(71,200,255,0.1); border: 1px solid rgba(71,200,255,0.25);
+      border-radius: 20px; padding: 4px 10px;
+      font-family: 'DM Mono', monospace; font-size: 10px; color: var(--accent2);
+      margin-bottom: 14px;
+    }
+
+    .tip-title {
+      font-size: 15px; font-weight: 700;
+      margin-bottom: 8px; line-height: 1.4;
+    }
+
+    .tip-body {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px; color: var(--muted); line-height: 1.7;
+    }
+
+    .tip-impact {
+      margin-top: 16px; padding-top: 14px;
+      border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .impact-label {
+      font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.05em;
+    }
+
+    .impact-bar {
+      flex: 1; height: 4px; background: var(--border); border-radius: 2px;
+      margin: 0 12px; overflow: hidden;
+    }
+
+    .impact-fill {
+      height: 100%; border-radius: 2px; background: var(--accent);
+    }
+
+    .impact-pct {
+      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ━━━━━━━━ FORECAST ━━━━━━━━ */
+    .forecast-summary {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .forecast-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 22px 24px;
+    }
+
+    .forecast-card.highlight {
+      border-color: rgba(232,255,71,0.3);
+      background: rgba(232,255,71,0.03);
+    }
+
+    /* ━━━━━━━━ SCROLLBAR ━━━━━━━━ */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* ━━━━━━━━ ANIMATIONS ━━━━━━━━ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up   { animation: fadeUp 0.4s ease forwards; }
+    .fade-up-2 { animation: fadeUp 0.4s 0.08s ease both; }
+    .fade-up-3 { animation: fadeUp 0.4s 0.16s ease both; }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     LOGIN SCREEN
+════════════════════════════════════════════ -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="logo-mark">▶</div>
+    <h1 class="login-title">YTMetrics</h1>
+    <p class="login-sub">
+      Аналитика YouTube-канала,<br>
+      прогноз роста и советы ИИ — в одном месте.
+    </p>
+    <a href="/api/auth/google" class="google-btn">
+      <svg width="18" height="18" viewBox="0 0 18 18">
+        <path fill="#080c10" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615Z"/>
+        <path fill="#080c10" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18Z"/>
+        <path fill="#080c10" d="M3.964 10.71A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.042l3.007-2.332Z"/>
+        <path fill="#080c10" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58Z"/>
+      </svg>
+      Войти через Google
+    </a>
+    <p class="login-badge">🔒 Безопасная OAuth 2.0 авторизация</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     DASHBOARD
+════════════════════════════════════════════ -->
+<div id="dashboard" style="display:none">
+
+  <!-- ── Sidebar ── -->
+  <aside id="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-mark">▶</div>
+      <div class="sidebar-logo-name">YT<span>Metrics</span></div>
+    </div>
+
+    <nav>
+      <div class="nav-item active" data-tab="stats">
+        <span class="nav-icon">📊</span> Статистика
+      </div>
+      <div class="nav-item" data-tab="forecast">
+        <span class="nav-icon">📈</span> Прогноз
+      </div>
+      <div class="nav-item" data-tab="ai">
+        <span class="nav-icon">✦</span> Советы от ИИ
+      </div>
+    </nav>
+
+    <div class="sidebar-user" id="sidebar-user">
+      <div class="user-avatar-placeholder" id="user-avatar-placeholder">?</div>
+      <div class="user-info">
+        <div class="user-name" id="user-display-name">—</div>
+        <div class="user-email" id="user-display-email">—</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Main content ── -->
+  <main id="main">
+
+    <!-- ▸ TAB: Статистика -->
+    <div class="tab-panel active fade-up" id="tab-stats">
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">Статистика канала</h2>
+          <p class="page-sub">Просмотры и метрики за последние 30 дней</p>
+        </div>
+        <div class="badge-live">LIVE DATA</div>
+      </div>
+
+      <div class="metrics-grid fade-up-2">
+        <div class="metric-card">
+          <div class="metric-icon">👥</div>
+          <div class="metric-label">Подписчики</div>
+          <div class="metric-value" id="stat-subs">—</div>
+          <div class="metric-delta delta-up" id="stat-subs-delta">+0 за 30 дней</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">👁</div>
+          <div class="metric-label">Просмотры</div>
+          <div class="metric-value" id="stat-views">—</div>
+          <div class="metric-delta delta-up" id="stat-views-delta">+0% к прошлому месяцу</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">🎬</div>
+          <div class="metric-label">Видео</div>
+          <div class="metric-value" id="stat-videos">—</div>
+          <div class="metric-delta delta-up">Опубликовано всего</div>
+        </div>
+      </div>
+
+      <div class="chart-card fade-up-3">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Просмотры за 30 дней</div>
+            <div class="chart-sub">Ежедневная динамика</div>
+          </div>
+          <div class="chart-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background:var(--accent)"></div>
+              Просмотры
+            </div>
+          </div>
+        </div>
+        <canvas id="viewsChart" height="80"></canvas>
+      </div>
+    </div>
+
+    <!-- ▸ TAB: Прогноз -->
+    <div class="tab-panel" id="tab-forecast">
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">Прогноз роста</h2>
+          <p class="page-sub">Модель роста подписчиков на 6 месяцев</p>
+        </div>
+      </div>
+
+      <div class="forecast-summary">
+        <div class="forecast-card">
+          <div class="metric-label">Сейчас</div>
+          <div class="metric-value" id="fore-current">—</div>
+          <div class="metric-delta" style="color:var(--muted)">подписчиков</div>
+        </div>
+        <div class="forecast-card highlight">
+          <div class="metric-label">Через 3 месяца</div>
+          <div class="metric-value" id="fore-3m">—</div>
+          <div class="metric-delta delta-up" id="fore-3m-d">прогноз</div>
+        </div>
+        <div class="forecast-card">
+          <div class="metric-label">Через 6 месяцев</div>
+          <div class="metric-value" id="fore-6m">—</div>
+          <div class="metric-delta delta-up" id="fore-6m-d">прогноз</div>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <div class="chart-card-header">
+          <div>
+            <div class="chart-title">Рост подписчиков</div>
+            <div class="chart-sub">История + прогноз (пунктир)</div>
+          </div>
+          <div class="chart-legend">
+            <div class="legend-item">
+              <div class="legend-dot" style="background:var(--accent)"></div>
+              История
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:var(--accent2)"></div>
+              Прогноз
+            </div>
+          </div>
+        </div>
+        <canvas id="forecastChart" height="90"></canvas>
+      </div>
+    </div>
+
+    <!-- ▸ TAB: Советы от ИИ -->
+    <div class="tab-panel" id="tab-ai">
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">Советы от ИИ</h2>
+          <p class="page-sub">Персональные рекомендации для вашего канала</p>
+        </div>
+        <div class="badge-live" style="background:rgba(71,200,255,0.1);border-color:rgba(71,200,255,0.3);color:var(--accent2)">✦ AI</div>
+      </div>
+
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-tag">🕐 Время публикации</div>
+          <div class="tip-title">Публикуйте видео в четверг вечером</div>
+          <div class="tip-body">Анализ вашей аудитории показывает пик активности в четверг с 19:00 до 22:00. Публикация в это окно увеличивает просмотры в первые 24 часа.</div>
+          <div class="tip-impact">
+            <div class="impact-label">Влияние</div>
+            <div class="impact-bar"><div class="impact-fill" style="width:82%"></div></div>
+            <div class="impact-pct">+82%</div>
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-tag">🎯 Заголовки</div>
+          <div class="tip-title">Добавляйте число в первые 3 слова заголовка</div>
+          <div class="tip-body">Заголовки с числами («5 способов», «10 ошибок») дают CTR выше среднего по вашей нише на 34%. Ваши последние 3 видео без чисел имеют CTR ниже 3%.</div>
+          <div class="tip-impact">
+            <div class="impact-label">Влияние</div>
+            <div class="impact-bar"><div class="impact-fill" style="width:65%"></div></div>
+            <div class="impact-pct">+65%</div>
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-tag">⏱ Длительность</div>
+          <div class="tip-title">Оптимальная длина видео — 12–16 минут</div>
+          <div class="tip-body">Ваши видео длиннее 18 минут теряют 60% зрителей до середины. Видео 12–16 мин показывают Audience Retention выше 55%, что улучшает позиции в рекомендациях.</div>
+          <div class="tip-impact">
+            <div class="impact-label">Влияние</div>
+            <div class="impact-bar"><div class="impact-fill" style="width:74%"></div></div>
+            <div class="impact-pct">+74%</div>
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-tag">🖼 Превью</div>
+          <div class="tip-title">Используйте контрастные лица крупным планом</div>
+          <div class="tip-body">Превью с лицом человека и ярким фоном увеличивают CTR на 28% по сравнению с вашими текущими текстовыми превью. Рекомендуем красный, жёлтый или синий фон.</div>
+          <div class="tip-impact">
+            <div class="impact-label">Влияние</div>
+            <div class="impact-bar"><div class="impact-fill" style="width:58%"></div></div>
+            <div class="impact-pct">+58%</div>
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-tag">💬 Вовлечённость</div>
+          <div class="tip-title">Задавайте вопрос на 2-й минуте видео</div>
+          <div class="tip-body">Призыв к комментарию в начале видео увеличивает количество комментариев на 3x. Алгоритм учитывает скорость комментирования в первый час после публикации.</div>
+          <div class="tip-impact">
+            <div class="impact-label">Влияние</div>
+            <div class="impact-bar"><div class="impact-fill" style="width:91%"></div></div>
+            <div class="impact-pct">+91%</div>
+          </div>
+        </div>
+
+        <div class="tip-card">
+          <div class="tip-tag">🔍 SEO</div>
+          <div class="tip-title">Добавляйте тайм-коды в описание</div>
+          <div class="tip-body">Видео с тайм-кодами занимают на 40% больше места в поиске Google (Rich Snippets). Ни одно из ваших последних 10 видео не содержит тайм-кодов.</div>
+          <div class="tip-impact">
+            <div class="impact-label">Влияние</div>
+            <div class="impact-bar"><div class="impact-fill" style="width:47%"></div></div>
+            <div class="impact-pct">+47%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════ -->
+<script>
+// ── Helpers ──────────────────────────────────────────────────────────
+const fmt = n => n >= 1_000_000
+  ? (n / 1_000_000).toFixed(1) + 'M'
+  : n >= 1_000
+    ? (n / 1_000).toFixed(1) + 'K'
+    : String(n);
+
+// ── Mock data (замените реальными запросами к YouTube Data API) ──────
+function generateMockData(user) {
+  const subs   = 24_300;
+  const views  = 187_400;
+  const videos = 47;
+
+  // 30 дней просмотров
+  const days = Array.from({ length: 30 }, (_, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() - (29 - i));
+    return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' });
+  });
+  const viewsData = days.map(() => Math.floor(3000 + Math.random() * 9000));
+
+  // Прогноз подписчиков: 3 месяца истории + текущий + 6 месяцев вперёд
+  const foreLabels   = ['Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт'];
+  const histSubsFull = [14200, 17800, 21100, subs, null, null, null, null, null];
+  const foreSubs     = [null, null, null, subs];
+  for (let i = 1; i <= 6; i++) {
+    foreSubs.push(Math.round(subs * Math.pow(1.09, i)));
+  }
+
+  return { subs, views, videos, days, viewsData, foreLabels, histSubsFull, foreSubs };
+}
+
+// ── Chart.js global defaults ─────────────────────────────────────────
+Chart.defaults.color        = '#4a5568';
+Chart.defaults.borderColor  = '#1a2230';
+Chart.defaults.font.family  = "'DM Mono', monospace";
+
+let viewsChart, forecastChart;
+
+function buildCharts(data) {
+  // — Views chart —
+  const vCtx = document.getElementById('viewsChart').getContext('2d');
+  const grad = vCtx.createLinearGradient(0, 0, 0, 260);
+  grad.addColorStop(0, 'rgba(232,255,71,0.18)');
+  grad.addColorStop(1, 'rgba(232,255,71,0)');
+
+  viewsChart = new Chart(vCtx, {
+    type: 'line',
+    data: {
+      labels: data.days,
+      datasets: [{
+        data: data.viewsData,
+        borderColor: '#e8ff47',
+        backgroundColor: grad,
+        borderWidth: 2,
+        pointRadius: 0,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: '#e8ff47',
+        tension: 0.4,
+        fill: true,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { mode: 'index', intersect: false }
+      },
+      scales: {
+        x: { grid: { color: '#1a2230' }, ticks: { maxTicksLimit: 8 } },
+        y: { grid: { color: '#1a2230' }, ticks: { callback: v => fmt(v) } }
+      }
+    }
+  });
+
+  // — Forecast chart —
+  const fCtx = document.getElementById('forecastChart').getContext('2d');
+  const fGrad = fCtx.createLinearGradient(0, 0, 0, 300);
+  fGrad.addColorStop(0, 'rgba(71,200,255,0.15)');
+  fGrad.addColorStop(1, 'rgba(71,200,255,0)');
+
+  forecastChart = new Chart(fCtx, {
+    type: 'line',
+    data: {
+      labels: data.foreLabels,
+      datasets: [
+        {
+          label: 'История',
+          data: data.histSubsFull,
+          borderColor: '#e8ff47',
+          backgroundColor: 'transparent',
+          borderWidth: 2.5,
+          pointRadius: 4,
+          pointBackgroundColor: '#e8ff47',
+          tension: 0.4,
+          spanGaps: false,
+        },
+        {
+          label: 'Прогноз',
+          data: data.foreSubs,
+          borderColor: '#47c8ff',
+          backgroundColor: fGrad,
+          borderWidth: 2,
+          borderDash: [6, 4],
+          pointRadius: 4,
+          pointBackgroundColor: '#47c8ff',
+          tension: 0.4,
+          fill: true,
+          spanGaps: false,
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { mode: 'index', intersect: false }
+      },
+      scales: {
+        x: { grid: { color: '#1a2230' } },
+        y: { grid: { color: '#1a2230' }, ticks: { callback: v => fmt(v) } }
+      }
+    }
+  });
+}
+
+// ── Populate dashboard with user data ────────────────────────────────
+function showDashboard(user) {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display    = 'flex';
+
+  // Sidebar user info
+  document.getElementById('user-display-name').textContent =
+    user.channel_name || user.email.split('@')[0];
+  document.getElementById('user-display-email').textContent = user.email;
+
+  const placeholder = document.getElementById('user-avatar-placeholder');
+  if (user.avatar_url) {
+    const img     = document.createElement('img');
+    img.src       = user.avatar_url;
+    img.className = 'user-avatar';
+    placeholder.replaceWith(img);
+  } else {
+    placeholder.textContent = (user.email[0] || '?').toUpperCase();
+  }
+
+  // Metric cards
+  const d = generateMockData(user);
+
+  document.getElementById('stat-subs').textContent        = fmt(d.subs);
+  document.getElementById('stat-views').textContent       = fmt(d.views);
+  document.getElementById('stat-videos').textContent      = d.videos;
+  document.getElementById('stat-subs-delta').textContent  = '+1 240 за 30 дней';
+  document.getElementById('stat-views-delta').textContent = '+18% к прошлому месяцу';
+
+  // Forecast summary cards
+  const f3 = Math.round(d.subs * Math.pow(1.09, 3));
+  const f6 = Math.round(d.subs * Math.pow(1.09, 6));
+  document.getElementById('fore-current').textContent = fmt(d.subs);
+  document.getElementById('fore-3m').textContent      = fmt(f3);
+  document.getElementById('fore-6m').textContent      = fmt(f6);
+  document.getElementById('fore-3m-d').textContent    = `+${fmt(f3 - d.subs)} подписчиков`;
+  document.getElementById('fore-6m-d').textContent    = `+${fmt(f6 - d.subs)} подписчиков`;
+
+  buildCharts(d);
+}
+
+// ── Tab switching ────────────────────────────────────────────────────
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const tab = item.dataset.tab;
+
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    item.classList.add('active');
+
+    document.querySelectorAll('.tab-panel').forEach(p => {
+      p.classList.remove('active');
+      p.style.animation = 'none';
+    });
+
+    const panel = document.getElementById(`tab-${tab}`);
+    panel.classList.add('active');
+    requestAnimationFrame(() => {
+      panel.style.animation = '';
+      panel.classList.add('fade-up');
+    });
+  });
+});
+
+// ── Auth check on page load ──────────────────────────────────────────
+(async function init() {
+  try {
+    const res = await fetch('/api/auth/me', {
+      method: 'GET',
+      credentials: 'include',   // обязательно — пересылаем httpOnly куку
+    });
+
+    if (res.ok) {
+      const user = await res.json();
+      showDashboard(user);
+    } else {
+      // 401 — кука отсутствует или просрочена, показываем логин
+      document.getElementById('login-screen').style.display = 'flex';
+    }
+  } catch (err) {
+    // Сеть недоступна или бэкенд не запущен
+    console.warn('Auth check failed:', err);
+    document.getElementById('login-screen').style.display = 'flex';
+  }
+})();
+</script>
+</body>
+</html>
+```
