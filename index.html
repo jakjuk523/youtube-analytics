@@ -854,7 +854,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
   });
 });
 // Перенаправление всех запросов на бэкенд Vercel
-const VERCEL_BACKEND_URL = "https://youtube-analytics-il45zhofs-dragon-fruit-s-projects.vercel.app";
+const VERCEL_BACKEND_URL = "https://youtube-analytics-pf9yg1bhf-dragon-fruit-s-projects.vercel.app";
 const originalFetch = window.fetch;
 window.fetch = async (url, options = {}) => {
     if (url.startsWith('/api/')) {
