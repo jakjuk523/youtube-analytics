@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -854,7 +853,16 @@ document.querySelectorAll('.nav-item').forEach(item => {
     });
   });
 });
-
+// Перенаправление всех запросов на бэкенд Vercel
+const VERCEL_BACKEND_URL = "https://vercel.app";
+const originalFetch = window.fetch;
+window.fetch = async (url, options = {}) => {
+    if (url.startsWith('/api/')) {
+        url = VERCEL_BACKEND_URL + url;
+        options.credentials = 'include';
+    }
+    return originalFetch(url, options);
+};
 // ── Auth check on page load ──────────────────────────────────────────
 (async function init() {
   try {
@@ -879,4 +887,3 @@ document.querySelectorAll('.nav-item').forEach(item => {
 </script>
 </body>
 </html>
-```
