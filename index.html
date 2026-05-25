@@ -853,16 +853,30 @@ document.querySelectorAll('.nav-item').forEach(item => {
     });
   });
 });
-// Перенаправление всех запросов на бэкенд Vercel
-const VERCEL_BACKEND_URL = "youtube-analytics-ruddy.vercel.app";
+// Жесткая привязка бэкенда Vercel к эндпоинтам
+const VERCEL_BACKEND = "https://vercel.app";
+
+// Перехватываем стандартный fetch и перенаправляем на реальный домен Vercel
 const originalFetch = window.fetch;
 window.fetch = async (url, options = {}) => {
     if (url.startsWith('/api/')) {
-        url = VERCEL_BACKEND_URL + url;
+        url = `${VERCEL_BACKEND}${url}`;
         options.credentials = 'include';
     }
     return originalFetch(url, options);
 };
+
+// Принудительно чиним кнопку входа, если Клод привязал её к локальному переходу
+document.addEventListener("DOMContentLoaded", () => {
+    const loginBtn = document.querySelector("button, a"); 
+    if (loginBtn && (loginBtn.textContent.includes("Google") || loginBtn.href?.includes("auth"))) {
+        loginBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.location.href = `${VERCEL_BACKEND}/api/auth/google`;
+        });
+    }
+});
+
 // ── Auth check on page load ──────────────────────────────────────────
 (async function init() {
   try {
