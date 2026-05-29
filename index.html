@@ -20,6 +20,8 @@
       --text:      #dde4ef;
       --muted:     #4a5568;
       --red:       #ff4757;
+      --green:     #39ff9a;
+      --orange:    #ff9f47;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -72,10 +74,7 @@
       font-size: 28px; font-weight: 800; margin-bottom: 24px;
     }
 
-    .login-title {
-      font-size: 28px; font-weight: 800; letter-spacing: -0.5px;
-      margin-bottom: 8px;
-    }
+    .login-title { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px; }
 
     .login-sub {
       font-family: 'DM Mono', monospace;
@@ -98,16 +97,10 @@
       box-shadow: 0 8px 32px rgba(232,255,71,0.3);
     }
 
-    .login-badge {
-      margin-top: 20px;
-      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted);
-    }
+    .login-badge { margin-top: 20px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
 
     /* ━━━━━━━━ DASHBOARD LAYOUT ━━━━━━━━ */
-    #dashboard {
-      display: flex; min-height: 100vh;
-      position: relative; z-index: 1;
-    }
+    #dashboard { display: flex; min-height: 100vh; position: relative; z-index: 1; }
 
     #sidebar {
       width: 240px; flex-shrink: 0;
@@ -131,10 +124,7 @@
       font-size: 14px; font-weight: 800;
     }
 
-    .sidebar-logo-name {
-      font-size: 16px; font-weight: 800; letter-spacing: -0.3px;
-    }
-
+    .sidebar-logo-name { font-size: 16px; font-weight: 800; letter-spacing: -0.3px; }
     .sidebar-logo-name span { color: var(--accent); }
 
     nav { padding: 24px 12px; flex: 1; }
@@ -144,28 +134,20 @@
       padding: 11px 14px; border-radius: 10px;
       font-size: 14px; font-weight: 600;
       color: var(--muted); cursor: pointer;
-      transition: all 0.15s;
-      margin-bottom: 4px;
+      transition: all 0.15s; margin-bottom: 4px;
     }
 
     .nav-item:hover { color: var(--text); background: rgba(255,255,255,0.04); }
-
     .nav-item.active { color: var(--bg); background: var(--accent); }
-
     .nav-icon { font-size: 18px; width: 22px; text-align: center; }
 
     .sidebar-user {
-      margin: 0 12px;
-      padding: 14px;
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      margin: 0 12px; padding: 14px;
+      border: 1px solid var(--border); border-radius: 12px;
       display: flex; align-items: center; gap: 10px;
     }
 
-    .user-avatar {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--border); object-fit: cover; flex-shrink: 0;
-    }
+    .user-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--border); object-fit: cover; flex-shrink: 0; }
 
     .user-avatar-placeholder {
       width: 36px; height: 36px; border-radius: 50%;
@@ -175,39 +157,17 @@
     }
 
     .user-info { overflow: hidden; }
+    .user-name { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .user-email { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-    .user-name {
-      font-size: 13px; font-weight: 700;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-
-    .user-email {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px; color: var(--muted);
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-
-    #main {
-      flex: 1; overflow-y: auto;
-      padding: 36px 40px;
-      background: var(--bg);
-    }
+    #main { flex: 1; overflow-y: auto; padding: 36px 40px; background: var(--bg); }
 
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
-    .page-header {
-      display: flex; align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 32px;
-    }
-
+    .page-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 32px; }
     .page-title { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; }
-
-    .page-sub {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px; color: var(--muted); margin-top: 4px;
-    }
+    .page-sub { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); margin-top: 4px; }
 
     .badge-live {
       display: flex; align-items: center; gap: 6px;
@@ -217,10 +177,8 @@
     }
 
     .badge-live::before {
-      content: '';
-      width: 6px; height: 6px; border-radius: 50%;
-      background: var(--accent);
-      animation: pulse 1.5s infinite;
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); animation: pulse 1.5s infinite;
     }
 
     @keyframes pulse {
@@ -228,76 +186,46 @@
       50%       { opacity: 0.4; transform: scale(0.8); }
     }
 
-    .metrics-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-      margin-bottom: 28px;
-    }
+    .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
 
     .metric-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: var(--surface); border: 1px solid var(--border);
       border-radius: 16px; padding: 22px 24px;
-      position: relative; overflow: hidden;
-      transition: border-color 0.2s;
+      position: relative; overflow: hidden; transition: border-color 0.2s;
     }
 
     .metric-card:hover { border-color: var(--accent); }
 
     .metric-card::after {
-      content: '';
-      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
       background: linear-gradient(90deg, var(--accent), transparent);
       opacity: 0; transition: opacity 0.2s;
     }
 
     .metric-card:hover::after { opacity: 1; }
 
-    .metric-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px; color: var(--muted); letter-spacing: 0.05em;
-      text-transform: uppercase; margin-bottom: 10px;
-    }
-
+    .metric-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 10px; }
     .metric-value { font-size: 30px; font-weight: 800; letter-spacing: -1px; margin-bottom: 6px; }
-
     .metric-delta { font-family: 'DM Mono', monospace; font-size: 12px; }
-
     .delta-up   { color: var(--accent); }
     .delta-down { color: var(--red); }
-
     .metric-icon { position: absolute; top: 20px; right: 20px; font-size: 22px; opacity: 0.15; }
 
-    .chart-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px; padding: 28px;
-      margin-bottom: 24px;
-    }
+    .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
 
-    .chart-card-header {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-bottom: 24px;
-    }
-
-    .chart-title  { font-size: 15px; font-weight: 700; }
-    .chart-sub    { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .chart-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
+    .chart-title { font-size: 15px; font-weight: 700; }
+    .chart-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 2px; }
     .chart-legend { display: flex; gap: 16px; }
-
-    .legend-item {
-      display: flex; align-items: center; gap: 6px;
-      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted);
-    }
-
+    .legend-item { display: flex; align-items: center; gap: 6px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
     .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
 
     .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
     .tip-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: var(--surface); border: 1px solid var(--border);
       border-radius: 16px; padding: 24px;
-      transition: border-color 0.2s, transform 0.2s;
-      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s; cursor: pointer;
     }
 
     .tip-card:hover { border-color: rgba(232,255,71,0.4); transform: translateY(-2px); }
@@ -311,44 +239,213 @@
     }
 
     .tip-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; line-height: 1.4; }
-
     .tip-body { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); line-height: 1.7; }
 
-    .tip-impact {
-      margin-top: 16px; padding-top: 14px;
-      border-top: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-
-    .impact-label {
-      font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted);
-      text-transform: uppercase; letter-spacing: 0.05em;
-    }
-
-    .impact-bar {
-      flex: 1; height: 4px; background: var(--border); border-radius: 2px;
-      margin: 0 12px; overflow: hidden;
-    }
-
+    .tip-impact { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+    .impact-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .impact-bar { flex: 1; height: 4px; background: var(--border); border-radius: 2px; margin: 0 12px; overflow: hidden; }
     .impact-fill { height: 100%; border-radius: 2px; background: var(--accent); }
-
     .impact-pct { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); font-weight: 500; }
 
-    .forecast-summary {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-      margin-bottom: 28px;
+    /* ━━━━━━━━ FORECAST — НОВЫЕ СТИЛИ ━━━━━━━━ */
+
+    .forecast-controls {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
     }
 
-    .forecast-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px; padding: 22px 24px;
+    .video-selector-wrap { flex: 1; min-width: 260px; position: relative; }
+
+    .video-selector {
+      width: 100%;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 12px 16px;
+      color: var(--text); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600;
+      cursor: pointer; appearance: none; outline: none;
+      transition: border-color 0.2s;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234a5568' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center;
+      padding-right: 36px;
     }
 
-    .forecast-card.highlight {
-      border-color: rgba(232,255,71,0.3);
-      background: rgba(232,255,71,0.03);
+    .video-selector:focus { border-color: var(--accent); }
+
+    .period-tabs {
+      display: flex; gap: 6px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 5px;
     }
+
+    .period-tab {
+      padding: 8px 16px; border-radius: 8px;
+      font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500;
+      color: var(--muted); cursor: pointer; transition: all 0.15s;
+      border: none; background: transparent;
+    }
+
+    .period-tab.active { background: var(--accent); color: var(--bg); font-weight: 700; }
+    .period-tab:hover:not(.active) { color: var(--text); background: rgba(255,255,255,0.04); }
+
+    .content-type-toggle {
+      display: flex; gap: 8px;
+    }
+
+    .type-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 18px; border-radius: 10px;
+      font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 700;
+      cursor: pointer; border: 1px solid var(--border);
+      background: var(--surface); color: var(--muted);
+      transition: all 0.15s;
+    }
+
+    .type-btn.active-long { border-color: var(--accent); color: var(--accent); background: rgba(232,255,71,0.06); }
+    .type-btn.active-short { border-color: var(--accent2); color: var(--accent2); background: rgba(71,200,255,0.06); }
+
+    /* ── Волны рекомендаций ── */
+    .waves-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px; }
+
+    .wave-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 20px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .wave-card:hover { transform: translateY(-2px); }
+
+    .wave-card.wave-1 { border-color: rgba(232,255,71,0.3); }
+    .wave-card.wave-2 { border-color: rgba(71,200,255,0.3); }
+    .wave-card.wave-3 { border-color: rgba(57,255,154,0.3); }
+
+    .wave-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    }
+
+    .wave-card.wave-1::before { background: linear-gradient(90deg, var(--accent), transparent); }
+    .wave-card.wave-2::before { background: linear-gradient(90deg, var(--accent2), transparent); }
+    .wave-card.wave-3::before { background: linear-gradient(90deg, var(--green), transparent); }
+
+    .wave-label {
+      font-family: 'DM Mono', monospace; font-size: 10px;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .wave-card.wave-1 .wave-label { color: var(--accent); }
+    .wave-card.wave-2 .wave-label { color: var(--accent2); }
+    .wave-card.wave-3 .wave-label { color: var(--green); }
+
+    .wave-value { font-size: 26px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 4px; }
+    .wave-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); }
+
+    .wave-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      border-radius: 6px; padding: 3px 8px; margin-top: 10px;
+      font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500;
+    }
+
+    .wave-badge.good { background: rgba(57,255,154,0.1); color: var(--green); }
+    .wave-badge.ok   { background: rgba(232,255,71,0.1);  color: var(--accent); }
+    .wave-badge.risk { background: rgba(255,71,87,0.1);   color: var(--red); }
+
+    /* ── Шкалы метрик ── */
+    .metrics-scales { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+
+    .scale-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 20px 22px;
+    }
+
+    .scale-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+    .scale-name { font-size: 13px; font-weight: 700; }
+    .scale-value { font-family: 'DM Mono', monospace; font-size: 20px; font-weight: 700; color: var(--accent); }
+
+    .scale-track {
+      width: 100%; height: 8px; background: var(--border);
+      border-radius: 4px; overflow: hidden; margin-bottom: 8px;
+      position: relative;
+    }
+
+    .scale-fill {
+      height: 100%; border-radius: 4px;
+      transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .scale-fill.green  { background: linear-gradient(90deg, #39ff9a, #00c97a); }
+    .scale-fill.yellow { background: linear-gradient(90deg, var(--accent), #c8d400); }
+    .scale-fill.orange { background: linear-gradient(90deg, var(--orange), #e05500); }
+    .scale-fill.red    { background: linear-gradient(90deg, var(--red), #c00020); }
+    .scale-fill.blue   { background: linear-gradient(90deg, var(--accent2), #006eb0); }
+
+    .scale-benchmarks { display: flex; justify-content: space-between; }
+    .scale-bench { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
+
+    /* ── Итоговая карточка успешности ── */
+    .success-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px 28px;
+      display: flex; align-items: center; gap: 28px;
+      margin-bottom: 24px; position: relative; overflow: hidden;
+    }
+
+    .success-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 0% 50%, rgba(232,255,71,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .success-score-wrap { flex-shrink: 0; position: relative; }
+
+    .success-score-wrap svg { transform: rotate(-90deg); }
+
+    .score-bg { fill: none; stroke: var(--border); stroke-width: 6; }
+    .score-fg { fill: none; stroke-width: 6; stroke-linecap: round; transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1); }
+
+    .score-text {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+
+    .score-number { font-size: 28px; font-weight: 800; letter-spacing: -1px; }
+    .score-label  { font-family: 'DM Mono', monospace; font-size: 9px; color: var(--muted); margin-top: 2px; }
+
+    .success-details { flex: 1; }
+    .success-title { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+    .success-desc  { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+
+    .success-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .stag {
+      font-family: 'DM Mono', monospace; font-size: 11px;
+      border-radius: 6px; padding: 4px 10px;
+    }
+
+    .stag.green  { background: rgba(57,255,154,0.1);  color: var(--green);  border: 1px solid rgba(57,255,154,0.2); }
+    .stag.yellow { background: rgba(232,255,71,0.1);  color: var(--accent); border: 1px solid rgba(232,255,71,0.2); }
+    .stag.blue   { background: rgba(71,200,255,0.1);  color: var(--accent2);border: 1px solid rgba(71,200,255,0.2); }
+    .stag.red    { background: rgba(255,71,87,0.1);   color: var(--red);    border: 1px solid rgba(255,71,87,0.2); }
+    .stag.orange { background: rgba(255,159,71,0.1);  color: var(--orange); border: 1px solid rgba(255,159,71,0.2); }
+
+    /* ── Shorts-специфичные метрики ── */
+    .shorts-swipe-card {
+      background: var(--surface); border: 1px solid rgba(71,200,255,0.25);
+      border-radius: 16px; padding: 22px 24px; margin-bottom: 24px;
+    }
+
+    .swipe-ratio-bar {
+      display: flex; height: 14px; border-radius: 7px; overflow: hidden;
+      margin: 14px 0 8px;
+    }
+
+    .swipe-viewed  { background: linear-gradient(90deg, var(--accent2), #006eb0); transition: width 0.8s; }
+    .swipe-swiped  { background: linear-gradient(90deg, var(--red), #7a0010); transition: width 0.8s; }
+
+    .swipe-labels { display: flex; justify-content: space-between; }
+    .swipe-label  { font-family: 'DM Mono', monospace; font-size: 11px; }
+
+    /* ── График прогноза ── */
+    .forecast-chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
 
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: transparent; }
@@ -362,11 +459,20 @@
     .fade-up   { animation: fadeUp 0.4s ease forwards; }
     .fade-up-2 { animation: fadeUp 0.4s 0.08s ease both; }
     .fade-up-3 { animation: fadeUp 0.4s 0.16s ease both; }
+
+    @keyframes countUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .count-anim { animation: countUp 0.5s ease forwards; }
   </style>
 </head>
 <body>
 
-<!-- ════════════ LOGIN SCREEN ════════════ -->
+<!-- ════════════════════════════════════════════
+     LOGIN SCREEN
+════════════════════════════════════════════ -->
 <div id="login-screen">
   <div class="login-card">
     <div class="logo-mark">▶</div>
@@ -388,7 +494,9 @@
   </div>
 </div>
 
-<!-- ════════════ DASHBOARD ════════════ -->
+<!-- ════════════════════════════════════════════
+     DASHBOARD
+════════════════════════════════════════════ -->
 <div id="dashboard" style="display:none">
 
   <aside id="sidebar">
@@ -418,7 +526,7 @@
 
   <main id="main">
 
-    <!-- ▸ Статистика -->
+    <!-- ▸ TAB: Статистика (нетронута) -->
     <div class="tab-panel active fade-up" id="tab-stats">
       <div class="page-header">
         <div>
@@ -466,53 +574,258 @@
       </div>
     </div>
 
-    <!-- ▸ Прогноз -->
+    <!-- ▸ TAB: Прогноз (полностью обновлён) -->
     <div class="tab-panel" id="tab-forecast">
       <div class="page-header">
         <div>
-          <h2 class="page-title">Прогноз роста</h2>
-          <p class="page-sub">Модель роста подписчиков на 6 месяцев</p>
+          <h2 class="page-title">Прогноз роликов</h2>
+          <p class="page-sub">ИИ-симуляция волн рекомендаций YouTube</p>
+        </div>
+        <div class="badge-live" style="background:rgba(71,200,255,0.08);border-color:rgba(71,200,255,0.25);color:var(--accent2)">✦ AI MODEL</div>
+      </div>
+
+      <!-- Контролы: выбор видео + тип + период -->
+      <div class="forecast-controls">
+        <div class="video-selector-wrap">
+          <select class="video-selector" id="video-select">
+            <option value="0">📹 Как набрать 10 000 подписчиков за 3 месяца</option>
+            <option value="1">📹 5 ошибок новичков на YouTube — разбор канала</option>
+            <option value="2">⚡ #Shorts — Секрет вирального ролика за 60 сек</option>
+            <option value="3">⚡ #Shorts — Лайфхак для монтажа который изменит всё</option>
+            <option value="4">📹 Полный гайд по SEO для YouTube в 2025 году</option>
+          </select>
+        </div>
+
+        <div class="content-type-toggle">
+          <button class="type-btn active-long" id="btn-long" onclick="setContentType('long')">
+            📹 Long-form
+          </button>
+          <button class="type-btn" id="btn-short" onclick="setContentType('short')">
+            ⚡ Shorts
+          </button>
+        </div>
+
+        <div class="period-tabs">
+          <button class="period-tab active" data-period="1"  onclick="setPeriod(1)">1 день</button>
+          <button class="period-tab"        data-period="3"  onclick="setPeriod(3)">3 дня</button>
+          <button class="period-tab"        data-period="7"  onclick="setPeriod(7)">7 дней</button>
+          <button class="period-tab"        data-period="30" onclick="setPeriod(30)">30 дней</button>
         </div>
       </div>
 
-      <div class="forecast-summary">
-        <div class="forecast-card">
-          <div class="metric-label">Сейчас</div>
-          <div class="metric-value" id="fore-current">—</div>
-          <div class="metric-delta" style="color:var(--muted)">подписчиков</div>
+      <!-- Карточка итоговой успешности -->
+      <div class="success-card" id="success-card">
+        <div class="success-score-wrap">
+          <svg width="100" height="100" viewBox="0 0 100 100">
+            <circle class="score-bg" cx="50" cy="50" r="42"/>
+            <circle class="score-fg" id="score-circle" cx="50" cy="50" r="42"
+              stroke="#e8ff47"
+              stroke-dasharray="263.9"
+              stroke-dashoffset="79"/>
+          </svg>
+          <div class="score-text">
+            <div class="score-number" id="score-number">70</div>
+            <div class="score-label">SCORE</div>
+          </div>
         </div>
-        <div class="forecast-card highlight">
-          <div class="metric-label">Через 3 месяца</div>
-          <div class="metric-value" id="fore-3m">—</div>
-          <div class="metric-delta delta-up" id="fore-3m-d">прогноз</div>
-        </div>
-        <div class="forecast-card">
-          <div class="metric-label">Через 6 месяцев</div>
-          <div class="metric-value" id="fore-6m">—</div>
-          <div class="metric-delta delta-up" id="fore-6m-d">прогноз</div>
+        <div class="success-details">
+          <div class="success-title" id="success-title">Хороший потенциал</div>
+          <div class="success-desc"  id="success-desc">Видео имеет сильный CTR и хорошее удержание. Первая волна рекомендаций ожидается через 6–12 часов. Алгоритм продолжит продвигать ролик при сохранении метрик.</div>
+          <div class="success-tags"  id="success-tags">
+            <span class="stag green">✓ CTR выше нормы</span>
+            <span class="stag yellow">⚡ Удержание 52%</span>
+            <span class="stag blue">↗ Волна 2 активна</span>
+          </div>
         </div>
       </div>
 
-      <div class="chart-card">
+      <!-- Волны рекомендаций -->
+      <div class="waves-grid" id="waves-grid">
+        <div class="wave-card wave-1">
+          <div class="wave-label">🌊 Волна 1 — Подписчики</div>
+          <div class="wave-value" id="wave1-views">12.4K</div>
+          <div class="wave-sub"   id="wave1-sub">просмотров за первые 6 ч</div>
+          <div class="wave-badge good" id="wave1-badge">✓ Запущена</div>
+        </div>
+        <div class="wave-card wave-2">
+          <div class="wave-label">🌊 Волна 2 — Browse Features</div>
+          <div class="wave-value" id="wave2-views">38.1K</div>
+          <div class="wave-sub"   id="wave2-sub">ожидается к концу дня</div>
+          <div class="wave-badge ok" id="wave2-badge">↗ В процессе</div>
+        </div>
+        <div class="wave-card wave-3">
+          <div class="wave-label">🌊 Волна 3 — Suggested</div>
+          <div class="wave-value" id="wave3-views">94.7K</div>
+          <div class="wave-sub"   id="wave3-sub">потенциал за 30 дней</div>
+          <div class="wave-badge ok" id="wave3-badge">⏳ Прогноз</div>
+        </div>
+      </div>
+
+      <!-- Шкалы метрик (Long-form) -->
+      <div id="longform-metrics">
+        <div class="metrics-scales">
+          <div class="scale-card">
+            <div class="scale-header">
+              <div class="scale-name">CTR (кликабельность)</div>
+              <div class="scale-value" id="scale-ctr">6.2%</div>
+            </div>
+            <div class="scale-track">
+              <div class="scale-fill green" id="fill-ctr" style="width:62%"></div>
+            </div>
+            <div class="scale-benchmarks">
+              <span class="scale-bench">0%</span>
+              <span class="scale-bench" style="color:var(--orange)">Норма: 4–5%</span>
+              <span class="scale-bench">10%+</span>
+            </div>
+          </div>
+
+          <div class="scale-card">
+            <div class="scale-header">
+              <div class="scale-name">Удержание аудитории</div>
+              <div class="scale-value" id="scale-ret" style="color:var(--accent2)">52%</div>
+            </div>
+            <div class="scale-track">
+              <div class="scale-fill blue" id="fill-ret" style="width:52%"></div>
+            </div>
+            <div class="scale-benchmarks">
+              <span class="scale-bench">0%</span>
+              <span class="scale-bench" style="color:var(--orange)">Норма: 40–50%</span>
+              <span class="scale-bench">80%+</span>
+            </div>
+          </div>
+
+          <div class="scale-card">
+            <div class="scale-header">
+              <div class="scale-name">Скорость роста просмотров</div>
+              <div class="scale-value" id="scale-vel" style="color:var(--green)">+2.1K/ч</div>
+            </div>
+            <div class="scale-track">
+              <div class="scale-fill green" id="fill-vel" style="width:70%"></div>
+            </div>
+            <div class="scale-benchmarks">
+              <span class="scale-bench">0</span>
+              <span class="scale-bench" style="color:var(--orange)">Порог: 500/ч</span>
+              <span class="scale-bench">5K+/ч</span>
+            </div>
+          </div>
+
+          <div class="scale-card">
+            <div class="scale-header">
+              <div class="scale-name">Вовлечённость (лайки + комм.)</div>
+              <div class="scale-value" id="scale-eng" style="color:var(--orange)">4.8%</div>
+            </div>
+            <div class="scale-track">
+              <div class="scale-fill orange" id="fill-eng" style="width:48%"></div>
+            </div>
+            <div class="scale-benchmarks">
+              <span class="scale-bench">0%</span>
+              <span class="scale-bench" style="color:var(--orange)">Норма: 3–5%</span>
+              <span class="scale-bench">10%+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Шкалы метрик (Shorts) — скрыты по умолчанию -->
+      <div id="shorts-metrics" style="display:none">
+        <div class="shorts-swipe-card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div class="chart-title">Просмотрено vs Свайпнуто</div>
+              <div class="chart-sub">Ключевой сигнал алгоритма Shorts</div>
+            </div>
+            <div style="font-family:'DM Mono',monospace;font-size:13px;color:var(--accent2)" id="swipe-ratio-text">68% / 32%</div>
+          </div>
+          <div class="swipe-ratio-bar">
+            <div class="swipe-viewed" id="swipe-viewed-bar" style="width:68%"></div>
+            <div class="swipe-swiped" id="swipe-swiped-bar" style="width:32%"></div>
+          </div>
+          <div class="swipe-labels">
+            <span class="swipe-label" style="color:var(--accent2)">👁 Просмотрено до конца</span>
+            <span class="swipe-label" style="color:var(--red)">↕ Свайпнуто</span>
+          </div>
+        </div>
+
+        <div class="metrics-scales">
+          <div class="scale-card">
+            <div class="scale-header">
+              <div class="scale-name">Просмотры за первый час</div>
+              <div class="scale-value" id="scale-s-views" style="color:var(--accent2)">8.4K</div>
+            </div>
+            <div class="scale-track">
+              <div class="scale-fill blue" id="fill-s-views" style="width:55%"></div>
+            </div>
+            <div class="scale-benchmarks">
+              <span class="scale-bench">0</span>
+              <span class="scale-bench" style="color:var(--orange)">Норма: 5K</span>
+              <span class="scale-bench">50K+</span>
+            </div>
+          </div>
+
+          <div class="scale-card">
+            <div class="scale-header">
+              <div class="scale-name">Удержание (% досмотра)</div>
+              <div class="scale-value" id="scale-s-ret" style="color:var(--green)">71%</div>
+            </div>
+            <div class="scale-track">
+              <div class="scale-fill green" id="fill-s-ret" style="width:71%"></div>
+            </div>
+            <div class="scale-benchmarks">
+              <span class="scale-bench">0%</span>
+              <span class="scale-bench" style="color:var(--orange)">Норма: 60%</span>
+              <span class="scale-bench">90%+</span>
+            </div>
+          </div>
+
+          <div class="scale-card">
+            <div class="scale-header">
+              <div class="scale-name">Повторные просмотры</div>
+              <div class="scale-value" id="scale-s-rep" style="color:var(--accent)">2.3×</div>
+            </div>
+            <div class="scale-track">
+              <div class="scale-fill yellow" id="fill-s-rep" style="width:58%"></div>
+            </div>
+            <div class="scale-benchmarks">
+              <span class="scale-bench">1×</span>
+              <span class="scale-bench" style="color:var(--orange)">Норма: 1.5×</span>
+              <span class="scale-bench">4×+</span>
+            </div>
+          </div>
+
+          <div class="scale-card">
+            <div class="scale-header">
+              <div class="scale-name">Лайки / просмотры</div>
+              <div class="scale-value" id="scale-s-like" style="color:var(--orange)">5.1%</div>
+            </div>
+            <div class="scale-track">
+              <div class="scale-fill orange" id="fill-s-like" style="width:51%"></div>
+            </div>
+            <div class="scale-benchmarks">
+              <span class="scale-bench">0%</span>
+              <span class="scale-bench" style="color:var(--orange)">Норма: 4%</span>
+              <span class="scale-bench">10%+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- График прогноза просмотров -->
+      <div class="forecast-chart-card">
         <div class="chart-card-header">
           <div>
-            <div class="chart-title">Рост подписчиков</div>
-            <div class="chart-sub">История + прогноз (пунктир)</div>
+            <div class="chart-title" id="fc-chart-title">Прогноз просмотров по волнам</div>
+            <div class="chart-sub"   id="fc-chart-sub">Реальные данные + ИИ-прогноз</div>
           </div>
           <div class="chart-legend">
-            <div class="legend-item">
-              <div class="legend-dot" style="background:var(--accent)"></div> История
-            </div>
-            <div class="legend-item">
-              <div class="legend-dot" style="background:var(--accent2)"></div> Прогноз
-            </div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div> Факт</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--accent2);opacity:0.6"></div> Прогноз</div>
           </div>
         </div>
-        <canvas id="forecastChart" height="90"></canvas>
+        <canvas id="forecastChart" height="80"></canvas>
       </div>
     </div>
 
-    <!-- ▸ Советы от ИИ -->
+    <!-- ▸ TAB: Советы от ИИ (нетронута) -->
     <div class="tab-panel" id="tab-ai">
       <div class="page-header">
         <div>
@@ -589,26 +902,398 @@
   </main>
 </div>
 
+<!-- ════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════ -->
 <script>
   // ═══════════════════════════════════════════════════════════════════
   // ▼▼▼ ЕДИНСТВЕННАЯ ПЕРЕМЕННАЯ ДЛЯ НАСТРОЙКИ — ВСТАВЬТЕ ВАШ ДОМЕН ▼▼▼
-  const API_URL = "https://youtube-analytics-ruddy.vercel.app"; // например: https://my-project.vercel.app
+  const API_URL = "https://youtube-analytics-ruddy.vercel.app";
   // ▲▲▲ ЕДИНСТВЕННАЯ ПЕРЕМЕННАЯ ДЛЯ НАСТРОЙКИ — ВСТАВЬТЕ ВАШ ДОМЕН ▲▲▲
   // ═══════════════════════════════════════════════════════════════════
 
-  // ── Helpers ─────────────────────────────────────────────────────────
+  // ── Helpers ──────────────────────────────────────────────────────────
   const fmt = n => n >= 1_000_000
     ? (n / 1_000_000).toFixed(1) + 'M'
     : n >= 1_000
       ? (n / 1_000).toFixed(1) + 'K'
       : String(n);
 
-  // ── Кнопка входа → редирект на бэкенд ───────────────────────────────
+  // ── Кнопка входа ─────────────────────────────────────────────────────
   document.getElementById("login-btn").addEventListener("click", () => {
     window.location.href = `${API_URL}/api/auth/google`;
   });
 
-  // ── Mock-данные (замените на реальные запросы к YouTube Data API) ───
+  // ════════════════════════════════════════════════════════════════════
+  // ПРОГНОЗ: состояние
+  // ════════════════════════════════════════════════════════════════════
+  let currentPeriod      = 1;
+  let currentContentType = 'long'; // 'long' | 'short'
+  let forecastChartInst  = null;
+
+  // Данные по видео (mock — в реальном проекте замените на YouTube API)
+  const VIDEOS = [
+    {
+      id: 0, type: 'long',
+      title: 'Как набрать 10 000 подписчиков за 3 месяца',
+      ctr: 6.2, retention: 52, velocity: 2100, engagement: 4.8,
+      baseViews: 12400,
+    },
+    {
+      id: 1, type: 'long',
+      title: '5 ошибок новичков на YouTube',
+      ctr: 4.1, retention: 38, velocity: 820, engagement: 3.1,
+      baseViews: 5800,
+    },
+    {
+      id: 2, type: 'short',
+      title: '#Shorts — Секрет вирального ролика',
+      viewsFirstHour: 8400, retentionShort: 71, repeatViews: 2.3,
+      likeRate: 5.1, viewedRatio: 68, swipedRatio: 32,
+      baseViews: 41000,
+    },
+    {
+      id: 3, type: 'short',
+      title: '#Shorts — Лайфхак для монтажа',
+      viewsFirstHour: 3200, retentionShort: 54, repeatViews: 1.6,
+      likeRate: 3.2, viewedRatio: 48, swipedRatio: 52,
+      baseViews: 12000,
+    },
+    {
+      id: 4, type: 'long',
+      title: 'Полный гайд по SEO для YouTube 2025',
+      ctr: 7.8, retention: 61, velocity: 3400, engagement: 6.2,
+      baseViews: 19200,
+    },
+  ];
+
+  // ── Формула Score для Long-form ───────────────────────────────────────
+  // Score = CTR*5 + Retention*0.6 + min(velocity/100, 20) + engagement*3
+  function calcScoreLong(v) {
+    const s = v.ctr * 5 + v.retention * 0.6 + Math.min(v.velocity / 100, 20) + v.engagement * 3;
+    return Math.min(Math.round(s), 100);
+  }
+
+  // ── Формула Score для Shorts ──────────────────────────────────────────
+  // Score = viewedRatio*0.7 + retentionShort*0.5 + min(viewsFirstHour/500,15) + likeRate*2 + repeatViews*5
+  function calcScoreShort(v) {
+    const s = v.viewedRatio * 0.7 + v.retentionShort * 0.5
+            + Math.min(v.viewsFirstHour / 500, 15)
+            + v.likeRate * 2 + v.repeatViews * 5;
+    return Math.min(Math.round(s), 100);
+  }
+
+  // ── Прогноз просмотров по волнам с учётом периода ────────────────────
+  function projectViews(video, period, type) {
+    if (type === 'long') {
+      const quality = (video.ctr / 5) * (video.retention / 50) * (video.velocity / 1000);
+      const w1 = Math.round(video.baseViews * 0.12 * Math.min(period, 1));
+      const w2 = Math.round(video.baseViews * 0.38 * Math.min(period / 3, 1) * quality);
+      const w3 = Math.round(video.baseViews * 0.50 * Math.min(period / 7, 1) * quality * 0.8);
+      return { w1, w2, w3 };
+    } else {
+      const quality = (video.viewedRatio / 68) * (video.retentionShort / 70);
+      const w1 = Math.round(video.baseViews * 0.20 * Math.min(period, 1));
+      const w2 = Math.round(video.baseViews * 0.45 * Math.min(period / 1, 1) * quality);
+      const w3 = Math.round(video.baseViews * 0.35 * Math.min(period / 3, 1) * quality);
+      return { w1, w2, w3 };
+    }
+  }
+
+  // ── Генерация данных для графика ─────────────────────────────────────
+  function buildChartData(video, period, type) {
+    const points = period === 1  ? 24
+                 : period === 3  ? 36
+                 : period === 7  ? 28
+                 : 30;
+
+    const labels = [];
+    const actual = [];
+    const forecast = [];
+    const splitAt = Math.floor(points * 0.35); // до этой точки — факт
+
+    for (let i = 0; i < points; i++) {
+      if (period === 1) {
+        labels.push(`${i}ч`);
+      } else if (period === 3) {
+        labels.push(`${Math.floor(i * 2)}ч`);
+      } else if (period === 7) {
+        labels.push(`День ${Math.floor(i / 4) + 1}`);
+      } else {
+        labels.push(`День ${i + 1}`);
+      }
+
+      const base = type === 'long' ? video.baseViews : video.baseViews * 3;
+      const growth = type === 'long'
+        ? (video.ctr / 5) * (video.retention / 50)
+        : (video.viewedRatio / 68) * (video.retentionShort / 70);
+
+      // Кривая: быстрый рост → пик → плавный спад
+      const t = i / points;
+      const peak = 0.25;
+      let curve;
+      if (t <= peak) {
+        curve = Math.pow(t / peak, 1.5);
+      } else {
+        curve = Math.exp(-(t - peak) * 3.5) * 0.9 + 0.1;
+      }
+
+      const val = Math.round(base * growth * curve * (1 + (Math.random() - 0.5) * 0.12));
+
+      if (i <= splitAt) {
+        actual.push(val);
+        forecast.push(null);
+      } else {
+        actual.push(null);
+        forecast.push(Math.round(val * (0.9 + Math.random() * 0.2)));
+      }
+    }
+
+    return { labels, actual, forecast };
+  }
+
+  // ── Определение цвета и текста Score ─────────────────────────────────
+  function scoreStyle(score) {
+    if (score >= 75) return { color: '#39ff9a', title: 'Отличный потенциал 🚀', badgeClass: 'good' };
+    if (score >= 55) return { color: '#e8ff47', title: 'Хороший потенциал',      badgeClass: 'ok'   };
+    if (score >= 35) return { color: '#ff9f47', title: 'Средний потенциал',       badgeClass: 'ok'   };
+    return                  { color: '#ff4757', title: 'Низкий потенциал',        badgeClass: 'risk' };
+  }
+
+  // ── Обновление интерфейса прогноза ───────────────────────────────────
+  function updateForecast() {
+    const videoIdx = parseInt(document.getElementById('video-select').value);
+    const video    = VIDEOS[videoIdx];
+    const type     = currentContentType;
+    const period   = currentPeriod;
+
+    // Переключаем блоки метрик
+    document.getElementById('longform-metrics').style.display = type === 'long' ? 'block' : 'none';
+    document.getElementById('shorts-metrics').style.display   = type === 'short' ? 'block' : 'none';
+
+    // Score
+    const score = type === 'long' ? calcScoreLong(video) : calcScoreShort(video);
+    const ss    = scoreStyle(score);
+
+    document.getElementById('score-number').textContent = score;
+    document.getElementById('score-circle').style.stroke = ss.color;
+    const circumference = 263.9;
+    const offset = circumference - (score / 100) * circumference;
+    document.getElementById('score-circle').style.strokeDashoffset = offset;
+
+    // Заголовок и описание
+    document.getElementById('success-title').textContent = ss.title;
+
+    if (type === 'long') {
+      const ctrStatus  = video.ctr >= 5   ? '✓ CTR выше нормы' : '⚠ CTR ниже нормы';
+      const retStatus  = video.retention >= 50 ? '✓ Удержание сильное' : `⚡ Удержание ${video.retention}%`;
+      const wave2Status = score >= 55 ? '↗ Волна 2 активна' : '⏳ Волна 2 под вопросом';
+      document.getElementById('success-desc').textContent =
+        `CTR ${video.ctr}% при норме 4–5%. Удержание ${video.retention}% — ${video.retention >= 50 ? 'выше' : 'ниже'} медианы. `
+        + `Скорость роста ${fmt(video.velocity)}/ч. `
+        + (score >= 55
+          ? 'Алгоритм активно продвигает ролик в Browse Features.'
+          : 'Для выхода в Suggested нужно улучшить удержание.');
+
+      document.getElementById('success-tags').innerHTML =
+        `<span class="stag ${video.ctr >= 5 ? 'green' : 'red'}">${ctrStatus}</span>
+         <span class="stag ${video.retention >= 50 ? 'blue' : 'orange'}">${retStatus}</span>
+         <span class="stag ${score >= 55 ? 'blue' : 'orange'}">${wave2Status}</span>`;
+    } else {
+      const viewStatus = video.viewedRatio >= 60 ? '✓ Смотрят до конца' : '⚠ Много свайпов';
+      const retStatus  = video.retentionShort >= 65 ? '✓ Удержание отличное' : `⚡ Удержание ${video.retentionShort}%`;
+      document.getElementById('success-desc').textContent =
+        `${video.viewedRatio}% зрителей досматривают Short до конца (свайпают ${video.swipedRatio}%). `
+        + `Удержание ${video.retentionShort}%, повторные просмотры ${video.repeatViews}×. `
+        + (video.viewedRatio >= 60
+          ? 'Алгоритм Shorts активно распространяет ролик.'
+          : 'Высокий процент свайпов тормозит распространение.');
+
+      document.getElementById('success-tags').innerHTML =
+        `<span class="stag ${video.viewedRatio >= 60 ? 'green' : 'red'}">${viewStatus}</span>
+         <span class="stag ${video.retentionShort >= 65 ? 'blue' : 'orange'}">${retStatus}</span>
+         <span class="stag ${video.repeatViews >= 2 ? 'green' : 'orange'}">↺ ${video.repeatViews}× повторов</span>`;
+    }
+
+    // Волны
+    const waves = projectViews(video, period, type);
+
+    document.getElementById('wave1-views').textContent = fmt(waves.w1);
+    document.getElementById('wave2-views').textContent = fmt(waves.w2);
+    document.getElementById('wave3-views').textContent = fmt(waves.w3);
+
+    if (type === 'long') {
+      document.getElementById('wave1-sub').textContent = period === 1 ? 'просмотров за сутки' : `просмотров за ${period} дней (подписчики)`;
+      document.getElementById('wave2-sub').textContent = 'Browse Features — главная';
+      document.getElementById('wave3-sub').textContent = 'Suggested — рекомендации';
+      document.getElementById('wave1-badge').textContent = score >= 40 ? '✓ Запущена' : '⚠ Слабо';
+      document.getElementById('wave1-badge').className  = `wave-badge ${score >= 40 ? 'good' : 'risk'}`;
+      document.getElementById('wave2-badge').textContent = score >= 55 ? '↗ Активна' : '⏳ Прогноз';
+      document.getElementById('wave2-badge').className  = `wave-badge ${score >= 55 ? 'ok' : 'risk'}`;
+      document.getElementById('wave3-badge').textContent = score >= 70 ? '🚀 Высокий шанс' : '⏳ Прогноз';
+      document.getElementById('wave3-badge').className  = `wave-badge ${score >= 70 ? 'good' : 'ok'}`;
+    } else {
+      document.getElementById('wave1-sub').textContent = 'просмотров за первый час';
+      document.getElementById('wave2-sub').textContent = 'за сутки (Feed)';
+      document.getElementById('wave3-sub').textContent = 'потенциал распространения';
+      document.getElementById('wave1-badge').textContent = video.viewedRatio >= 60 ? '✓ Хорошо' : '⚠ Много свайпов';
+      document.getElementById('wave1-badge').className  = `wave-badge ${video.viewedRatio >= 60 ? 'good' : 'risk'}`;
+      document.getElementById('wave2-badge').textContent = score >= 55 ? '↗ Активна' : '⏳ Слабо';
+      document.getElementById('wave2-badge').className  = `wave-badge ${score >= 55 ? 'ok' : 'risk'}`;
+      document.getElementById('wave3-badge').textContent = score >= 70 ? '🔥 Вирус' : '⏳ Прогноз';
+      document.getElementById('wave3-badge').className  = `wave-badge ${score >= 70 ? 'good' : 'ok'}`;
+    }
+
+    // Шкалы Long-form
+    if (type === 'long') {
+      const ctrPct  = Math.min((video.ctr / 10) * 100, 100);
+      const retPct  = video.retention;
+      const velPct  = Math.min((video.velocity / 5000) * 100, 100);
+      const engPct  = Math.min((video.engagement / 10) * 100, 100);
+
+      document.getElementById('scale-ctr').textContent  = video.ctr + '%';
+      document.getElementById('scale-ret').textContent  = video.retention + '%';
+      document.getElementById('scale-vel').textContent  = '+' + fmt(video.velocity) + '/ч';
+      document.getElementById('scale-eng').textContent  = video.engagement + '%';
+
+      document.getElementById('fill-ctr').style.width = ctrPct + '%';
+      document.getElementById('fill-ret').style.width = retPct + '%';
+      document.getElementById('fill-vel').style.width = velPct + '%';
+      document.getElementById('fill-eng').style.width = engPct + '%';
+
+      document.getElementById('fill-ctr').className = 'scale-fill ' + (video.ctr >= 5 ? 'green' : video.ctr >= 3 ? 'yellow' : 'red');
+      document.getElementById('fill-ret').className = 'scale-fill ' + (video.retention >= 50 ? 'blue' : video.retention >= 35 ? 'yellow' : 'red');
+      document.getElementById('fill-vel').className = 'scale-fill ' + (video.velocity >= 1000 ? 'green' : video.velocity >= 500 ? 'yellow' : 'orange');
+      document.getElementById('fill-eng').className = 'scale-fill ' + (video.engagement >= 5 ? 'green' : video.engagement >= 3 ? 'orange' : 'red');
+    }
+
+    // Шкалы Shorts
+    if (type === 'short') {
+      document.getElementById('swipe-viewed-bar').style.width  = video.viewedRatio + '%';
+      document.getElementById('swipe-swiped-bar').style.width  = video.swipedRatio + '%';
+      document.getElementById('swipe-ratio-text').textContent  = `${video.viewedRatio}% / ${video.swipedRatio}%`;
+
+      document.getElementById('scale-s-views').textContent = fmt(video.viewsFirstHour);
+      document.getElementById('scale-s-ret').textContent   = video.retentionShort + '%';
+      document.getElementById('scale-s-rep').textContent   = video.repeatViews + '×';
+      document.getElementById('scale-s-like').textContent  = video.likeRate + '%';
+
+      document.getElementById('fill-s-views').style.width = Math.min((video.viewsFirstHour / 50000) * 100, 100) + '%';
+      document.getElementById('fill-s-ret').style.width   = video.retentionShort + '%';
+      document.getElementById('fill-s-rep').style.width   = Math.min((video.repeatViews / 4) * 100, 100) + '%';
+      document.getElementById('fill-s-like').style.width  = Math.min((video.likeRate / 10) * 100, 100) + '%';
+    }
+
+    // График
+    const chartData = buildChartData(video, period, type);
+    renderForecastChart(chartData, period);
+  }
+
+  // ── Рендер графика прогноза ───────────────────────────────────────────
+  function renderForecastChart(data, period) {
+    const ctx = document.getElementById('forecastChart').getContext('2d');
+
+    if (forecastChartInst) {
+      forecastChartInst.destroy();
+      forecastChartInst = null;
+    }
+
+    const gradActual = ctx.createLinearGradient(0, 0, 0, 300);
+    gradActual.addColorStop(0, 'rgba(232,255,71,0.20)');
+    gradActual.addColorStop(1, 'rgba(232,255,71,0)');
+
+    const gradForecast = ctx.createLinearGradient(0, 0, 0, 300);
+    gradForecast.addColorStop(0, 'rgba(71,200,255,0.15)');
+    gradForecast.addColorStop(1, 'rgba(71,200,255,0)');
+
+    forecastChartInst = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: data.labels,
+        datasets: [
+          {
+            label: 'Факт',
+            data: data.actual,
+            borderColor: '#e8ff47',
+            backgroundColor: gradActual,
+            borderWidth: 2.5,
+            pointRadius: 0,
+            pointHoverRadius: 4,
+            tension: 0.4,
+            fill: true,
+            spanGaps: false,
+          },
+          {
+            label: 'Прогноз',
+            data: data.forecast,
+            borderColor: 'rgba(71,200,255,0.7)',
+            backgroundColor: gradForecast,
+            borderWidth: 2,
+            borderDash: [5, 4],
+            pointRadius: 0,
+            pointHoverRadius: 4,
+            tension: 0.4,
+            fill: true,
+            spanGaps: false,
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: ctx => `${ctx.dataset.label}: ${fmt(ctx.parsed.y || 0)} просмотров`
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { color: '#1a2230' },
+            ticks: { maxTicksLimit: period <= 3 ? 12 : 8, font: { family: "'DM Mono'" } }
+          },
+          y: {
+            grid: { color: '#1a2230' },
+            ticks: { callback: v => fmt(v), font: { family: "'DM Mono'" } }
+          }
+        }
+      }
+    });
+  }
+
+  // ── Контролы прогноза ────────────────────────────────────────────────
+  function setContentType(type) {
+    currentContentType = type;
+    document.getElementById('btn-long').className  = 'type-btn' + (type === 'long'  ? ' active-long'  : '');
+    document.getElementById('btn-short').className = 'type-btn' + (type === 'short' ? ' active-short' : '');
+    updateForecast();
+  }
+
+  function setPeriod(p) {
+    currentPeriod = p;
+    document.querySelectorAll('.period-tab').forEach(t => {
+      t.classList.toggle('active', parseInt(t.dataset.period) === p);
+    });
+    updateForecast();
+  }
+
+  document.getElementById('video-select').addEventListener('change', () => {
+    const video = VIDEOS[parseInt(document.getElementById('video-select').value)];
+    // Автоматически переключаем тип контента
+    if (video.type !== currentContentType) {
+      setContentType(video.type);
+    } else {
+      updateForecast();
+    }
+  });
+
+  // ════════════════════════════════════════════════════════════════════
+  // СТАТИСТИКА: mock-данные
+  // ════════════════════════════════════════════════════════════════════
+  let viewsChartInst = null;
+
   function generateMockData() {
     const subs   = 24_300;
     const views  = 187_400;
@@ -621,30 +1306,20 @@
     });
     const viewsData = days.map(() => Math.floor(3000 + Math.random() * 9000));
 
-    const foreLabels   = ['Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт'];
-    const histSubsFull = [14200, 17800, 21100, subs, null, null, null, null, null];
-    const foreSubs     = [null, null, null, subs];
-    for (let i = 1; i <= 6; i++) {
-      foreSubs.push(Math.round(subs * Math.pow(1.09, i)));
-    }
-
-    return { subs, views, videos, days, viewsData, foreLabels, histSubsFull, foreSubs };
+    return { subs, views, videos, days, viewsData };
   }
 
-  // ── Chart.js defaults ────────────────────────────────────────────────
   Chart.defaults.color       = '#4a5568';
   Chart.defaults.borderColor = '#1a2230';
   Chart.defaults.font.family = "'DM Mono', monospace";
 
-  let viewsChart, forecastChart;
-
-  function buildCharts(data) {
+  function buildViewsChart(data) {
     const vCtx = document.getElementById('viewsChart').getContext('2d');
     const grad = vCtx.createLinearGradient(0, 0, 0, 260);
     grad.addColorStop(0, 'rgba(232,255,71,0.18)');
     grad.addColorStop(1, 'rgba(232,255,71,0)');
 
-    viewsChart = new Chart(vCtx, {
+    viewsChartInst = new Chart(vCtx, {
       type: 'line',
       data: {
         labels: data.days,
@@ -665,52 +1340,6 @@
         plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
         scales: {
           x: { grid: { color: '#1a2230' }, ticks: { maxTicksLimit: 8 } },
-          y: { grid: { color: '#1a2230' }, ticks: { callback: v => fmt(v) } }
-        }
-      }
-    });
-
-    const fCtx  = document.getElementById('forecastChart').getContext('2d');
-    const fGrad = fCtx.createLinearGradient(0, 0, 0, 300);
-    fGrad.addColorStop(0, 'rgba(71,200,255,0.15)');
-    fGrad.addColorStop(1, 'rgba(71,200,255,0)');
-
-    forecastChart = new Chart(fCtx, {
-      type: 'line',
-      data: {
-        labels: data.foreLabels,
-        datasets: [
-          {
-            label: 'История',
-            data: data.histSubsFull,
-            borderColor: '#e8ff47',
-            backgroundColor: 'transparent',
-            borderWidth: 2.5,
-            pointRadius: 4,
-            pointBackgroundColor: '#e8ff47',
-            tension: 0.4,
-            spanGaps: false,
-          },
-          {
-            label: 'Прогноз',
-            data: data.foreSubs,
-            borderColor: '#47c8ff',
-            backgroundColor: fGrad,
-            borderWidth: 2,
-            borderDash: [6, 4],
-            pointRadius: 4,
-            pointBackgroundColor: '#47c8ff',
-            tension: 0.4,
-            fill: true,
-            spanGaps: false,
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false } },
-        scales: {
-          x: { grid: { color: '#1a2230' } },
           y: { grid: { color: '#1a2230' }, ticks: { callback: v => fmt(v) } }
         }
       }
@@ -736,23 +1365,15 @@
       placeholder.textContent = (user.email[0] || '?').toUpperCase();
     }
 
-    const d  = generateMockData();
-    const f3 = Math.round(d.subs * Math.pow(1.09, 3));
-    const f6 = Math.round(d.subs * Math.pow(1.09, 6));
-
+    const d = generateMockData();
     document.getElementById('stat-subs').textContent        = fmt(d.subs);
     document.getElementById('stat-views').textContent       = fmt(d.views);
     document.getElementById('stat-videos').textContent      = d.videos;
     document.getElementById('stat-subs-delta').textContent  = '+1 240 за 30 дней';
     document.getElementById('stat-views-delta').textContent = '+18% к прошлому месяцу';
 
-    document.getElementById('fore-current').textContent = fmt(d.subs);
-    document.getElementById('fore-3m').textContent      = fmt(f3);
-    document.getElementById('fore-6m').textContent      = fmt(f6);
-    document.getElementById('fore-3m-d').textContent    = `+${fmt(f3 - d.subs)} подписчиков`;
-    document.getElementById('fore-6m-d').textContent    = `+${fmt(f6 - d.subs)} подписчиков`;
-
-    buildCharts(d);
+    buildViewsChart(d);
+    updateForecast(); // инициализируем прогноз
   }
 
   // ── Переключение вкладок ─────────────────────────────────────────────
@@ -774,15 +1395,18 @@
         panel.style.animation = '';
         panel.classList.add('fade-up');
       });
+
+      // При открытии прогноза — обновляем
+      if (tab === 'forecast') updateForecast();
     });
   });
 
-  // ── Проверка авторизации при загрузке страницы ───────────────────────
+  // ── Проверка авторизации при загрузке ───────────────────────────────
   (async function init() {
     try {
       const res = await fetch(`${API_URL}/api/auth/me`, {
         method:      'GET',
-        credentials: 'include', // обязательно — пересылаем httpOnly куку
+        credentials: 'include',
       });
 
       if (res.ok) {
