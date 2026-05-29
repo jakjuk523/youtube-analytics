@@ -54,7 +54,6 @@ app.get("/api/auth/google", (req, res) => {
 
   const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
 
-  // Жёсткий редирект — Vercel не должен перехватывать
   res.writeHead(302, { Location: googleAuthUrl });
   res.end();
 });
@@ -74,7 +73,6 @@ app.get("/api/auth/callback", async (req, res) => {
   }
 
   try {
-    // 1. Меняем code на access_token
     const tokenRes = await fetch("https://oauth2.googleapis.com/token", {
       method:  "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -94,7 +92,6 @@ app.get("/api/auth/callback", async (req, res) => {
 
     const { access_token } = await tokenRes.json();
 
-    // 2. Профиль Google
     const profileRes = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
       headers: { Authorization: `Bearer ${access_token}` },
     });
@@ -105,7 +102,6 @@ app.get("/api/auth/callback", async (req, res) => {
 
     const profile = await profileRes.json();
 
-    // 3. YouTube канал
     const ytRes = await fetch(
       `https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true&key=${process.env.YOUTUBE_API_KEY}`,
       { headers: { Authorization: `Bearer ${access_token}` } }
@@ -125,7 +121,6 @@ app.get("/api/auth/callback", async (req, res) => {
       console.warn("YouTube channel fetch failed:", await ytRes.text());
     }
 
-    // 4. Upsert в Supabase
     const { data: user, error: dbError } = await supabase
       .from("users")
       .upsert(
@@ -147,7 +142,6 @@ app.get("/api/auth/callback", async (req, res) => {
       return res.status(500).json({ error: "Failed to save user to database" });
     }
 
-    // 5. JWT + кука 365 дней
     const token = jwt.sign(
       {
         sub:          user.id,
@@ -172,7 +166,6 @@ app.get("/api/auth/callback", async (req, res) => {
       ].join("; ")
     );
 
-    // 6. Редирект на дашборд
     return res.redirect(`${process.env.APP_URL}/dashboard`);
 
   } catch (err) {
