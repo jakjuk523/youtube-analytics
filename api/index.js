@@ -5,19 +5,20 @@ import { createClient } from "@supabase/supabase-js";
 const app = express();
 app.use(express.json());
 
-// ── Supabase client ───────────────────────────────────────────────────────────
+// ── Supabase ──────────────────────────────────────────────────────────────────
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_KEY
 );
 
 const COOKIE_NAME    = "yt_session";
-const COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 365 дней в секундах
+const COOKIE_MAX_AGE = 365 * 24 * 60 * 60;
 const JWT_SECRET     = process.env.JWT_SECRET;
 
-// ── CORS middleware ───────────────────────────────────────────────────────────
+// ── CORS ──────────────────────────────────────────────────────────────────────
 app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin",      process.env.APP_URL || "*");
+  const origin = process.env.APP_URL || "*";
+  res.setHeader("Access-Control-Allow-Origin",      origin);
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Allow-Methods",     "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers",     "Content-Type, Authorization");
@@ -37,28 +38,29 @@ function parseCookies(cookieHeader = "") {
 }
 
 // ══════════════════════════════════════════════════════════════════════════════
-// GET /api/auth/google — редирект на Google OAuth 2.0
+// GET /api/auth/google — жёсткий редирект на Google OAuth 2.0
 // ══════════════════════════════════════════════════════════════════════════════
 app.get("/api/auth/google", (req, res) => {
+  const redirectUri = `${process.env.APP_URL}/api/auth/callback`;
+
   const params = new URLSearchParams({
     client_id:     process.env.GOOGLE_CLIENT_ID,
-    redirect_uri:  `${process.env.APP_URL}/api/auth/callback`,
+    redirect_uri:  redirectUri,
     response_type: "code",
-    scope: [
-      "openid",
-      "email",
-      "profile",
-      "https://www.googleapis.com/auth/youtube.readonly",
-    ].join(" "),
-    access_type: "offline",
-    prompt:      "consent",
+    scope:         "openid email profile https://www.googleapis.com/auth/youtube.readonly",
+    access_type:   "offline",
+    prompt:        "consent",
   });
 
-  return res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`);
+  const googleAuthUrl = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
+
+  // Жёсткий редирект — Vercel не должен перехватывать
+  res.writeHead(302, { Location: googleAuthUrl });
+  res.end();
 });
 
 // ══════════════════════════════════════════════════════════════════════════════
-// GET /api/auth/callback — обмен кода на токены, сохранение в Supabase, JWT-кука
+// GET /api/auth/callback — обмен кода, Supabase upsert, JWT-кука
 // ══════════════════════════════════════════════════════════════════════════════
 app.get("/api/auth/callback", async (req, res) => {
   const { code, error } = req.query;
@@ -72,7 +74,7 @@ app.get("/api/auth/callback", async (req, res) => {
   }
 
   try {
-    // ── 1. Обмениваем code на access_token ───────────────────────────────
+    // 1. Меняем code на access_token
     const tokenRes = await fetch("https://oauth2.googleapis.com/token", {
       method:  "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -92,20 +94,18 @@ app.get("/api/auth/callback", async (req, res) => {
 
     const { access_token } = await tokenRes.json();
 
-    // ── 2. Профиль пользователя из Google ────────────────────────────────
-    const profileRes = await fetch(
-      "https://www.googleapis.com/oauth2/v3/userinfo",
-      { headers: { Authorization: `Bearer ${access_token}` } }
-    );
+    // 2. Профиль Google
+    const profileRes = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+      headers: { Authorization: `Bearer ${access_token}` },
+    });
 
     if (!profileRes.ok) {
       return res.status(502).json({ error: "Failed to fetch Google profile" });
     }
 
     const profile = await profileRes.json();
-    // profile: { sub, email, name, picture }
 
-    // ── 3. Данные YouTube-канала ──────────────────────────────────────────
+    // 3. YouTube канал
     const ytRes = await fetch(
       `https://www.googleapis.com/youtube/v3/channels?part=snippet&mine=true&key=${process.env.YOUTUBE_API_KEY}`,
       { headers: { Authorization: `Bearer ${access_token}` } }
@@ -125,7 +125,7 @@ app.get("/api/auth/callback", async (req, res) => {
       console.warn("YouTube channel fetch failed:", await ytRes.text());
     }
 
-    // ── 4. Upsert пользователя в Supabase ────────────────────────────────
+    // 4. Upsert в Supabase
     const { data: user, error: dbError } = await supabase
       .from("users")
       .upsert(
@@ -147,7 +147,7 @@ app.get("/api/auth/callback", async (req, res) => {
       return res.status(500).json({ error: "Failed to save user to database" });
     }
 
-    // ── 5. Подписываем JWT и пишем куку на 365 дней ───────────────────────
+    // 5. JWT + кука 365 дней
     const token = jwt.sign(
       {
         sub:          user.id,
@@ -172,7 +172,7 @@ app.get("/api/auth/callback", async (req, res) => {
       ].join("; ")
     );
 
-    // ── 6. Редирект на дашборд ────────────────────────────────────────────
+    // 6. Редирект на дашборд
     return res.redirect(`${process.env.APP_URL}/dashboard`);
 
   } catch (err) {
@@ -182,7 +182,7 @@ app.get("/api/auth/callback", async (req, res) => {
 });
 
 // ══════════════════════════════════════════════════════════════════════════════
-// GET /api/auth/me — проверка куки, возврат данных пользователя или 401
+// GET /api/auth/me — проверка куки, возврат данных или 401
 // ══════════════════════════════════════════════════════════════════════════════
 app.get("/api/auth/me", (req, res) => {
   const cookies = parseCookies(req.headers.cookie);
@@ -214,7 +214,7 @@ app.get("/api/auth/me", (req, res) => {
   }
 });
 
-// ── Fallback 404 ──────────────────────────────────────────────────────────────
+// ── Fallback ──────────────────────────────────────────────────────────────────
 app.use((req, res) => {
   res.status(404).json({ error: "Not found" });
 });
