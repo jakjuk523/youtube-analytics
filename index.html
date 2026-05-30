@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -185,7 +186,7 @@
       50%       { opacity: 0.4; transform: scale(0.8); }
     }
 
-    /* ── CARDS ── */
+    /* ── STAT CARDS ── */
     .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
 
     .metric-card {
@@ -248,7 +249,7 @@
     .impact-pct   { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); font-weight: 500; }
 
     /* ══════════════════════════════════
-       CALCULATOR STYLES
+       CALCULATOR
     ══════════════════════════════════ */
 
     .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -258,11 +259,7 @@
       border-radius: 16px; padding: 24px 26px;
     }
 
-    .calc-block-title {
-      font-size: 14px; font-weight: 800; margin-bottom: 4px;
-      display: flex; align-items: center; gap: 8px;
-    }
-
+    .calc-block-title { font-size: 14px; font-weight: 800; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; }
     .calc-block-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 20px; }
 
     .calc-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
@@ -292,10 +289,10 @@
     .calc-divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
 
     /* ══════════════════════════════════
-       FORECAST STYLES
+       FORECAST
     ══════════════════════════════════ */
 
-    .video-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+    .video-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
 
     .video-item {
       display: flex; align-items: center; gap: 14px;
@@ -307,8 +304,8 @@
     .video-item:hover { border-color: rgba(232,255,71,0.3); background: rgba(232,255,71,0.02); }
     .video-item.selected { border-color: var(--accent); background: rgba(232,255,71,0.04); }
 
-    .video-item-icon { font-size: 20px; flex-shrink: 0; }
-    .video-item-info { flex: 1; min-width: 0; }
+    .video-item-icon  { font-size: 20px; flex-shrink: 0; }
+    .video-item-info  { flex: 1; min-width: 0; }
     .video-item-title { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .video-item-meta  { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 3px; }
 
@@ -325,13 +322,13 @@
       background: var(--surface); border: 1px dashed var(--border);
       border-radius: 12px; padding: 16px;
       font-size: 14px; font-weight: 700; color: var(--muted);
-      cursor: pointer; transition: all 0.15s;
+      cursor: pointer; transition: all 0.15s; margin-bottom: 20px;
     }
 
     .sim-new-btn:hover { border-color: var(--accent2); color: var(--accent2); background: rgba(71,200,255,0.04); }
 
-    /* Facts screen */
-    .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
+    /* Facts */
+    .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px; }
 
     .fact-card {
       background: var(--surface); border: 1px solid var(--border);
@@ -343,7 +340,7 @@
     .fact-value { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 3px; }
     .fact-sub   { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
 
-    .facts-extra { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+    .facts-extra { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
 
     .facts-extra-card {
       background: var(--surface); border: 1px solid var(--border);
@@ -355,10 +352,10 @@
     .fe-bar-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
     .fe-bar-fill  { height: 100%; border-radius: 3px; transition: width 0.5s; }
 
-    /* Swipe bar */
+    /* Swipe */
     .swipe-card {
       background: var(--surface); border: 1px solid rgba(71,200,255,0.2);
-      border-radius: 14px; padding: 16px 20px; margin-bottom: 18px;
+      border-radius: 14px; padding: 16px 20px; margin-bottom: 14px;
     }
 
     .swipe-hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
@@ -372,9 +369,10 @@
     .swipe-labels { display: flex; justify-content: space-between; }
     .swipe-lbl { font-family: 'DM Mono', monospace; font-size: 10px; }
 
+    /* Sim open button */
     .open-sim-btn {
       display: flex; align-items: center; justify-content: center; gap: 10px;
-      width: 100%; padding: 14px;
+      width: 100%; padding: 13px;
       background: rgba(71,200,255,0.06); border: 1px solid rgba(71,200,255,0.25);
       border-radius: 12px; margin-bottom: 20px;
       font-size: 14px; font-weight: 700; color: var(--accent2);
@@ -382,32 +380,43 @@
     }
 
     .open-sim-btn:hover { background: rgba(71,200,255,0.1); border-color: rgba(71,200,255,0.5); }
+    .open-sim-btn.active-sim { background: rgba(232,255,71,0.06); border-color: rgba(232,255,71,0.3); color: var(--accent); }
 
-    /* Simulator */
-    .sim-header {
-      display: flex; align-items: center; gap: 12px;
-      background: var(--surface); border: 1px solid rgba(232,255,71,0.15);
-      border-radius: 14px; padding: 14px 18px; margin-bottom: 18px;
+    /* Simulator sliders panel */
+    .sim-panel {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+      opacity: 0;
     }
 
-    .sim-header-icon { font-size: 22px; }
+    .sim-panel.open {
+      max-height: 600px;
+      opacity: 1;
+    }
+
+    .sim-header-row {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--surface); border: 1px solid rgba(232,255,71,0.15);
+      border-radius: 14px; padding: 14px 18px; margin-bottom: 14px;
+    }
+
+    .sim-header-icon  { font-size: 20px; }
     .sim-header-title { font-size: 14px; font-weight: 800; }
     .sim-header-sub   { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 2px; }
 
-    .back-btn {
-      display: flex; align-items: center; gap: 6px;
+    .close-sim-btn {
       margin-left: auto; padding: 7px 14px; border-radius: 8px;
       font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted);
       border: 1px solid var(--border); background: transparent;
       cursor: pointer; transition: all 0.15s; flex-shrink: 0;
     }
 
-    .back-btn:hover { color: var(--text); border-color: var(--muted); }
+    .close-sim-btn:hover { color: var(--text); border-color: var(--muted); }
 
-    /* Sliders */
     .sliders-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 16px; padding: 22px 24px; margin-bottom: 18px;
+      border-radius: 16px; padding: 22px 24px; margin-bottom: 14px;
     }
 
     .sliders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -435,15 +444,10 @@
     }
 
     /* Period tabs */
-    .period-tabs-wrap {
-      margin-bottom: 18px;
-    }
-
+    .period-tabs-wrap { margin-bottom: 14px; }
     .period-tabs-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
 
-    .period-tabs {
-      display: flex; flex-wrap: wrap; gap: 4px;
-    }
+    .period-tabs { display: flex; flex-wrap: wrap; gap: 4px; }
 
     .period-tab {
       padding: 7px 12px; border-radius: 7px;
@@ -455,11 +459,13 @@
     .period-tab.active { background: var(--accent); color: var(--bg); font-weight: 700; border-color: var(--accent); }
     .period-tab:hover:not(.active) { color: var(--text); border-color: var(--muted); }
 
-    /* Score */
+    /* AI Panel — shared between facts & sim */
+    .ai-panel { margin-top: 4px; }
+
     .score-row {
       display: grid; grid-template-columns: auto 1fr; gap: 22px;
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 16px; padding: 22px 26px; margin-bottom: 18px;
+      border-radius: 16px; padding: 22px 26px; margin-bottom: 14px;
       position: relative; overflow: hidden; align-items: center;
     }
 
@@ -498,8 +504,7 @@
     .stag.red    { background: rgba(255,71,87,0.08);   color: var(--red);     border-color: rgba(255,71,87,0.2); }
     .stag.orange { background: rgba(255,159,71,0.08);  color: var(--orange);  border-color: rgba(255,159,71,0.2); }
 
-    /* Waves */
-    .waves-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
+    .waves-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
 
     .wave-card {
       background: var(--surface); border: 1px solid var(--border);
@@ -539,10 +544,9 @@
     .wb-warn   { background: rgba(255,159,71,0.1);  color: var(--orange); }
     .wb-danger { background: rgba(255,71,87,0.1);   color: var(--red);    }
 
-    /* Secret */
     .secret-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 16px; padding: 22px 26px; margin-bottom: 18px;
+      border-radius: 16px; padding: 22px 26px; margin-bottom: 14px;
       position: relative; overflow: hidden;
     }
 
@@ -569,6 +573,13 @@
     .si-text strong { color: var(--accent); font-weight: 500; }
 
     .fc-chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 26px; }
+
+    /* Read-only mode for AI panel */
+    .ai-panel.readonly .score-row,
+    .ai-panel.readonly .wave-card,
+    .ai-panel.readonly .secret-card {
+      opacity: 0.85;
+    }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(14px); }
@@ -613,14 +624,12 @@
       <div class="sidebar-logo-mark">▶</div>
       <div class="sidebar-logo-name">YT<span>Metrics</span></div>
     </div>
-
     <nav>
-      <div class="nav-item active" data-tab="stats">    <span class="nav-icon">📊</span> Статистика       </div>
-      <div class="nav-item"        data-tab="forecast"> <span class="nav-icon">📈</span> Прогноз ролика   </div>
+      <div class="nav-item active" data-tab="stats">    <span class="nav-icon">📊</span> Статистика        </div>
+      <div class="nav-item"        data-tab="forecast"> <span class="nav-icon">📈</span> Прогноз ролика    </div>
       <div class="nav-item"        data-tab="calc">     <span class="nav-icon">🧮</span> Калькулятор метрик</div>
-      <div class="nav-item"        data-tab="ai">       <span class="nav-icon">✦</span>  Советы от ИИ     </div>
+      <div class="nav-item"        data-tab="ai">       <span class="nav-icon">✦</span>  Советы от ИИ      </div>
     </nav>
-
     <div class="sidebar-bottom">
       <div class="sidebar-user">
         <div class="user-avatar-placeholder" id="user-avatar-placeholder">?</div>
@@ -629,9 +638,7 @@
           <div class="user-email" id="user-display-email">—</div>
         </div>
       </div>
-      <button class="logout-btn" id="logout-btn">
-        <span>⎋</span> Выйти из аккаунта
-      </button>
+      <button class="logout-btn" id="logout-btn"><span>⎋</span> Выйти из аккаунта</button>
     </div>
   </aside>
 
@@ -682,7 +689,7 @@
       </div>
     </div>
 
-    <!-- ▸ ПРОГНОЗ РОЛИКА -->
+    <!-- ▸ ПРОГНОЗ -->
     <div class="tab-panel" id="tab-forecast">
       <div class="page-header">
         <div>
@@ -695,28 +702,30 @@
       <!-- Список видео -->
       <div id="fc-video-list">
         <div class="video-list" id="video-list-items"></div>
-        <div class="sim-new-btn" id="sim-new-btn" onclick="openSimulator(null)">
+        <div class="sim-new-btn" onclick="openNewSim()">
           <span>＋</span> Симулировать новое видео
         </div>
       </div>
 
-      <!-- Экран реальных фактов -->
-      <div id="fc-facts-screen" style="display:none">
+      <!-- Экран ролика (факты + ИИ-панель + симулятор) -->
+      <div id="fc-video-screen" style="display:none">
+
+        <!-- Шапка -->
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
-          <button class="back-btn" onclick="showVideoList()">← Назад</button>
+          <button style="padding:7px 14px;border-radius:8px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);border:1px solid var(--border);background:transparent;cursor:pointer;transition:all 0.15s" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'" onclick="showVideoList()">← Назад</button>
           <div>
-            <div style="font-size:15px;font-weight:800" id="fc-facts-title">—</div>
-            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px" id="fc-facts-meta">—</div>
+            <div style="font-size:15px;font-weight:800" id="fc-video-title">—</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px" id="fc-video-meta">—</div>
           </div>
         </div>
 
-        <!-- Карточки фактов -->
+        <!-- Карточки фактов (только чтение) -->
         <div class="facts-grid">
           <div class="fact-card">
             <div class="fact-icon">👁</div>
-            <div class="fact-label">Просмотры</div>
+            <div class="fact-label">Просмотров всего</div>
             <div class="fact-value" id="ff-views">—</div>
-            <div class="fact-sub">всего</div>
+            <div class="fact-sub">суммарно</div>
           </div>
           <div class="fact-card">
             <div class="fact-icon">👍</div>
@@ -757,7 +766,7 @@
           <div class="swipe-hd">
             <div>
               <div class="swipe-title">Просмотрено vs Свайпнуто</div>
-              <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:3px">Ключевой сигнал алгоритма Shorts — строго 100%</div>
+              <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:3px">Строго 100% — ключевой сигнал алгоритма Shorts</div>
             </div>
             <div class="swipe-pct-txt" id="ff-swipe-txt">—</div>
           </div>
@@ -771,184 +780,359 @@
           </div>
         </div>
 
-        <button class="open-sim-btn" id="open-sim-from-facts">
+        <!-- Кнопка открытия симулятора -->
+        <button class="open-sim-btn" id="open-sim-btn" onclick="toggleSimulator()">
           🎛️ Запустить ИИ-симулятор ролика
         </button>
-      </div>
 
-      <!-- Симулятор -->
-      <div id="fc-sim-screen" style="display:none">
-        <div class="sim-header">
-          <span class="sim-header-icon">🧪</span>
-          <div>
-            <div class="sim-header-title" id="sim-screen-title">ИИ-Симулятор</div>
-            <div class="sim-header-sub"   id="sim-screen-sub">Двигайте ползунки — ИИ пересчитывает прогноз мгновенно</div>
+        <!-- Симулятор (плавно раскрывается) -->
+        <div class="sim-panel" id="sim-panel">
+          <div class="sim-header-row">
+            <span class="sim-header-icon">🧪</span>
+            <div>
+              <div class="sim-header-title">Режим симулятора</div>
+              <div class="sim-header-sub">Двигайте ползунки — ИИ пересчитывает прогноз мгновенно</div>
+            </div>
+            <button class="close-sim-btn" onclick="toggleSimulator()">✕ Закрыть</button>
           </div>
-          <button class="back-btn" id="sim-back-btn">← Назад к фактам</button>
+
+          <!-- LONG-FORM: 3 ползунка -->
+          <div class="sliders-card" id="sim-sliders-long" style="display:none">
+            <div style="font-size:12px;font-weight:800;margin-bottom:14px;color:var(--accent);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.06em">📹 Long-form</div>
+            <div class="sliders-grid">
+              <div class="sl-field">
+                <div class="sl-row"><span class="sl-name">CTR</span><span class="sl-val" id="slv-ctr">5.0%</span></div>
+                <div class="sl-hint">Диапазон: 1% — 100%</div>
+                <input type="range" class="sl-input" id="sli-ctr" min="1" max="100" step="0.1" value="5" oninput="onSimChange()">
+              </div>
+              <div class="sl-field">
+                <div class="sl-row"><span class="sl-name">Удержание аудитории</span><span class="sl-val" id="slv-ret">50%</span></div>
+                <div class="sl-hint">Диапазон: 1% — 100%</div>
+                <input type="range" class="sl-input" id="sli-ret" min="1" max="100" step="1" value="50" oninput="onSimChange()">
+              </div>
+              <div class="sl-field" style="grid-column:1/-1">
+                <div class="sl-row"><span class="sl-name">Просмотров всего</span><span class="sl-val" id="slv-tempo">1 000</span></div>
+                <div class="sl-hint">Суммарный охват ролика</div>
+                <input type="range" class="sl-input" id="sli-tempo" min="100" max="10000000" step="100" value="1000" oninput="onSimChange()">
+              </div>
+            </div>
+          </div>
+
+          <!-- SHORTS: 4 ползунка -->
+          <div class="sliders-card" id="sim-sliders-short" style="display:none">
+            <div style="font-size:12px;font-weight:800;margin-bottom:14px;color:var(--accent2);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.06em">⚡ Shorts</div>
+            <div class="sliders-grid">
+              <div class="sl-field">
+                <div class="sl-row"><span class="sl-name">Удержание Shorts</span><span class="sl-val" id="slv-sret">80%</span></div>
+                <div class="sl-hint">1% — 200%+ (>100% = лупинг)</div>
+                <input type="range" class="sl-input" id="sli-sret" min="1" max="200" step="1" value="80" oninput="onSimChange()">
+              </div>
+              <div class="sl-field">
+                <div class="sl-row"><span class="sl-name">Заинтересованные зрители</span><span class="sl-val" id="slv-sint">50%</span></div>
+                <div class="sl-hint">Диапазон: 1% — 100%</div>
+                <input type="range" class="sl-input" id="sli-sint" min="1" max="100" step="1" value="50" oninput="onSimChange()">
+              </div>
+              <div class="sl-field">
+                <div class="sl-row"><span class="sl-name">Процент свайпа</span><span class="sl-val" id="slv-swipe">30%</span></div>
+                <div class="sl-hint">Диапазон: 1% — 100%</div>
+                <input type="range" class="sl-input" id="sli-swipe" min="1" max="100" step="1" value="30" oninput="onSimChange()">
+              </div>
+              <div class="sl-field">
+                <div class="sl-row"><span class="sl-name">Просмотров всего</span><span class="sl-val" id="slv-swave">5 000</span></div>
+                <div class="sl-hint">Суммарный охват Shorts</div>
+                <input type="range" class="sl-input" id="sli-swave" min="100" max="10000000" step="100" value="5000" oninput="onSimChange()">
+              </div>
+            </div>
+          </div>
+
+          <!-- Горизонт — Long-form -->
+          <div id="period-block-long" style="display:none">
+            <div class="period-tabs-wrap">
+              <div class="period-tabs-label">Горизонт прогноза — вечнозелёный контент</div>
+              <div class="period-tabs" id="period-tabs-long">
+                <button class="period-tab active" data-pl="1h">1 час</button>
+                <button class="period-tab" data-pl="12h">12 ч</button>
+                <button class="period-tab" data-pl="24h">24 ч</button>
+                <button class="period-tab" data-pl="48h">48 ч</button>
+                <button class="period-tab" data-pl="7d">7 дней</button>
+                <button class="period-tab" data-pl="15d">15 дней</button>
+                <button class="period-tab" data-pl="24d">24 дня</button>
+                <button class="period-tab" data-pl="30d">30 дней</button>
+                <button class="period-tab" data-pl="3mo">3 мес</button>
+                <button class="period-tab" data-pl="6mo">6 мес</button>
+                <button class="period-tab" data-pl="9mo">9 мес</button>
+                <button class="period-tab" data-pl="1y">1 год</button>
+                <button class="period-tab" data-pl="1.5y">1.5 г</button>
+                <button class="period-tab" data-pl="2y">2 года</button>
+                <button class="period-tab" data-pl="3y">3 года</button>
+                <button class="period-tab" data-pl="4y">4 года</button>
+                <button class="period-tab" data-pl="5y">5 лет</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Горизонт — Shorts -->
+          <div id="period-block-short" style="display:none">
+            <div class="period-tabs-wrap">
+              <div class="period-tabs-label">Горизонт прогноза — Shorts</div>
+              <div class="period-tabs" id="period-tabs-short">
+                <button class="period-tab active" data-ps="1h">1 час</button>
+                <button class="period-tab" data-ps="6h">6 часов</button>
+                <button class="period-tab" data-ps="24h">24 часа</button>
+                <button class="period-tab" data-ps="3d">3 дня</button>
+                <button class="period-tab" data-ps="7d">7 дней</button>
+                <button class="period-tab" data-ps="30d">30 дней</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /sim-panel -->
+
+        <!-- ═══ ИИ-ПАНЕЛЬ (всегда видна, пересчитывается) ═══ -->
+        <div class="ai-panel readonly" id="ai-panel">
+          <div class="score-row">
+            <div class="score-donut">
+              <svg width="94" height="94" viewBox="0 0 94 94">
+                <circle class="score-bg" cx="47" cy="47" r="39"/>
+                <circle class="score-fg" id="score-circle" cx="47" cy="47" r="39"
+                  stroke="#e8ff47" stroke-dasharray="245" stroke-dashoffset="245"/>
+              </svg>
+              <div class="score-inner">
+                <div class="score-num" id="score-num">—</div>
+                <div class="score-lbl">SCORE</div>
+              </div>
+            </div>
+            <div class="score-details">
+              <div class="score-title" id="score-title">Анализ ролика</div>
+              <div class="score-desc"  id="score-desc">Загрузка ИИ-вердикта...</div>
+              <div class="score-tags"  id="score-tags"></div>
+            </div>
+          </div>
+
+          <div class="waves-grid">
+            <div class="wave-card w1">
+              <div class="wave-lbl">🌊 Волна 1 — Запуск</div>
+              <div class="wave-val" id="w1-val">—</div>
+              <div class="wave-sub" id="w1-sub">просмотров</div>
+              <span class="wave-badge wb-ok" id="w1-badge">—</span>
+            </div>
+            <div class="wave-card w2">
+              <div class="wave-lbl">🌊 Волна 2 — Рекомендации</div>
+              <div class="wave-val" id="w2-val">—</div>
+              <div class="wave-sub" id="w2-sub">просмотров</div>
+              <span class="wave-badge wb-ok" id="w2-badge">—</span>
+            </div>
+            <div class="wave-card w3">
+              <div class="wave-lbl">🌊 Волна 3 — Долгий хвост</div>
+              <div class="wave-val" id="w3-val">—</div>
+              <div class="wave-sub" id="w3-sub">просмотров</div>
+              <span class="wave-badge wb-ok" id="w3-badge">—</span>
+            </div>
+          </div>
+
+          <div class="secret-card">
+            <div class="secret-hd">
+              <span style="font-size:18px">🔑</span>
+              <span class="secret-ttl">Секрет успеха / Зоны роста</span>
+              <span class="secret-badge">ИИ-анализ</span>
+            </div>
+            <div class="secret-items" id="secret-items">
+              <div class="secret-item"><span class="si-icon">⏳</span><span class="si-text">Анализ загружается...</span></div>
+            </div>
+          </div>
+
+          <div class="fc-chart-card">
+            <div class="chart-card-header">
+              <div>
+                <div class="chart-title">Прогноз просмотров</div>
+                <div class="chart-sub" id="fc-chart-sub">По реальным метрикам ролика</div>
+              </div>
+              <div class="chart-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Факт</div>
+                <div class="legend-item"><div class="legend-dot" style="background:rgba(71,200,255,0.7)"></div>Прогноз</div>
+              </div>
+            </div>
+            <canvas id="forecastChart" height="80"></canvas>
+          </div>
+        </div>
+        <!-- /ai-panel -->
+      </div>
+      <!-- /fc-video-screen -->
+
+      <!-- Симулятор нового видео (пустой канал) -->
+      <div id="fc-new-sim-screen" style="display:none">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+          <button style="padding:7px 14px;border-radius:8px;font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);border:1px solid var(--border);background:transparent;cursor:pointer" onclick="showVideoList()">← Назад</button>
+          <div>
+            <div style="font-size:15px;font-weight:800">ИИ-Симулятор нового видео</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px">Задайте параметры — прогноз строится мгновенно</div>
+          </div>
         </div>
 
-        <!-- LONG-FORM: 3 ползунка -->
-        <div class="sliders-card" id="sim-sliders-long" style="display:none">
-          <div style="font-size:13px;font-weight:800;margin-bottom:16px;color:var(--accent)">📹 Параметры Long-form</div>
+        <div style="display:flex;gap:8px;margin-bottom:14px">
+          <button class="period-tab active" id="new-sim-btn-long"  onclick="setNewSimType('long')"  style="border-radius:8px">📹 Long-form</button>
+          <button class="period-tab"        id="new-sim-btn-short" onclick="setNewSimType('short')" style="border-radius:8px">⚡ Shorts</button>
+        </div>
+
+        <!-- Long -->
+        <div class="sliders-card" id="new-sim-long" style="display:block">
           <div class="sliders-grid">
             <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">CTR</span><span class="sl-val" id="slv-ctr">5.0%</span></div>
-              <div class="sl-hint">Диапазон: 1% — 30%</div>
-              <input type="range" class="sl-input" id="sli-ctr" min="1" max="30" step="0.1" value="5" oninput="onSimChange()">
+              <div class="sl-row"><span class="sl-name">CTR</span><span class="sl-val" id="nslv-ctr">5.0%</span></div>
+              <div class="sl-hint">1% — 100%</div>
+              <input type="range" class="sl-input" id="nsli-ctr" min="1" max="100" step="0.1" value="5" oninput="onNewSimChange()">
             </div>
             <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Удержание аудитории</span><span class="sl-val" id="slv-ret">50%</span></div>
-              <div class="sl-hint">Диапазон: 10% — 100%</div>
-              <input type="range" class="sl-input" id="sli-ret" min="10" max="100" step="1" value="50" oninput="onSimChange()">
+              <div class="sl-row"><span class="sl-name">Удержание аудитории</span><span class="sl-val" id="nslv-ret">50%</span></div>
+              <div class="sl-hint">1% — 100%</div>
+              <input type="range" class="sl-input" id="nsli-ret" min="1" max="100" step="1" value="50" oninput="onNewSimChange()">
             </div>
             <div class="sl-field" style="grid-column:1/-1">
-              <div class="sl-row"><span class="sl-name">Начальный темп просмотров</span><span class="sl-val" id="slv-tempo">1 000 / сут</span></div>
-              <div class="sl-hint">Просмотры в первые сутки</div>
-              <input type="range" class="sl-input" id="sli-tempo" min="100" max="100000" step="100" value="1000" oninput="onSimChange()">
+              <div class="sl-row"><span class="sl-name">Просмотров всего</span><span class="sl-val" id="nslv-tempo">10 000</span></div>
+              <div class="sl-hint">Суммарный охват ролика</div>
+              <input type="range" class="sl-input" id="nsli-tempo" min="100" max="10000000" step="100" value="10000" oninput="onNewSimChange()">
             </div>
           </div>
         </div>
 
-        <!-- SHORTS: 4 ползунка -->
-        <div class="sliders-card" id="sim-sliders-short" style="display:none">
-          <div style="font-size:13px;font-weight:800;margin-bottom:16px;color:var(--accent2)">⚡ Параметры Shorts</div>
+        <!-- Short -->
+        <div class="sliders-card" id="new-sim-short" style="display:none">
           <div class="sliders-grid">
             <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Удержание Shorts</span><span class="sl-val" id="slv-sret">80%</span></div>
-              <div class="sl-hint">10% — 250% (>100% = лупинг)</div>
-              <input type="range" class="sl-input" id="sli-sret" min="10" max="250" step="1" value="80" oninput="onSimChange()">
+              <div class="sl-row"><span class="sl-name">Удержание Shorts</span><span class="sl-val" id="nslv-sret">80%</span></div>
+              <div class="sl-hint">1% — 200%+ (>100% = лупинг)</div>
+              <input type="range" class="sl-input" id="nsli-sret" min="1" max="200" step="1" value="80" oninput="onNewSimChange()">
             </div>
             <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Заинтересованные зрители</span><span class="sl-val" id="slv-sint">50%</span></div>
-              <div class="sl-hint">Процент вовлечённых</div>
-              <input type="range" class="sl-input" id="sli-sint" min="1" max="100" step="1" value="50" oninput="onSimChange()">
+              <div class="sl-row"><span class="sl-name">Заинтересованные зрители</span><span class="sl-val" id="nslv-sint">50%</span></div>
+              <div class="sl-hint">1% — 100%</div>
+              <input type="range" class="sl-input" id="nsli-sint" min="1" max="100" step="1" value="50" oninput="onNewSimChange()">
             </div>
             <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Процент свайпа</span><span class="sl-val" id="slv-swipe">30%</span></div>
-              <div class="sl-hint">Свайпнули (View vs Swiped)</div>
-              <input type="range" class="sl-input" id="sli-swipe" min="10" max="100" step="1" value="30" oninput="onSimChange()">
+              <div class="sl-row"><span class="sl-name">Процент свайпа</span><span class="sl-val" id="nslv-swipe">30%</span></div>
+              <div class="sl-hint">1% — 100%</div>
+              <input type="range" class="sl-input" id="nsli-swipe" min="1" max="100" step="1" value="30" oninput="onNewSimChange()">
             </div>
             <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Просмотры 1-й волны</span><span class="sl-val" id="slv-swave">5 000</span></div>
-              <div class="sl-hint">Охват при первом запуске</div>
-              <input type="range" class="sl-input" id="sli-swave" min="100" max="500000" step="100" value="5000" oninput="onSimChange()">
+              <div class="sl-row"><span class="sl-name">Просмотров всего</span><span class="sl-val" id="nslv-swave">50 000</span></div>
+              <div class="sl-hint">Суммарный охват Shorts</div>
+              <input type="range" class="sl-input" id="nsli-swave" min="100" max="10000000" step="100" value="50000" oninput="onNewSimChange()">
             </div>
           </div>
         </div>
 
-        <!-- LONG-FORM: мега-таймлайн -->
-        <div id="period-block-long" style="display:none">
+        <!-- Горизонт -->
+        <div id="new-period-block-long">
           <div class="period-tabs-wrap">
-            <div class="period-tabs-label">Горизонт прогноза — Long-form (вечнозелёный контент)</div>
-            <div class="period-tabs" id="period-tabs-long">
-              <button class="period-tab active" data-pl="1h">1 час</button>
-              <button class="period-tab" data-pl="12h">12 часов</button>
-              <button class="period-tab" data-pl="24h">24 часа</button>
-              <button class="period-tab" data-pl="48h">48 часов</button>
-              <button class="period-tab" data-pl="7d">7 суток</button>
-              <button class="period-tab" data-pl="15d">15 суток</button>
-              <button class="period-tab" data-pl="24d">24 суток</button>
-              <button class="period-tab" data-pl="30d">30 суток</button>
-              <button class="period-tab" data-pl="3mo">3 месяца</button>
-              <button class="period-tab" data-pl="6mo">6 месяцев</button>
-              <button class="period-tab" data-pl="9mo">9 месяцев</button>
-              <button class="period-tab" data-pl="1y">1 год</button>
-              <button class="period-tab" data-pl="1.5y">1.5 года</button>
-              <button class="period-tab" data-pl="2y">2 года</button>
-              <button class="period-tab" data-pl="3y">3 года</button>
-              <button class="period-tab" data-pl="4y">4 года</button>
-              <button class="period-tab" data-pl="5y">5 лет</button>
+            <div class="period-tabs-label">Горизонт прогноза</div>
+            <div class="period-tabs" id="new-period-tabs-long">
+              <button class="period-tab active" data-npl="1h">1 час</button>
+              <button class="period-tab" data-npl="12h">12 ч</button>
+              <button class="period-tab" data-npl="24h">24 ч</button>
+              <button class="period-tab" data-npl="48h">48 ч</button>
+              <button class="period-tab" data-npl="7d">7 дней</button>
+              <button class="period-tab" data-npl="15d">15 дней</button>
+              <button class="period-tab" data-npl="24d">24 дня</button>
+              <button class="period-tab" data-npl="30d">30 дней</button>
+              <button class="period-tab" data-npl="3mo">3 мес</button>
+              <button class="period-tab" data-npl="6mo">6 мес</button>
+              <button class="period-tab" data-npl="9mo">9 мес</button>
+              <button class="period-tab" data-npl="1y">1 год</button>
+              <button class="period-tab" data-npl="1.5y">1.5 г</button>
+              <button class="period-tab" data-npl="2y">2 года</button>
+              <button class="period-tab" data-npl="3y">3 года</button>
+              <button class="period-tab" data-npl="4y">4 года</button>
+              <button class="period-tab" data-npl="5y">5 лет</button>
             </div>
           </div>
         </div>
 
-        <!-- SHORTS: период -->
-        <div id="period-block-short" style="display:none">
+        <div id="new-period-block-short" style="display:none">
           <div class="period-tabs-wrap">
-            <div class="period-tabs-label">Горизонт прогноза — Shorts</div>
-            <div class="period-tabs" id="period-tabs-short">
-              <button class="period-tab active" data-ps="1h">1 час</button>
-              <button class="period-tab" data-ps="6h">6 часов</button>
-              <button class="period-tab" data-ps="24h">24 часа</button>
-              <button class="period-tab" data-ps="3d">3 дня</button>
-              <button class="period-tab" data-ps="7d">7 дней</button>
-              <button class="period-tab" data-ps="30d">30 дней</button>
+            <div class="period-tabs-label">Горизонт прогноза</div>
+            <div class="period-tabs" id="new-period-tabs-short">
+              <button class="period-tab active" data-nps="1h">1 час</button>
+              <button class="period-tab" data-nps="6h">6 часов</button>
+              <button class="period-tab" data-nps="24h">24 часа</button>
+              <button class="period-tab" data-nps="3d">3 дня</button>
+              <button class="period-tab" data-nps="7d">7 дней</button>
+              <button class="period-tab" data-nps="30d">30 дней</button>
             </div>
           </div>
         </div>
 
-        <!-- Score -->
-        <div class="score-row">
-          <div class="score-donut">
-            <svg width="94" height="94" viewBox="0 0 94 94">
-              <circle class="score-bg" cx="47" cy="47" r="39"/>
-              <circle class="score-fg" id="score-circle" cx="47" cy="47" r="39"
-                stroke="#e8ff47" stroke-dasharray="245" stroke-dashoffset="73"/>
-            </svg>
-            <div class="score-inner">
-              <div class="score-num" id="score-num">—</div>
-              <div class="score-lbl">SCORE</div>
+        <!-- Отдельная ИИ-панель для нового симулятора -->
+        <div class="ai-panel" id="new-ai-panel">
+          <div class="score-row">
+            <div class="score-donut">
+              <svg width="94" height="94" viewBox="0 0 94 94">
+                <circle class="score-bg" cx="47" cy="47" r="39"/>
+                <circle class="score-fg" id="nscore-circle" cx="47" cy="47" r="39"
+                  stroke="#e8ff47" stroke-dasharray="245" stroke-dashoffset="245"/>
+              </svg>
+              <div class="score-inner">
+                <div class="score-num" id="nscore-num">—</div>
+                <div class="score-lbl">SCORE</div>
+              </div>
+            </div>
+            <div class="score-details">
+              <div class="score-title" id="nscore-title">Симулятор готов</div>
+              <div class="score-desc"  id="nscore-desc">Двигайте ползунки для получения прогноза.</div>
+              <div class="score-tags"  id="nscore-tags"></div>
             </div>
           </div>
-          <div class="score-details">
-            <div class="score-title" id="score-title">Выберите ролик</div>
-            <div class="score-desc"  id="score-desc">Настройте параметры — ИИ выдаст вердикт.</div>
-            <div class="score-tags"  id="score-tags"></div>
-          </div>
-        </div>
 
-        <!-- Волны -->
-        <div class="waves-grid">
-          <div class="wave-card w1">
-            <div class="wave-lbl">🌊 Волна 1 — Запуск</div>
-            <div class="wave-val" id="w1-val">—</div>
-            <div class="wave-sub" id="w1-sub">просмотров</div>
-            <span class="wave-badge wb-ok" id="w1-badge">—</span>
-          </div>
-          <div class="wave-card w2">
-            <div class="wave-lbl">🌊 Волна 2 — Рекомендации</div>
-            <div class="wave-val" id="w2-val">—</div>
-            <div class="wave-sub" id="w2-sub">просмотров</div>
-            <span class="wave-badge wb-ok" id="w2-badge">—</span>
-          </div>
-          <div class="wave-card w3">
-            <div class="wave-lbl">🌊 Волна 3 — Долгий хвост</div>
-            <div class="wave-val" id="w3-val">—</div>
-            <div class="wave-sub" id="w3-sub">просмотров</div>
-            <span class="wave-badge wb-ok" id="w3-badge">—</span>
-          </div>
-        </div>
-
-        <!-- Секрет успеха -->
-        <div class="secret-card">
-          <div class="secret-hd">
-            <span style="font-size:18px">🔑</span>
-            <span class="secret-ttl">Секрет успеха этого ролика</span>
-            <span class="secret-badge">ИИ-анализ</span>
-          </div>
-          <div class="secret-items" id="secret-items">
-            <div class="secret-item"><span class="si-icon">⏳</span><span class="si-text">Настройте ползунки для получения анализа.</span></div>
-          </div>
-        </div>
-
-        <!-- График -->
-        <div class="fc-chart-card">
-          <div class="chart-card-header">
-            <div>
-              <div class="chart-title">Прогноз просмотров</div>
-              <div class="chart-sub" id="fc-chart-sub">—</div>
+          <div class="waves-grid">
+            <div class="wave-card w1">
+              <div class="wave-lbl">🌊 Волна 1 — Запуск</div>
+              <div class="wave-val" id="nw1-val">—</div>
+              <div class="wave-sub" id="nw1-sub">просмотров</div>
+              <span class="wave-badge wb-ok" id="nw1-badge">—</span>
             </div>
-            <div class="chart-legend">
-              <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Факт</div>
-              <div class="legend-item"><div class="legend-dot" style="background:rgba(71,200,255,0.7)"></div>Прогноз</div>
+            <div class="wave-card w2">
+              <div class="wave-lbl">🌊 Волна 2 — Рекомендации</div>
+              <div class="wave-val" id="nw2-val">—</div>
+              <div class="wave-sub" id="nw2-sub">просмотров</div>
+              <span class="wave-badge wb-ok" id="nw2-badge">—</span>
+            </div>
+            <div class="wave-card w3">
+              <div class="wave-lbl">🌊 Волна 3 — Долгий хвост</div>
+              <div class="wave-val" id="nw3-val">—</div>
+              <div class="wave-sub" id="nw3-sub">просмотров</div>
+              <span class="wave-badge wb-ok" id="nw3-badge">—</span>
             </div>
           </div>
-          <canvas id="forecastChart" height="80"></canvas>
+
+          <div class="secret-card">
+            <div class="secret-hd">
+              <span style="font-size:18px">🔑</span>
+              <span class="secret-ttl">Секрет успеха / Зоны роста</span>
+              <span class="secret-badge">ИИ-анализ</span>
+            </div>
+            <div class="secret-items" id="nsecret-items">
+              <div class="secret-item"><span class="si-icon">⏳</span><span class="si-text">Двигайте ползунки для анализа.</span></div>
+            </div>
+          </div>
+
+          <div class="fc-chart-card">
+            <div class="chart-card-header">
+              <div>
+                <div class="chart-title">Прогноз просмотров</div>
+                <div class="chart-sub" id="nfc-chart-sub">—</div>
+              </div>
+              <div class="chart-legend">
+                <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Факт</div>
+                <div class="legend-item"><div class="legend-dot" style="background:rgba(71,200,255,0.7)"></div>Прогноз</div>
+              </div>
+            </div>
+            <canvas id="newForecastChart" height="80"></canvas>
+          </div>
         </div>
       </div>
+      <!-- /fc-new-sim-screen -->
     </div>
 
-    <!-- ▸ КАЛЬКУЛЯТОР МЕТРИК -->
+    <!-- ▸ КАЛЬКУЛЯТОР -->
     <div class="tab-panel" id="tab-calc">
       <div class="page-header">
         <div>
@@ -958,16 +1142,14 @@
         <div class="badge-live" style="background:rgba(57,255,154,0.08);border-color:rgba(57,255,154,0.25);color:var(--green)">🧮 AUTO CALC</div>
       </div>
 
-      <!-- SHORTS блок -->
       <div style="font-size:15px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px">
         <span style="font-size:20px">⚡</span> Shorts
       </div>
 
       <div class="calc-grid" style="margin-bottom:28px">
-        <!-- Удержание Shorts -->
         <div class="calc-block">
           <div class="calc-block-title">Удержание Shorts</div>
-          <div class="calc-block-sub">Среднее время просмотра ÷ Длина видео × 100%</div>
+          <div class="calc-block-sub">Среднее время просмотра ÷ Длина × 100%</div>
           <div class="calc-fields">
             <div class="calc-field">
               <label>Длина видео (сек)</label>
@@ -981,14 +1163,13 @@
           <div class="calc-result">
             <div class="calc-result-label">Удержание Shorts</div>
             <div class="calc-result-value" id="cr-sret">—</div>
-            <div class="calc-result-sub" id="cr-sret-hint">Введите данные для расчёта</div>
+            <div class="calc-result-sub"   id="cr-sret-hint">Введите данные для расчёта</div>
           </div>
         </div>
 
-        <!-- View vs Swiped -->
         <div class="calc-block">
           <div class="calc-block-title">Просмотрено vs Свайпнуто</div>
-          <div class="calc-block-sub">Итоговое соотношение в процентах (сумма = 100%)</div>
+          <div class="calc-block-sub">Итоговое соотношение — сумма = 100%</div>
           <div class="calc-fields">
             <div class="calc-field">
               <label>Сколько человек посмотрело</label>
@@ -1009,23 +1190,21 @@
 
       <hr class="calc-divider">
 
-      <!-- LONG-FORM блок -->
       <div style="font-size:15px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px">
         <span style="font-size:20px">📹</span> Long-form
       </div>
 
       <div class="calc-grid">
-        <!-- Заинтересованность аудитории -->
         <div class="calc-block">
           <div class="calc-block-title">Заинтересованность аудитории</div>
-          <div class="calc-block-sub">Заинтересованных зрителей ÷ Всего просмотров × 100%</div>
+          <div class="calc-block-sub">Заинтересованных ÷ Просмотров всего × 100%</div>
           <div class="calc-fields">
             <div class="calc-field">
-              <label>Всего просмотров ролика</label>
+              <label>Просмотров всего</label>
               <input type="number" class="calc-input" id="cl-views" placeholder="например: 1000" min="1" oninput="calcInterest()">
             </div>
             <div class="calc-field">
-              <label>Количество заинтересованных зрителей</label>
+              <label>Заинтересованных зрителей</label>
               <input type="number" class="calc-input" id="cl-int" placeholder="например: 700" min="0" oninput="calcInterest()">
             </div>
           </div>
@@ -1036,17 +1215,16 @@
           </div>
         </div>
 
-        <!-- CTR -->
         <div class="calc-block">
           <div class="calc-block-title">CTR — Кликабельность обложки</div>
-          <div class="calc-block-sub">Кликов ÷ Показов обложки × 100%</div>
+          <div class="calc-block-sub">Кликов ÷ Показов × 100%</div>
           <div class="calc-fields">
             <div class="calc-field">
-              <label>Всего показов обложки (Impressions)</label>
+              <label>Показов обложки (Impressions)</label>
               <input type="number" class="calc-input" id="cl-impr" placeholder="например: 50000" min="1" oninput="calcCTR()">
             </div>
             <div class="calc-field">
-              <label>Количество кликов</label>
+              <label>Кликов</label>
               <input type="number" class="calc-input" id="cl-clicks" placeholder="например: 2500" min="0" oninput="calcCTR()">
             </div>
           </div>
@@ -1059,7 +1237,7 @@
       </div>
     </div>
 
-    <!-- ▸ СОВЕТЫ ОТ ИИ -->
+    <!-- ▸ СОВЕТЫ -->
     <div class="tab-panel" id="tab-ai">
       <div class="page-header">
         <div>
@@ -1083,7 +1261,7 @@
         <div class="tip-card">
           <div class="tip-tag">🎯 Заголовки</div>
           <div class="tip-title">Добавляйте число в первые 3 слова заголовка</div>
-          <div class="tip-body">Заголовки с числами («5 способов», «10 ошибок») дают CTR выше среднего по вашей нише на 34%. Ваши последние 3 видео без чисел имеют CTR ниже 3%.</div>
+          <div class="tip-body">Заголовки с числами («5 способов», «10 ошибок») дают CTR выше среднего по нише на 34%. Ваши последние 3 видео без чисел имеют CTR ниже 3%.</div>
           <div class="tip-impact">
             <div class="impact-label">Влияние</div>
             <div class="impact-bar"><div class="impact-fill" style="width:65%"></div></div>
@@ -1123,7 +1301,7 @@
         <div class="tip-card">
           <div class="tip-tag">🔍 SEO</div>
           <div class="tip-title">Добавляйте тайм-коды в описание</div>
-          <div class="tip-body">Видео с тайм-кодами занимают на 40% больше места в поиске Google (Rich Snippets). Ни одно из ваших последних 10 видео не содержит тайм-кодов.</div>
+          <div class="tip-body">Видео с тайм-кодами занимают на 40% больше места в поиске Google. Ни одно из ваших последних 10 видео не содержит тайм-кодов.</div>
           <div class="tip-impact">
             <div class="impact-label">Влияние</div>
             <div class="impact-bar"><div class="impact-fill" style="width:47%"></div></div>
@@ -1146,7 +1324,7 @@ const API_URL = "https://youtube-analytics-ruddy.vercel.app";
 
 const LS_KEY = 'ytmetrics_user';
 
-// ── Авторизация (нетронута) ───────────────────────────
+// ── АВТОРИЗАЦИЯ (нетронута) ───────────────────────────
 document.getElementById('login-btn').addEventListener('click', () => {
   window.location.href = `${API_URL}/api/auth/google`;
 });
@@ -1185,77 +1363,63 @@ function calcShortRet() {
   const len = parseFloat(document.getElementById('cs-len').value);
   const avg = parseFloat(document.getElementById('cs-avg').value);
   const el  = document.getElementById('cr-sret');
-  const hint= document.getElementById('cr-sret-hint');
-
-  if (!len || !avg || len <= 0) { el.textContent = '—'; hint.textContent = 'Введите данные'; return; }
-
+  const h   = document.getElementById('cr-sret-hint');
+  if (!len || len <= 0) { el.textContent = '—'; h.textContent = 'Введите данные'; return; }
   const ret = (avg / len) * 100;
-  el.textContent   = ret.toFixed(1) + '%';
-  el.style.color   = ret >= 100 ? 'var(--green)' : ret >= 70 ? 'var(--accent)' : 'var(--orange)';
-
-  if (ret >= 120) hint.textContent = '🔄 Зрители пересматривают — мощный луп-сигнал для алгоритма';
-  else if (ret >= 100) hint.textContent = '✅ Отлично — досматривают до конца и начинают снова';
-  else if (ret >= 70)  hint.textContent = '✓ Хорошо — большинство досматривает до конца';
-  else if (ret >= 50)  hint.textContent = '⚠ Средне — часть зрителей уходит раньше конца';
-  else                 hint.textContent = '❌ Низко — нужно переработать первые секунды';
+  el.textContent = (ret >= 200 ? '200%+' : ret.toFixed(1) + '%');
+  el.style.color = ret >= 100 ? 'var(--green)' : ret >= 70 ? 'var(--accent)' : 'var(--orange)';
+  h.textContent  = ret >= 120 ? '🔄 Луп — зрители пересматривают, мощный сигнал алгоритму'
+                 : ret >= 100 ? '✅ Досматривают до конца и начинают снова'
+                 : ret >= 70  ? '✓ Большинство досматривает до конца'
+                 : ret >= 50  ? '⚠ Часть зрителей уходит раньше конца'
+                              : '❌ Нужно переработать первые секунды';
 }
 
 function calcSwipe() {
-  const viewed = parseFloat(document.getElementById('cs-viewed').value);
-  const swiped = parseFloat(document.getElementById('cs-swiped').value);
-  const el     = document.getElementById('cr-swipe');
-  const hint   = document.getElementById('cr-swipe-hint');
-
-  if (!viewed && !swiped) { el.textContent = '—'; hint.textContent = 'Введите данные'; return; }
-
-  const total   = (viewed || 0) + (swiped || 0);
-  if (total === 0) { el.textContent = '—'; hint.textContent = 'Сумма равна нулю'; return; }
-
-  const vpct = ((viewed || 0) / total * 100).toFixed(1);
-  const spct = ((swiped || 0) / total * 100).toFixed(1);
-  el.textContent = `${vpct}% / ${spct}%`;
-  el.style.color = parseFloat(vpct) >= 70 ? 'var(--green)' : parseFloat(vpct) >= 50 ? 'var(--accent)' : 'var(--red)';
-
-  if (parseFloat(vpct) >= 80)      hint.textContent = '🚀 Отлично — алгоритм активно продвигает';
-  else if (parseFloat(vpct) >= 65) hint.textContent = '✓ Хорошо — досматривают чаще чем свайпают';
-  else if (parseFloat(vpct) >= 50) hint.textContent = '⚠ Средне — половина уходит, нужен сильный крючок';
-  else                             hint.textContent = '❌ Много свайпов — перерабатывайте первые 2 секунды';
+  const viewed = parseFloat(document.getElementById('cs-viewed').value) || 0;
+  const swiped = parseFloat(document.getElementById('cs-swiped').value) || 0;
+  const el = document.getElementById('cr-swipe');
+  const h  = document.getElementById('cr-swipe-hint');
+  const total = viewed + swiped;
+  if (!total) { el.textContent = '—'; h.textContent = 'Введите данные'; return; }
+  const vp = (viewed / total * 100).toFixed(1);
+  const sp = (swiped / total * 100).toFixed(1);
+  el.textContent = `${vp}% / ${sp}%`;
+  el.style.color = parseFloat(vp) >= 70 ? 'var(--green)' : parseFloat(vp) >= 50 ? 'var(--accent)' : 'var(--red)';
+  h.textContent  = parseFloat(vp) >= 80 ? '🚀 Алгоритм активно продвигает'
+                 : parseFloat(vp) >= 65 ? '✓ Досматривают чаще, чем свайпают'
+                 : parseFloat(vp) >= 50 ? '⚠ Половина уходит — нужен сильный крючок'
+                                        : '❌ Много свайпов — перерабатывайте первые 2 сек';
 }
 
 function calcInterest() {
   const views = parseFloat(document.getElementById('cl-views').value);
   const ints  = parseFloat(document.getElementById('cl-int').value);
-  const el    = document.getElementById('cr-int');
-  const hint  = document.getElementById('cr-int-hint');
-
-  if (!views || views <= 0) { el.textContent = '—'; hint.textContent = 'Введите данные'; return; }
-
+  const el = document.getElementById('cr-int');
+  const h  = document.getElementById('cr-int-hint');
+  if (!views || views <= 0) { el.textContent = '—'; h.textContent = 'Введите данные'; return; }
   const pct = (ints / views) * 100;
   el.textContent = pct.toFixed(1) + '%';
   el.style.color = pct >= 60 ? 'var(--green)' : pct >= 40 ? 'var(--accent)' : 'var(--orange)';
-
-  if (pct >= 70)      hint.textContent = '🎯 Высокая заинтересованность — аудитория вовлечена';
-  else if (pct >= 50) hint.textContent = '✓ Нормально — больше половины остаётся';
-  else if (pct >= 30) hint.textContent = '⚠ Ниже нормы — контент теряет зрителей на середине';
-  else                hint.textContent = '❌ Низкая заинтересованность — нужен реструктуринг';
+  h.textContent  = pct >= 70 ? '🎯 Высокая заинтересованность — аудитория вовлечена'
+                 : pct >= 50 ? '✓ Больше половины остаётся'
+                 : pct >= 30 ? '⚠ Контент теряет зрителей на середине'
+                              : '❌ Нужен реструктуринг';
 }
 
 function calcCTR() {
   const impr   = parseFloat(document.getElementById('cl-impr').value);
   const clicks = parseFloat(document.getElementById('cl-clicks').value);
-  const el     = document.getElementById('cr-ctr');
-  const hint   = document.getElementById('cr-ctr-hint');
-
-  if (!impr || impr <= 0) { el.textContent = '—'; hint.textContent = 'Введите данные'; return; }
-
+  const el = document.getElementById('cr-ctr');
+  const h  = document.getElementById('cr-ctr-hint');
+  if (!impr || impr <= 0) { el.textContent = '—'; h.textContent = 'Введите данные'; return; }
   const ctr = (clicks / impr) * 100;
   el.textContent = ctr.toFixed(2) + '%';
   el.style.color = ctr >= 5 ? 'var(--green)' : ctr >= 3 ? 'var(--accent)' : 'var(--red)';
-
-  if (ctr >= 7)      hint.textContent = '🚀 Отличный CTR — превью и заголовок работают идеально';
-  else if (ctr >= 5) hint.textContent = '✓ Хороший CTR — выше среднего по платформе';
-  else if (ctr >= 3) hint.textContent = '⚠ Средний CTR — есть потенциал для улучшения превью';
-  else               hint.textContent = '❌ Низкий CTR — срочно меняйте превью или заголовок';
+  h.textContent  = ctr >= 7 ? '🚀 Отличный CTR — превью работает идеально'
+                 : ctr >= 5 ? '✓ Хороший CTR — выше среднего'
+                 : ctr >= 3 ? '⚠ Средний CTR — есть потенциал для роста'
+                            : '❌ Низкий CTR — срочно меняйте превью';
 }
 
 // ════════════════════════════════════════════════════════
@@ -1266,15 +1430,13 @@ const VIDEOS = [
     id: 0, type: 'long',
     title: 'Как набрать 10 000 подписчиков за 3 месяца',
     views: 18400, likes: 1140, comments: 312, shares: 430,
-    ctr: 6.2, retention: 52,
-    meta: '18.4K просмотров · 4 дня назад',
+    ctr: 6.2, retention: 52, meta: '18.4K просмотров · 4 дня назад',
   },
   {
     id: 1, type: 'long',
     title: '5 ошибок новичков на YouTube — полный разбор',
     views: 5820, likes: 181, comments: 44, shares: 67,
-    ctr: 4.1, retention: 38,
-    meta: '5.8K просмотров · 12 дней назад',
+    ctr: 4.1, retention: 38, meta: '5.8K просмотров · 12 дней назад',
   },
   {
     id: 2, type: 'short',
@@ -1294,54 +1456,55 @@ const VIDEOS = [
     id: 4, type: 'long',
     title: 'Полный гайд по YouTube SEO в 2025 году',
     views: 22800, likes: 1780, comments: 490, shares: 720,
-    ctr: 7.8, retention: 61,
-    meta: '22.8K просмотров · 21 день назад',
+    ctr: 7.8, retention: 61, meta: '22.8K просмотров · 21 день назад',
   },
 ];
 
-// ── Состояние прогноза ────────────────────────────────
-let curVideo     = null; // выбранное видео или null (симулятор)
-let simMode      = false; // открыт ли симулятор
-let curPeriodKey = null;  // текущий ключ периода
-let fcChart      = null;
-let vcChart      = null;
+// ── Состояние ─────────────────────────────────────────
+let curVideo      = null;
+let simOpen       = false;
+let curPeriodKey  = '24h';
+let newSimType    = 'long';
+let newPeriodKey  = '24h';
+let fcChart       = null;
+let nfcChart      = null;
+let vcChart       = null;
 
-// Периоды Long-form → количество точек и метки
+// Периоды
 const LONG_PERIODS = {
-  '1h':   { pts: 12,  label: '1 час',    unit: '5мин', days: 1/24 },
-  '12h':  { pts: 12,  label: '12 часов', unit: '1ч',   days: 0.5 },
-  '24h':  { pts: 24,  label: '24 часа',  unit: '1ч',   days: 1 },
-  '48h':  { pts: 24,  label: '48 часов', unit: '2ч',   days: 2 },
-  '7d':   { pts: 28,  label: '7 суток',  unit: '6ч',   days: 7 },
-  '15d':  { pts: 30,  label: '15 суток', unit: '12ч',  days: 15 },
-  '24d':  { pts: 24,  label: '24 суток', unit: '1д',   days: 24 },
-  '30d':  { pts: 30,  label: '30 суток', unit: '1д',   days: 30 },
-  '3mo':  { pts: 36,  label: '3 месяца', unit: '2.5д', days: 90 },
-  '6mo':  { pts: 36,  label: '6 месяцев',unit: '5д',   days: 180 },
-  '9mo':  { pts: 36,  label: '9 месяцев',unit: '7.5д', days: 270 },
-  '1y':   { pts: 36,  label: '1 год',    unit: '10д',  days: 365 },
-  '1.5y': { pts: 36,  label: '1.5 года', unit: '15д',  days: 547 },
-  '2y':   { pts: 36,  label: '2 года',   unit: '20д',  days: 730 },
-  '3y':   { pts: 36,  label: '3 года',   unit: '30д',  days: 1095 },
-  '4y':   { pts: 36,  label: '4 года',   unit: '40д',  days: 1460 },
-  '5y':   { pts: 36,  label: '5 лет',    unit: '50д',  days: 1825 },
+  '1h':  { pts:12,  label:'1 час',     days: 1/24 },
+  '12h': { pts:12,  label:'12 часов',  days: 0.5 },
+  '24h': { pts:24,  label:'24 часа',   days: 1 },
+  '48h': { pts:24,  label:'48 часов',  days: 2 },
+  '7d':  { pts:28,  label:'7 дней',    days: 7 },
+  '15d': { pts:30,  label:'15 дней',   days: 15 },
+  '24d': { pts:24,  label:'24 дня',    days: 24 },
+  '30d': { pts:30,  label:'30 дней',   days: 30 },
+  '3mo': { pts:36,  label:'3 месяца',  days: 90 },
+  '6mo': { pts:36,  label:'6 месяцев', days: 180 },
+  '9mo': { pts:36,  label:'9 месяцев', days: 270 },
+  '1y':  { pts:36,  label:'1 год',     days: 365 },
+  '1.5y':{ pts:36,  label:'1.5 года',  days: 547 },
+  '2y':  { pts:36,  label:'2 года',    days: 730 },
+  '3y':  { pts:36,  label:'3 года',    days: 1095 },
+  '4y':  { pts:36,  label:'4 года',    days: 1460 },
+  '5y':  { pts:36,  label:'5 лет',     days: 1825 },
 };
 
 const SHORT_PERIODS = {
-  '1h':  { pts: 12, label: '1 час',    unit: '5мин', days: 1/24 },
-  '6h':  { pts: 12, label: '6 часов',  unit: '30мин',days: 0.25 },
-  '24h': { pts: 24, label: '24 часа',  unit: '1ч',   days: 1 },
-  '3d':  { pts: 18, label: '3 дня',    unit: '4ч',   days: 3 },
-  '7d':  { pts: 28, label: '7 дней',   unit: '6ч',   days: 7 },
-  '30d': { pts: 30, label: '30 дней',  unit: '1д',   days: 30 },
+  '1h':  { pts:12,  label:'1 час',    days: 1/24 },
+  '6h':  { pts:12,  label:'6 часов',  days: 0.25 },
+  '24h': { pts:24,  label:'24 часа',  days: 1 },
+  '3d':  { pts:18,  label:'3 дня',    days: 3 },
+  '7d':  { pts:28,  label:'7 дней',   days: 7 },
+  '30d': { pts:30,  label:'30 дней',  days: 30 },
 };
 
 // ════════════════════════════════════════════════════════
 // СПИСОК ВИДЕО
 // ════════════════════════════════════════════════════════
 function renderVideoList() {
-  const container = document.getElementById('video-list-items');
-  container.innerHTML = VIDEOS.map(v => `
+  document.getElementById('video-list-items').innerHTML = VIDEOS.map(v => `
     <div class="video-item" data-id="${v.id}" onclick="selectVideo(${v.id})">
       <span class="video-item-icon">${v.type === 'short' ? '⚡' : '📹'}</span>
       <div class="video-item-info">
@@ -1354,186 +1517,148 @@ function renderVideoList() {
 }
 
 function showVideoList() {
-  document.getElementById('fc-video-list').style.display   = 'block';
-  document.getElementById('fc-facts-screen').style.display = 'none';
-  document.getElementById('fc-sim-screen').style.display   = 'none';
-  curVideo  = null;
-  simMode   = false;
+  document.getElementById('fc-video-list').style.display       = 'block';
+  document.getElementById('fc-video-screen').style.display     = 'none';
+  document.getElementById('fc-new-sim-screen').style.display   = 'none';
+  curVideo = null; simOpen = false;
 }
 
 function selectVideo(id) {
   curVideo = VIDEOS.find(v => v.id === id);
   if (!curVideo) return;
 
-  document.querySelectorAll('.video-item').forEach(el => {
-    el.classList.toggle('selected', parseInt(el.dataset.id) === id);
-  });
+  document.querySelectorAll('.video-item').forEach(el =>
+    el.classList.toggle('selected', parseInt(el.dataset.id) === id)
+  );
 
-  showFactsScreen(curVideo);
-}
+  document.getElementById('fc-video-list').style.display     = 'none';
+  document.getElementById('fc-video-screen').style.display   = 'block';
+  document.getElementById('fc-new-sim-screen').style.display = 'none';
 
-// ════════════════════════════════════════════════════════
-// ЭКРАН ФАКТОВ
-// ════════════════════════════════════════════════════════
-function showFactsScreen(v) {
-  document.getElementById('fc-video-list').style.display   = 'none';
-  document.getElementById('fc-sim-screen').style.display   = 'none';
-  document.getElementById('fc-facts-screen').style.display = 'block';
+  // Заполнить шапку
+  document.getElementById('fc-video-title').textContent = curVideo.title;
+  document.getElementById('fc-video-meta').textContent  = curVideo.meta + ' · ' + (curVideo.type === 'short' ? '⚡ Shorts' : '📹 Long-form');
 
-  document.getElementById('fc-facts-title').textContent = v.title;
-  document.getElementById('fc-facts-meta').textContent  = v.meta + ' · ' + (v.type === 'short' ? '⚡ Shorts' : '📹 Long-form');
+  // Факты
+  document.getElementById('ff-views').textContent         = fmt(curVideo.views);
+  document.getElementById('ff-likes').textContent         = fmt(curVideo.likes);
+  document.getElementById('ff-likes-sub').textContent     = pctOf(curVideo.likes, curVideo.views) + ' от просмотров';
+  document.getElementById('ff-comments').textContent      = fmt(curVideo.comments);
+  document.getElementById('ff-comments-sub').textContent  = pctOf(curVideo.comments, curVideo.likes) + ' от лайков';
+  document.getElementById('ff-shares').textContent        = fmt(curVideo.shares);
 
-  // Основные факты
-  document.getElementById('ff-views').textContent         = fmt(v.views);
-  document.getElementById('ff-likes').textContent         = fmt(v.likes);
-  document.getElementById('ff-likes-sub').textContent     = pctOf(v.likes, v.views) + ' от просмотров';
-  document.getElementById('ff-comments').textContent      = fmt(v.comments);
-  document.getElementById('ff-comments-sub').textContent  = pctOf(v.comments, v.likes) + ' от лайков';
-  document.getElementById('ff-shares').textContent        = fmt(v.shares);
-
-  if (v.type === 'long') {
+  if (curVideo.type === 'long') {
     document.getElementById('ff-long-extra').style.display  = 'grid';
     document.getElementById('ff-swipe-block').style.display = 'none';
-
-    document.getElementById('ff-ctr').textContent       = v.ctr + '%';
-    document.getElementById('ff-ctr-bar').style.width   = Math.min(v.ctr / 15 * 100, 100) + '%';
-    document.getElementById('ff-ret').textContent       = v.retention + '%';
-    document.getElementById('ff-ret-bar').style.width   = v.retention + '%';
+    document.getElementById('ff-ctr').textContent           = curVideo.ctr + '%';
+    document.getElementById('ff-ctr-bar').style.width       = Math.min(curVideo.ctr / 15 * 100, 100) + '%';
+    document.getElementById('ff-ret').textContent           = curVideo.retention + '%';
+    document.getElementById('ff-ret-bar').style.width       = curVideo.retention + '%';
   } else {
     document.getElementById('ff-long-extra').style.display  = 'none';
     document.getElementById('ff-swipe-block').style.display = 'block';
-
-    const viewed = v.viewedRatio;
-    const swiped = v.swipedRatio;
-    document.getElementById('ff-swipe-viewed').style.width = viewed + '%';
-    document.getElementById('ff-swipe-swiped').style.width = swiped + '%';
-    document.getElementById('ff-swipe-txt').textContent    = `Посмотрели ${viewed}% / Свайпнули ${swiped}%`;
+    document.getElementById('ff-swipe-viewed').style.width  = curVideo.viewedRatio + '%';
+    document.getElementById('ff-swipe-swiped').style.width  = curVideo.swipedRatio + '%';
+    document.getElementById('ff-swipe-txt').textContent     = `Посмотрели ${curVideo.viewedRatio}% / Свайпнули ${curVideo.swipedRatio}%`;
   }
+
+  // Закрыть симулятор если был открыт
+  simOpen = false;
+  const panel = document.getElementById('sim-panel');
+  panel.classList.remove('open');
+  document.getElementById('open-sim-btn').textContent   = '🎛️ Запустить ИИ-симулятор ролика';
+  document.getElementById('open-sim-btn').className     = 'open-sim-btn';
+
+  // Предзаполнить ползунки реальными данными
+  preFillSliders(curVideo);
+
+  // Рендерим ИИ-панель по реальным данным
+  curPeriodKey = '24h';
+  renderAIPanel(buildParamsFromVideo(curVideo), curVideo.type, curPeriodKey, false);
 }
 
-document.getElementById('open-sim-from-facts').addEventListener('click', () => {
-  if (curVideo) openSimulator(curVideo);
-});
-
-// ════════════════════════════════════════════════════════
-// СИМУЛЯТОР
-// ════════════════════════════════════════════════════════
-function openSimulator(video) {
-  simMode  = true;
-  curVideo = video;
-
-  document.getElementById('fc-video-list').style.display   = 'none';
-  document.getElementById('fc-facts-screen').style.display = 'none';
-  document.getElementById('fc-sim-screen').style.display   = 'block';
-
-  const type = video ? video.type : 'long'; // по умолчанию long для нового
-
-  document.getElementById('sim-screen-title').textContent = video
-    ? `Симулятор: ${video.title.substring(0, 40)}${video.title.length > 40 ? '…' : ''}`
-    : 'ИИ-Симулятор нового видео';
-
-  document.getElementById('sim-screen-sub').textContent = video
-    ? `${type === 'short' ? 'Shorts' : 'Long-form'} · Двигайте ползунки — ИИ пересчитывает прогноз мгновенно`
-    : 'Канал пустой или хотите смоделировать — задайте параметры';
-
-  // Кнопка назад
-  const backBtn = document.getElementById('sim-back-btn');
-  backBtn.textContent = video ? '← Назад к фактам' : '← Назад к списку';
-  backBtn.onclick = video ? () => showFactsScreen(video) : () => showVideoList();
-
-  // Показ нужных слайдеров и периодов
-  document.getElementById('sim-sliders-long').style.display  = type === 'long'  ? 'block' : 'none';
-  document.getElementById('sim-sliders-short').style.display = type === 'short' ? 'block' : 'none';
-  document.getElementById('period-block-long').style.display  = type === 'long'  ? 'block' : 'none';
-  document.getElementById('period-block-short').style.display = type === 'short' ? 'block' : 'none';
-
-  // Предзаполнение слайдеров реальными данными
-  if (video && type === 'long') {
-    document.getElementById('sli-ctr').value   = video.ctr       || 5;
-    document.getElementById('sli-ret').value   = video.retention || 50;
-    document.getElementById('sli-tempo').value = Math.round(video.views / 7) || 1000;
-  } else if (video && type === 'short') {
-    document.getElementById('sli-sret').value  = video.retentionShort || 80;
-    document.getElementById('sli-sint').value  = Math.round((100 - video.swipedRatio)) || 50;
-    document.getElementById('sli-swipe').value = video.swipedRatio || 30;
-    document.getElementById('sli-swave').value = video.views || 5000;
-  }
-
-  // Выставляем начальный период
-  if (type === 'long') {
-    curPeriodKey = '24h';
-    setActivePeriodTab('long', '24h');
+// ── Предзаполнение слайдеров ──────────────────────────
+function preFillSliders(v) {
+  if (v.type === 'long') {
+    document.getElementById('sli-ctr').value   = Math.min(v.ctr, 100);
+    document.getElementById('sli-ret').value   = Math.min(v.retention, 100);
+    document.getElementById('sli-tempo').value = v.views || 10000;
+    document.getElementById('sim-sliders-long').style.display  = 'block';
+    document.getElementById('sim-sliders-short').style.display = 'none';
+    document.getElementById('period-block-long').style.display  = 'block';
+    document.getElementById('period-block-short').style.display = 'none';
   } else {
-    curPeriodKey = '24h';
-    setActivePeriodTab('short', '24h');
+    document.getElementById('sli-sret').value  = Math.min(v.retentionShort, 200);
+    document.getElementById('sli-sint').value  = 100 - v.swipedRatio;
+    document.getElementById('sli-swipe').value = Math.min(v.swipedRatio, 100);
+    document.getElementById('sli-swave').value = v.views || 50000;
+    document.getElementById('sim-sliders-long').style.display  = 'none';
+    document.getElementById('sim-sliders-short').style.display = 'block';
+    document.getElementById('period-block-long').style.display  = 'none';
+    document.getElementById('period-block-short').style.display = 'block';
   }
-
-  syncSliderLabels(type);
-  onSimChange();
+  syncSliderLabels();
 }
 
-function setActivePeriodTab(type, key) {
-  const containerId = type === 'long' ? 'period-tabs-long' : 'period-tabs-short';
-  const attr        = type === 'long' ? 'data-pl' : 'data-ps';
-  document.querySelectorAll(`#${containerId} .period-tab`).forEach(t => {
-    t.classList.toggle('active', t.getAttribute(attr) === key);
-  });
-}
-
-// Period tab click handlers
-document.getElementById('period-tabs-long').addEventListener('click', e => {
-  const btn = e.target.closest('.period-tab');
-  if (!btn) return;
-  const key = btn.getAttribute('data-pl');
-  if (!key) return;
-  curPeriodKey = key;
-  setActivePeriodTab('long', key);
-  onSimChange();
-});
-
-document.getElementById('period-tabs-short').addEventListener('click', e => {
-  const btn = e.target.closest('.period-tab');
-  if (!btn) return;
-  const key = btn.getAttribute('data-ps');
-  if (!key) return;
-  curPeriodKey = key;
-  setActivePeriodTab('short', key);
-  onSimChange();
-});
-
-// ── Синхронизация лейблов слайдеров ──────────────────
-function syncSliderLabels(type) {
-  if (type === 'long') {
-    const ctr   = parseFloat(document.getElementById('sli-ctr').value);
-    const ret   = parseFloat(document.getElementById('sli-ret').value);
-    const tempo = parseFloat(document.getElementById('sli-tempo').value);
-    document.getElementById('slv-ctr').textContent   = ctr.toFixed(1) + '%';
-    document.getElementById('slv-ret').textContent   = ret + '%';
-    document.getElementById('slv-tempo').textContent = fmt(tempo) + ' / сут';
+function syncSliderLabels() {
+  if (!curVideo) return;
+  if (curVideo.type === 'long') {
+    document.getElementById('slv-ctr').textContent   = parseFloat(document.getElementById('sli-ctr').value).toFixed(1) + '%';
+    document.getElementById('slv-ret').textContent   = document.getElementById('sli-ret').value + '%';
+    document.getElementById('slv-tempo').textContent = fmt(parseFloat(document.getElementById('sli-tempo').value));
   } else {
-    const sret  = parseFloat(document.getElementById('sli-sret').value);
-    const sint  = parseFloat(document.getElementById('sli-sint').value);
-    const swipe = parseFloat(document.getElementById('sli-swipe').value);
-    const swave = parseFloat(document.getElementById('sli-swave').value);
-    document.getElementById('slv-sret').textContent  = sret + '%';
-    document.getElementById('slv-sint').textContent  = sint + '%';
-    document.getElementById('slv-swipe').textContent = swipe + '%';
-    document.getElementById('slv-swave').textContent = fmt(swave);
+    const sretV = parseInt(document.getElementById('sli-sret').value);
+    document.getElementById('slv-sret').textContent  = sretV >= 200 ? '200%+' : sretV + '%';
+    document.getElementById('slv-sint').textContent  = document.getElementById('sli-sint').value + '%';
+    document.getElementById('slv-swipe').textContent = document.getElementById('sli-swipe').value + '%';
+    document.getElementById('slv-swave').textContent = fmt(parseFloat(document.getElementById('sli-swave').value));
   }
 }
 
-// ── Главная функция при изменении слайдеров/периода ──
+// ── Построение params из видео ────────────────────────
+function buildParamsFromVideo(v) {
+  if (v.type === 'long') {
+    return { ctr: v.ctr, ret: v.retention, tempo: v.views };
+  } else {
+    return {
+      sret:  v.retentionShort,
+      sint:  100 - v.swipedRatio,
+      swipe: v.swipedRatio,
+      swave: v.views,
+    };
+  }
+}
+
+// ── Переключение симулятора ───────────────────────────
+function toggleSimulator() {
+  simOpen = !simOpen;
+  const panel = document.getElementById('sim-panel');
+  panel.classList.toggle('open', simOpen);
+
+  const btn = document.getElementById('open-sim-btn');
+  if (simOpen) {
+    btn.textContent = '✕ Закрыть симулятор';
+    btn.className   = 'open-sim-btn active-sim';
+    document.getElementById('ai-panel').classList.remove('readonly');
+    // Инициализируем период
+    setActiveTabInGroup('period-tabs-long',  'data-pl', curPeriodKey);
+    setActiveTabInGroup('period-tabs-short', 'data-ps', curPeriodKey);
+    onSimChange();
+  } else {
+    btn.textContent = '🎛️ Запустить ИИ-симулятор ролика';
+    btn.className   = 'open-sim-btn';
+    document.getElementById('ai-panel').classList.add('readonly');
+    if (curVideo) renderAIPanel(buildParamsFromVideo(curVideo), curVideo.type, curPeriodKey, false);
+  }
+}
+
+// ── Обработка ползунков симулятора ────────────────────
 function onSimChange() {
-  if (!simMode) return;
-  const type = getSimType();
-  syncSliderLabels(type);
+  if (!curVideo) return;
+  syncSliderLabels();
+  const type   = curVideo.type;
   const params = getSimParams(type);
-  renderSimulator(params, type);
-}
-
-function getSimType() {
-  if (curVideo) return curVideo.type;
-  return 'long'; // симулятор нового видео — long по умолчанию
+  renderAIPanel(params, type, curPeriodKey, true);
 }
 
 function getSimParams(type) {
@@ -1544,14 +1669,116 @@ function getSimParams(type) {
       tempo: parseFloat(document.getElementById('sli-tempo').value)  || 1000,
     };
   } else {
+    const sretRaw = parseInt(document.getElementById('sli-sret').value) || 80;
     return {
-      sret:  parseFloat(document.getElementById('sli-sret').value)  || 80,
-      sint:  parseFloat(document.getElementById('sli-sint').value)   || 50,
-      swipe: parseFloat(document.getElementById('sli-swipe').value)  || 30,
-      swave: parseFloat(document.getElementById('sli-swave').value)  || 5000,
+      sret:  sretRaw >= 200 ? 200 : sretRaw,
+      sint:  parseFloat(document.getElementById('sli-sint').value)  || 50,
+      swipe: parseFloat(document.getElementById('sli-swipe').value) || 30,
+      swave: parseFloat(document.getElementById('sli-swave').value) || 5000,
     };
   }
 }
+
+// Period tab handlers для симулятора существующего видео
+document.getElementById('period-tabs-long').addEventListener('click', e => {
+  const btn = e.target.closest('.period-tab'); if (!btn) return;
+  const key = btn.getAttribute('data-pl'); if (!key) return;
+  curPeriodKey = key;
+  setActiveTabInGroup('period-tabs-long', 'data-pl', key);
+  if (simOpen && curVideo) onSimChange();
+});
+
+document.getElementById('period-tabs-short').addEventListener('click', e => {
+  const btn = e.target.closest('.period-tab'); if (!btn) return;
+  const key = btn.getAttribute('data-ps'); if (!key) return;
+  curPeriodKey = key;
+  setActiveTabInGroup('period-tabs-short', 'data-ps', key);
+  if (simOpen && curVideo) onSimChange();
+});
+
+function setActiveTabInGroup(groupId, attr, key) {
+  document.querySelectorAll(`#${groupId} .period-tab`).forEach(t =>
+    t.classList.toggle('active', t.getAttribute(attr) === key)
+  );
+}
+
+// ════════════════════════════════════════════════════════
+// НОВЫЙ СИМУЛЯТОР (пустой канал)
+// ════════════════════════════════════════════════════════
+function openNewSim() {
+  document.getElementById('fc-video-list').style.display     = 'none';
+  document.getElementById('fc-video-screen').style.display   = 'none';
+  document.getElementById('fc-new-sim-screen').style.display = 'block';
+  newSimType   = 'long';
+  newPeriodKey = '24h';
+  setNewSimType('long');
+}
+
+function setNewSimType(type) {
+  newSimType = type;
+  document.getElementById('new-sim-btn-long').className  = 'period-tab' + (type === 'long'  ? ' active' : '');
+  document.getElementById('new-sim-btn-short').className = 'period-tab' + (type === 'short' ? ' active' : '');
+  document.getElementById('new-sim-long').style.display          = type === 'long'  ? 'block' : 'none';
+  document.getElementById('new-sim-short').style.display         = type === 'short' ? 'block' : 'none';
+  document.getElementById('new-period-block-long').style.display  = type === 'long'  ? 'block' : 'none';
+  document.getElementById('new-period-block-short').style.display = type === 'short' ? 'block' : 'none';
+  syncNewSimLabels();
+  onNewSimChange();
+}
+
+function syncNewSimLabels() {
+  if (newSimType === 'long') {
+    document.getElementById('nslv-ctr').textContent   = parseFloat(document.getElementById('nsli-ctr').value).toFixed(1) + '%';
+    document.getElementById('nslv-ret').textContent   = document.getElementById('nsli-ret').value + '%';
+    document.getElementById('nslv-tempo').textContent = fmt(parseFloat(document.getElementById('nsli-tempo').value));
+  } else {
+    const sretV = parseInt(document.getElementById('nsli-sret').value);
+    document.getElementById('nslv-sret').textContent  = sretV >= 200 ? '200%+' : sretV + '%';
+    document.getElementById('nslv-sint').textContent  = document.getElementById('nsli-sint').value + '%';
+    document.getElementById('nslv-swipe').textContent = document.getElementById('nsli-swipe').value + '%';
+    document.getElementById('nslv-swave').textContent = fmt(parseFloat(document.getElementById('nsli-swave').value));
+  }
+}
+
+function onNewSimChange() {
+  syncNewSimLabels();
+  const type = newSimType;
+  let params;
+  if (type === 'long') {
+    const sretV = parseInt(document.getElementById('nsli-sret') ? document.getElementById('nsli-sret').value : 80);
+    params = {
+      ctr:   parseFloat(document.getElementById('nsli-ctr').value)   || 5,
+      ret:   parseFloat(document.getElementById('nsli-ret').value)    || 50,
+      tempo: parseFloat(document.getElementById('nsli-tempo').value)  || 10000,
+    };
+  } else {
+    const sretV = parseInt(document.getElementById('nsli-sret').value) || 80;
+    params = {
+      sret:  sretV >= 200 ? 200 : sretV,
+      sint:  parseFloat(document.getElementById('nsli-sint').value)  || 50,
+      swipe: parseFloat(document.getElementById('nsli-swipe').value) || 30,
+      swave: parseFloat(document.getElementById('nsli-swave').value) || 50000,
+    };
+  }
+  renderNewAIPanel(params, type, newPeriodKey);
+}
+
+// Period tabs для нового симулятора
+document.getElementById('new-period-tabs-long').addEventListener('click', e => {
+  const btn = e.target.closest('.period-tab'); if (!btn) return;
+  const key = btn.getAttribute('data-npl'); if (!key) return;
+  newPeriodKey = key;
+  setActiveTabInGroup('new-period-tabs-long', 'data-npl', key);
+  onNewSimChange();
+});
+
+document.getElementById('new-period-tabs-short').addEventListener('click', e => {
+  const btn = e.target.closest('.period-tab'); if (!btn) return;
+  const key = btn.getAttribute('data-nps'); if (!key) return;
+  newPeriodKey = key;
+  setActiveTabInGroup('new-period-tabs-short', 'data-nps', key);
+  onNewSimChange();
+});
 
 // ════════════════════════════════════════════════════════
 // SCORE
@@ -1559,20 +1786,22 @@ function getSimParams(type) {
 function calcScore(params, type) {
   if (type === 'long') {
     const { ctr, ret, tempo } = params;
-    const s =
-      Math.min((ctr  / 10)    * 35, 35) +
-      Math.min((ret  / 80)    * 35, 35) +
-      Math.min((tempo/ 20000) * 30, 30);
-    return Math.min(Math.round(s), 100);
+    return Math.min(Math.round(
+      Math.min((ctr   / 10)      * 35, 35) +
+      Math.min((ret   / 80)      * 35, 35) +
+      Math.min((tempo / 500000)  * 30, 30)
+    ), 100);
   } else {
     const { sret, sint, swipe, swave } = params;
     const viewedPct = 100 - swipe;
-    const s =
-      Math.min((sret   / 150)   * 30, 30) +
-      Math.min((viewedPct / 85) * 30, 30) +
-      Math.min((sint   / 80)    * 20, 20) +
-      Math.min((swave  / 50000) * 20, 20);
-    return Math.min(Math.round(s), 100);
+    // sret: 200% = максимальный луп-сигнал
+    const sretNorm = Math.min(sret / 200, 1);
+    return Math.min(Math.round(
+      sretNorm             * 30 +
+      (viewedPct / 85)     * 30 +
+      (sint / 80)          * 20 +
+      Math.min((swave / 1000000) * 20, 20)
+    ), 100);
   }
 }
 
@@ -1587,182 +1816,136 @@ function scoreStyle(s) {
 // ВОЛНЫ
 // ════════════════════════════════════════════════════════
 function calcWaves(params, type, periodKey) {
-  const pObj = type === 'long' ? LONG_PERIODS[periodKey] : SHORT_PERIODS[periodKey];
-  const days = pObj ? pObj.days : 1;
+  const periods = type === 'long' ? LONG_PERIODS : SHORT_PERIODS;
+  const pObj    = periods[periodKey] || periods['24h'];
+  const days    = pObj.days;
 
   if (type === 'long') {
     const { ctr, ret, tempo } = params;
     const q = Math.max(0.05, (ctr / 5) * (ret / 50));
-    // Long-form: вечнозелёный контент растёт медленно, но долго
-    const w1 = Math.round(tempo * Math.min(days, 1) * q);
-    const w2 = Math.round(tempo * Math.min(days / 3, 3) * q * 1.5);
-    // Долгий хвост нарастает нелинейно
-    const longTailFactor = days > 30 ? Math.pow(days / 30, 0.6) : days / 30;
-    const w3 = Math.round(tempo * longTailFactor * q * 0.8);
-    return {
-      w1: Math.max(w1, 10),
-      w2: Math.max(w2, 10),
-      w3: Math.max(w3, 10),
-    };
+    const w1 = Math.round(tempo * 0.10 * Math.min(days, 1) * q);
+    const w2 = Math.round(tempo * 0.40 * Math.min(days / 3, 1.5) * q);
+    const evg = days > 30 ? Math.pow(days / 30, 0.55) : days / 30;
+    const w3 = Math.round(tempo * evg * q * 0.8);
+    return { w1: Math.max(w1,10), w2: Math.max(w2,10), w3: Math.max(w3,10) };
   } else {
     const { sret, sint, swipe, swave } = params;
     const viewedPct = 100 - swipe;
-    const q = Math.max(0.05, (viewedPct / 70) * (sret / 100));
-    const w1 = Math.round(swave * Math.min(days, 1));
-    const w2 = Math.round(swave * Math.min(days * 3, 5) * q * (sint / 50));
-    const w3 = Math.round(swave * Math.min(days / 3, 4) * q);
-    return {
-      w1: Math.max(w1, 10),
-      w2: Math.max(w2, 10),
-      w3: Math.max(w3, 10),
-    };
+    // sret > 100 даёт луп-буст
+    const loopBoost = sret > 100 ? 1 + (sret - 100) / 100 : 1;
+    const q = Math.max(0.05, (viewedPct / 70) * (Math.min(sret, 100) / 100) * loopBoost);
+    const w1 = Math.round(swave * 0.20 * Math.min(days, 1));
+    const w2 = Math.round(swave * 0.50 * Math.min(days * 2, 3) * q * (sint / 50));
+    const w3 = Math.round(swave * 0.30 * Math.min(days / 3, 2) * q);
+    return { w1: Math.max(w1,10), w2: Math.max(w2,10), w3: Math.max(w3,10) };
   }
 }
 
 // ════════════════════════════════════════════════════════
-// ИИ-ВЕРДИКТ
+// ВЕРДИКТ
 // ════════════════════════════════════════════════════════
 function buildVerdict(params, score, waves, type, periodKey) {
-  const pObj   = type === 'long' ? LONG_PERIODS[periodKey] : SHORT_PERIODS[periodKey];
-  const pLabel = pObj ? pObj.label : '—';
+  const periods = type === 'long' ? LONG_PERIODS : SHORT_PERIODS;
+  const pLabel  = (periods[periodKey] || periods['24h']).label;
 
   if (type === 'long') {
     const { ctr, ret, tempo } = params;
-    const ctrInfo  = ctr >= 7   ? `высокий CTR ${ctr}% — превью и заголовок цепляют`
-                   : ctr >= 4.5 ? `хороший CTR ${ctr}%`
-                                : `низкий CTR ${ctr}% — превью нужно переработать`;
-    const retInfo  = ret >= 60  ? `сильное удержание ${ret}% — зрители смотрят большую часть`
-                   : ret >= 40  ? `нормальное удержание ${ret}%`
-                                : `слабое удержание ${ret}% — зрители уходят слишком рано`;
-    const evergreenNote = periodKey && LONG_PERIODS[periodKey] && LONG_PERIODS[periodKey].days >= 90
-      ? ` За ${pLabel} "вечнозелёный" контент с таким CTR может накопить до ${fmt(waves.w1 + waves.w2 + waves.w3)} суммарных просмотров.`
-      : '';
-    const predict = score >= 55
-      ? ` Прогноз на ${pLabel}: первая волна ~${fmt(waves.w1)} → рекомендации ~${fmt(waves.w2)} → долгий хвост ~${fmt(waves.w3)}.`
-      : ` Для попадания в рекомендации нужно удержание выше 45% и CTR выше 4.5%.`;
-    return `Ролик показывает ${ctrInfo} и ${retInfo}.${predict}${evergreenNote}`;
+    const ctrInfo = ctr >= 7   ? `высокий CTR ${ctr}% — превью и заголовок цепляют` : ctr >= 4.5 ? `хороший CTR ${ctr}%` : `низкий CTR ${ctr}% — превью нужно переработать`;
+    const retInfo = ret >= 60  ? `сильное удержание ${ret}%` : ret >= 40 ? `нормальное удержание ${ret}%` : `слабое удержание ${ret}% — зрители уходят рано`;
+    const days    = (periods[periodKey] || {days:1}).days;
+    const evg     = days >= 90 ? ` За ${pLabel} "вечнозелёный" контент накопит до ${fmt(waves.w1+waves.w2+waves.w3)} просмотров.` : '';
+    const pred    = score >= 55 ? ` Прогноз на ${pLabel}: старт ~${fmt(waves.w1)} → рекомендации ~${fmt(waves.w2)} → хвост ~${fmt(waves.w3)}.` : ` Для попадания в рекомендации нужно удержание выше 45% и CTR выше 4.5%.`;
+    return `Ролик показывает ${ctrInfo} и ${retInfo}.${pred}${evg}`;
   } else {
     const { sret, sint, swipe, swave } = params;
-    const viewedPct = 100 - swipe;
-    const loopNote  = sret > 100
-      ? ` Удержание ${sret}% — зрители пересматривают в среднем ${(sret / 100).toFixed(1)} раза (луп). Это мощнейший сигнал для алгоритма Shorts.`
-      : '';
-    const swipeNote = viewedPct >= 70
-      ? `${viewedPct}% досматривают до конца — алгоритм активно продвигает в Feed.`
-      : `Только ${viewedPct}% досматривают. Нужно улучшить первые 2–3 секунды.`;
-    const predict   = score >= 55
-      ? ` За ${pLabel}: запуск ~${fmt(waves.w1)} → Feed ~${fmt(waves.w2)} → хвост ~${fmt(waves.w3)}.`
-      : ` Для вирусного распространения нужен viewedRatio выше 70%.`;
-    return `${swipeNote}${loopNote}${predict}`;
+    const vp       = 100 - swipe;
+    const loopNote = sret >= 200 ? ` Удержание 200%+ — зрители пересматривают ролик снова и снова. Это максимальный сигнал цикличности (луп) для алгоритма Shorts.`
+                   : sret > 100  ? ` Удержание ${sret}% — зрители пересматривают в среднем ${(sret/100).toFixed(1)} раза (луп-сигнал).` : '';
+    const vpInfo   = vp >= 70    ? `${vp}% досматривают до конца — алгоритм активно продвигает.` : `Только ${vp}% досматривают — нужен сильный крючок в первые 2 сек.`;
+    const pred     = score >= 55 ? ` Прогноз на ${pLabel}: старт ~${fmt(waves.w1)} → Feed ~${fmt(waves.w2)} → хвост ~${fmt(waves.w3)}.` : ` Для вирусного роста нужен viewedRatio выше 70%.`;
+    return `${vpInfo}${loopNote}${pred}`;
   }
 }
 
 // ════════════════════════════════════════════════════════
-// СЕКРЕТЫ УСПЕХА
+// СЕКРЕТЫ
 // ════════════════════════════════════════════════════════
 function buildSecrets(params, score, type, periodKey) {
   const items = [];
+  const periods = type === 'long' ? LONG_PERIODS : SHORT_PERIODS;
+  const days    = (periods[periodKey] || {days:1}).days;
 
   if (type === 'long') {
     const { ctr, ret, tempo } = params;
-    const pObj = LONG_PERIODS[periodKey];
-    const isLong = pObj && pObj.days >= 90;
-
-    if (ctr >= 6)
-      items.push({ icon: '🎯', text: `<strong>CTR ${ctr}%</strong> — выше нормы (4–5%). Превью и заголовок мгновенно захватывают внимание: алгоритм видит высокий интерес и увеличивает показы.` });
-    else
-      items.push({ icon: '⚠️', text: `<strong>CTR ${ctr}%</strong> — ниже нормы. Смените превью или заголовок: именно это тормозит рост показов алгоритмом.` });
-
-    if (ret >= 55)
-      items.push({ icon: '⏱', text: `<strong>Удержание ${ret}%</strong> — зрители смотрят больше половины. Это главный сигнал для попадания в Suggested Videos.` });
-    else
-      items.push({ icon: '⚠️', text: `<strong>Удержание ${ret}%</strong> — зрители уходят до середины. Добавьте сильный "крючок" в первые 30 секунд и пообещайте ценность в начале.` });
-
-    if (isLong)
-      items.push({ icon: '🌱', text: `<strong>Вечнозелёный контент</strong> — на горизонте ${pObj.label} этот ролик продолжает получать просмотры из поиска и рекомендаций, не теряя актуальности. CTR + Удержание определяют его "срок жизни".` });
-
-    if (tempo >= 5000)
-      items.push({ icon: '🚀', text: `<strong>Начальный темп ${fmt(tempo)}/сут</strong> — быстрый старт. Алгоритм YouTube оценивает первые 24–48 часов для принятия решения о масштабировании.` });
-
+    if (ctr >= 6)  items.push({ icon:'🎯', text:`<strong>CTR ${ctr}%</strong> — выше нормы (4–5%). Превью цепляет внимание: алгоритм видит высокий интерес и увеличивает показы.` });
+    else           items.push({ icon:'⚠️', text:`<strong>CTR ${ctr}%</strong> — ниже нормы. Смените превью или заголовок — это тормозит рост показов.` });
+    if (ret >= 55) items.push({ icon:'⏱', text:`<strong>Удержание ${ret}%</strong> — зрители смотрят больше половины. Это главный сигнал для попадания в Suggested Videos.` });
+    else           items.push({ icon:'⚠️', text:`<strong>Удержание ${ret}%</strong> — зрители уходят до середины. Добавьте "крючок" и пообещайте ценность в начале ролика.` });
+    if (ret > 70)  items.push({ icon:'🔄', text:`<strong>Цикличный контент</strong> — высокое удержание говорит о том, что зрители возвращаются к ключевым моментам. Это защищает ролик от "смерти" алгоритма.` });
+    if (days >= 90) items.push({ icon:'🌱', text:`<strong>Вечнозелёный потенциал</strong> — с таким CTR и Retention ролик будет продолжать получать просмотры из поиска и рекомендаций через месяцы и годы.` });
   } else {
     const { sret, sint, swipe, swave } = params;
-    const viewedPct = 100 - swipe;
-
-    if (sret > 100)
-      items.push({ icon: '🔄', text: `<strong>Удержание ${sret}%</strong> — зрители пересматривают ролик в среднем ${(sret / 100).toFixed(1)} раза. Это циклический луп (loop) — сильнейший сигнал для алгоритма Shorts Feed.` });
-    else if (sret >= 80)
-      items.push({ icon: '✅', text: `<strong>Удержание ${sret}%</strong> — большинство досматривает до конца. Алгоритм расценивает это как качественный контент.` });
-    else
-      items.push({ icon: '⚠️', text: `<strong>Удержание ${sret}%</strong> — зрители уходят раньше конца. Переработайте первые 2 секунды: именно они удерживают или теряют аудиторию.` });
-
-    if (viewedPct >= 75)
-      items.push({ icon: '✅', text: `<strong>${viewedPct}% досматривают</strong> — высокий показатель. Shorts Feed активно распространяет ролик новой аудитории.` });
-    else
-      items.push({ icon: '⚠️', text: `<strong>${swipe}% свайпают</strong> — слишком много. Добавьте динамику или текстовый крючок в самое начало видео.` });
-
-    if (sint >= 60)
-      items.push({ icon: '💡', text: `<strong>Заинтересованность ${sint}%</strong> — аудитория вовлечена. Высокий процент заинтересованных зрителей ускоряет попадание в рекомендуемые.` });
-
-    if (swave >= 10000)
-      items.push({ icon: '⚡', text: `<strong>${fmt(swave)} просмотров в первой волне</strong> — мощный старт. Алгоритм Shorts оценивает стартовую скорость для решения о масштабировании.` });
+    const vp = 100 - swipe;
+    if (sret >= 200) items.push({ icon:'🔄', text:`<strong>Удержание 200%+</strong> — максимальный луп. Зрители пересматривают ролик снова и снова. Это сильнейший сигнал для алгоритма Shorts Feed.` });
+    else if (sret > 100) items.push({ icon:'🔄', text:`<strong>Удержание ${sret}%</strong> — зрители пересматривают в среднем ${(sret/100).toFixed(1)} раза (луп-сигнал). Алгоритм расценивает это как высококачественный контент.` });
+    else if (sret >= 80) items.push({ icon:'✅', text:`<strong>Удержание ${sret}%</strong> — большинство досматривает до конца. Алгоритм расценивает как качественный контент.` });
+    else               items.push({ icon:'⚠️', text:`<strong>Удержание ${sret}%</strong> — зрители уходят раньше конца. Переработайте первые 2 секунды: они удерживают или теряют аудиторию.` });
+    if (vp >= 75)      items.push({ icon:'✅', text:`<strong>${vp}% досматривают</strong> — исключительный результат. Shorts Feed активно распространяет ролик новой аудитории.` });
+    else if (swipe > 50) items.push({ icon:'⚠️', text:`<strong>${swipe}% свайпают</strong> — слишком много. Добавьте динамику или текстовый крючок в самое начало.` });
+    if (sint >= 60)    items.push({ icon:'💡', text:`<strong>Заинтересованность ${sint}%</strong> — аудитория вовлечена. Высокий процент ускоряет попадание в рекомендуемые.` });
   }
 
-  if (items.length === 0)
-    items.push({ icon: '📊', text: 'Метрики в норме. Для улучшения прогноза работайте над первыми секундами видео и качеством превью.' });
-
+  if (!items.length) items.push({ icon:'📊', text:'Метрики в норме. Для улучшения прогноза работайте над первыми секундами видео и качеством превью.' });
   return items;
 }
 
 // ════════════════════════════════════════════════════════
-// РЕНДЕР СИМУЛЯТОРА
+// РЕНДЕР ИИ-ПАНЕЛИ (общая для фактов и симулятора ролика)
 // ════════════════════════════════════════════════════════
-function renderSimulator(params, type) {
-  const periodKey = curPeriodKey || (type === 'long' ? '24h' : '24h');
+function renderAIPanel(params, type, periodKey, isSim) {
   const score  = calcScore(params, type);
   const ss     = scoreStyle(score);
   const waves  = calcWaves(params, type, periodKey);
-  const pObj   = type === 'long' ? LONG_PERIODS[periodKey] : SHORT_PERIODS[periodKey];
+  const periods= type === 'long' ? LONG_PERIODS : SHORT_PERIODS;
+  const pLabel = (periods[periodKey] || periods['24h']).label;
 
-  // Score
-  const circ   = 245;
-  const offset = circ - (score / 100) * circ;
-  document.getElementById('score-num').textContent              = score;
-  document.getElementById('score-circle').style.stroke         = ss.color;
-  document.getElementById('score-circle').style.strokeDashoffset = offset;
-  document.getElementById('score-title').textContent           = ss.label;
-  document.getElementById('score-desc').textContent            = buildVerdict(params, score, waves, type, periodKey);
+  // Score donut
+  const offset = 245 - (score / 100) * 245;
+  document.getElementById('score-num').textContent                 = score;
+  document.getElementById('score-circle').style.stroke            = ss.color;
+  document.getElementById('score-circle').style.strokeDashoffset  = offset;
+  document.getElementById('score-title').textContent              = ss.label;
+  document.getElementById('score-desc').textContent               = buildVerdict(params, score, waves, type, periodKey);
 
   // Теги
   let tags = [];
   if (type === 'long') {
     tags.push({ c: params.ctr >= 5 ? 'green' : 'red',    t: `CTR ${params.ctr}%` });
     tags.push({ c: params.ret >= 50 ? 'blue' : 'orange', t: `Удержание ${params.ret}%` });
-    tags.push({ c: params.tempo >= 2000 ? 'green' : 'yellow', t: `Темп ${fmt(params.tempo)}/сут` });
+    tags.push({ c: 'yellow', t: `${fmt(params.tempo)} просмотров` });
   } else {
-    const vp = 100 - params.swipe;
-    tags.push({ c: params.sret > 100 ? 'green' : params.sret >= 70 ? 'blue' : 'orange', t: `Удержание ${params.sret}%` });
+    const sretD = params.sret >= 200 ? '200%+' : params.sret + '%';
+    const vp    = 100 - params.swipe;
+    tags.push({ c: params.sret >= 100 ? 'green' : params.sret >= 70 ? 'blue' : 'orange', t: `Удержание ${sretD}` });
     tags.push({ c: vp >= 70 ? 'green' : 'red', t: `Досмотрели ${vp}%` });
     tags.push({ c: params.sint >= 50 ? 'yellow' : 'orange', t: `Интерес ${params.sint}%` });
   }
 
-  document.getElementById('score-tags').innerHTML =
-    tags.map(t => `<span class="stag ${t.c}">${t.t}</span>`).join('');
+  document.getElementById('score-tags').innerHTML = tags.map(t => `<span class="stag ${t.c}">${t.t}</span>`).join('');
 
   // Волны
   document.getElementById('w1-val').textContent = fmt(waves.w1);
   document.getElementById('w2-val').textContent = fmt(waves.w2);
   document.getElementById('w3-val').textContent = fmt(waves.w3);
-
-  const pLabel = pObj ? pObj.label : '—';
   document.getElementById('w1-sub').textContent = type === 'long' ? 'начальный запуск' : 'Shorts Feed — старт';
   document.getElementById('w2-sub').textContent = type === 'long' ? `рекомендации (${pLabel})` : `Feed (${pLabel})`;
   document.getElementById('w3-sub').textContent = `долгий хвост (${pLabel})`;
 
-  const setWB = (id, score, g, ok) => {
+  const setWB = (id, s, g, ok) => {
     const el = document.getElementById(id);
-    if (score >= g)      { el.textContent = '✓ Сильная'; el.className = 'wave-badge wb-good'; }
-    else if (score >= ok){ el.textContent = '↗ Средняя'; el.className = 'wave-badge wb-ok'; }
-    else                 { el.textContent = '⏳ Слабая';  el.className = 'wave-badge wb-warn'; }
+    if (s >= g)       { el.textContent = '✓ Сильная'; el.className = 'wave-badge wb-good'; }
+    else if (s >= ok) { el.textContent = '↗ Средняя'; el.className = 'wave-badge wb-ok'; }
+    else              { el.textContent = '⏳ Слабая';  el.className = 'wave-badge wb-warn'; }
   };
 
   setWB('w1-badge', score, 50, 30);
@@ -1771,74 +1954,119 @@ function renderSimulator(params, type) {
 
   // Секреты
   const secrets = buildSecrets(params, score, type, periodKey);
-  document.getElementById('secret-items').innerHTML =
-    secrets.map(s => `
-      <div class="secret-item">
-        <span class="si-icon">${s.icon}</span>
-        <span class="si-text">${s.text}</span>
-      </div>
-    `).join('');
+  document.getElementById('secret-items').innerHTML = secrets.map(s =>
+    `<div class="secret-item"><span class="si-icon">${s.icon}</span><span class="si-text">${s.text}</span></div>`
+  ).join('');
 
-  // График
-  document.getElementById('fc-chart-sub').textContent = `${pLabel} · Горизонт прогноза`;
-  buildForecastChart(params, type, periodKey);
+  // Заголовок диаграммы
+  document.getElementById('fc-chart-sub').textContent = isSim ? `${pLabel} · Симулятор` : `По реальным метрикам · ${pLabel}`;
+
+  buildForecastChart(params, type, periodKey, 'forecastChart', fcChart, ch => fcChart = ch);
+}
+
+// Рендер для нового симулятора
+function renderNewAIPanel(params, type, periodKey) {
+  const score  = calcScore(params, type);
+  const ss     = scoreStyle(score);
+  const waves  = calcWaves(params, type, periodKey);
+  const periods= type === 'long' ? LONG_PERIODS : SHORT_PERIODS;
+  const pLabel = (periods[periodKey] || periods['24h']).label;
+
+  const offset = 245 - (score / 100) * 245;
+  document.getElementById('nscore-num').textContent                = score;
+  document.getElementById('nscore-circle').style.stroke           = ss.color;
+  document.getElementById('nscore-circle').style.strokeDashoffset = offset;
+  document.getElementById('nscore-title').textContent             = ss.label;
+  document.getElementById('nscore-desc').textContent              = buildVerdict(params, score, waves, type, periodKey);
+
+  let tags = [];
+  if (type === 'long') {
+    tags.push({ c: params.ctr >= 5 ? 'green' : 'red',    t: `CTR ${params.ctr}%` });
+    tags.push({ c: params.ret >= 50 ? 'blue' : 'orange', t: `Удержание ${params.ret}%` });
+    tags.push({ c: 'yellow', t: `${fmt(params.tempo)} просм.` });
+  } else {
+    const sretD = params.sret >= 200 ? '200%+' : params.sret + '%';
+    const vp    = 100 - params.swipe;
+    tags.push({ c: params.sret >= 100 ? 'green' : params.sret >= 70 ? 'blue' : 'orange', t: `Удержание ${sretD}` });
+    tags.push({ c: vp >= 70 ? 'green' : 'red', t: `Досмотрели ${vp}%` });
+  }
+
+  document.getElementById('nscore-tags').innerHTML = tags.map(t => `<span class="stag ${t.c}">${t.t}</span>`).join('');
+
+  document.getElementById('nw1-val').textContent = fmt(waves.w1);
+  document.getElementById('nw2-val').textContent = fmt(waves.w2);
+  document.getElementById('nw3-val').textContent = fmt(waves.w3);
+  document.getElementById('nw1-sub').textContent = type === 'long' ? 'начальный запуск' : 'Shorts Feed — старт';
+  document.getElementById('nw2-sub').textContent = `рекомендации (${pLabel})`;
+  document.getElementById('nw3-sub').textContent = `долгий хвост (${pLabel})`;
+
+  const setWB = (id, s, g, ok) => {
+    const el = document.getElementById(id);
+    if (s >= g)       { el.textContent = '✓ Сильная'; el.className = 'wave-badge wb-good'; }
+    else if (s >= ok) { el.textContent = '↗ Средняя'; el.className = 'wave-badge wb-ok'; }
+    else              { el.textContent = '⏳ Слабая';  el.className = 'wave-badge wb-warn'; }
+  };
+
+  setWB('nw1-badge', score, 50, 30);
+  setWB('nw2-badge', score, 60, 40);
+  setWB('nw3-badge', score, 75, 55);
+
+  const secrets = buildSecrets(params, score, type, periodKey);
+  document.getElementById('nsecret-items').innerHTML = secrets.map(s =>
+    `<div class="secret-item"><span class="si-icon">${s.icon}</span><span class="si-text">${s.text}</span></div>`
+  ).join('');
+
+  document.getElementById('nfc-chart-sub').textContent = `${pLabel} · Симулятор нового видео`;
+
+  buildForecastChart(params, type, periodKey, 'newForecastChart', nfcChart, ch => nfcChart = ch);
 }
 
 // ════════════════════════════════════════════════════════
 // ГРАФИК
 // ════════════════════════════════════════════════════════
-function buildForecastChart(params, type, periodKey) {
-  const pObj   = type === 'long' ? LONG_PERIODS[periodKey] : SHORT_PERIODS[periodKey];
-  const pts    = pObj ? pObj.pts : 24;
-  const days   = pObj ? pObj.days : 1;
-  const labels = Array.from({ length: pts }, (_, i) => {
-    if (!pObj) return `${i}`;
-    if (days < 1)        return `${Math.round(i * days / pts * 60 * (days >= 0.5 ? 60 : 1))}${days < 0.3 ? 'мин' : 'ч'}`;
-    if (days <= 3)       return `${Math.round(i * days * 24 / pts)}ч`;
-    if (days <= 60)      return `Д${Math.round(i * days / pts) + 1}`;
-    if (days <= 400)     return `М${Math.ceil(i * days / pts / 30) || 1}`;
+function buildForecastChart(params, type, periodKey, canvasId, chartRef, setChart) {
+  const periods = type === 'long' ? LONG_PERIODS : SHORT_PERIODS;
+  const pObj    = periods[periodKey] || periods['24h'];
+  const pts     = pObj.pts;
+  const days    = pObj.days;
+
+  const labels  = Array.from({ length: pts }, (_, i) => {
+    if (days < 1)       return `${Math.round(i * days * 60 / pts)}мин`;
+    if (days <= 3)      return `${Math.round(i * days * 24 / pts)}ч`;
+    if (days <= 60)     return `Д${Math.round(i * days / pts) + 1}`;
+    if (days <= 400)    return `М${Math.ceil(i * days / pts / 30) || 1}`;
     return `Г${(i * days / pts / 365).toFixed(1)}`;
   });
 
   const splitAt = Math.floor(pts * 0.3);
-  const actual  = [];
-  const forecast = [];
+  const actual  = [], forecast = [];
 
-  const qBase = type === 'long'
-    ? Math.max(0.05, (params.ctr / 5) * (params.ret / 50))
-    : Math.max(0.05, ((100 - params.swipe) / 70) * (params.sret / 100));
-
-  const baseScale = type === 'long' ? params.tempo : params.swave;
+  const baseScale = type === 'long' ? (params.tempo || 10000) : (params.swave || 50000);
+  const qBase     = type === 'long'
+    ? Math.max(0.05, ((params.ctr||5)/5) * ((params.ret||50)/50))
+    : Math.max(0.05, ((100-(params.swipe||30))/70) * (Math.min(params.sret||80,100)/100));
 
   for (let i = 0; i < pts; i++) {
-    const t = i / pts;
+    const t    = i / pts;
     const peak = type === 'long' ? 0.15 : 0.25;
-
     let curve;
     if (type === 'long') {
-      // Long-form: быстрый старт, затем медленный долгий хвост
-      if (t <= peak)     curve = Math.pow(t / peak, 1.2);
-      else if (days > 30) {
-        // Вечнозелёный: медленно спадает и поддерживается поиском
-        curve = Math.exp(-(t - peak) * 1.5) * 0.6 + 0.25 * Math.sin(t * Math.PI * 2) * 0.1 + 0.2;
-      } else {
-        curve = Math.exp(-(t - peak) * 4) * 0.9 + 0.08;
-      }
+      if (t <= peak)    curve = Math.pow(t / peak, 1.2);
+      else if (days > 30) curve = Math.exp(-(t - peak) * 1.5) * 0.6 + 0.2;
+      else                curve = Math.exp(-(t - peak) * 4)   * 0.9 + 0.08;
     } else {
-      // Shorts: вертикальный рост, быстрый спад
       if (t <= peak) curve = Math.pow(t / peak, 1.8);
       else           curve = Math.exp(-(t - peak) * 5) * 0.95 + 0.04;
     }
-
-    const noise = 1 + (Math.random() - 0.5) * 0.14;
+    const noise = 1 + (Math.random() - 0.5) * 0.13;
     const val   = Math.max(0, Math.round(baseScale * qBase * curve * noise));
 
-    if (i <= splitAt) { actual.push(val);   forecast.push(null); }
-    else               { actual.push(null);  forecast.push(Math.max(0, Math.round(val * (0.88 + Math.random() * 0.24)))); }
+    if (i <= splitAt) { actual.push(val);  forecast.push(null); }
+    else               { actual.push(null); forecast.push(Math.max(0, Math.round(val * (0.88 + Math.random() * 0.24)))); }
   }
 
-  const ctx = document.getElementById('forecastChart').getContext('2d');
-  if (fcChart) { fcChart.destroy(); fcChart = null; }
+  const ctx = document.getElementById(canvasId).getContext('2d');
+  if (chartRef) { chartRef.destroy(); }
 
   const gA = ctx.createLinearGradient(0, 0, 0, 220);
   gA.addColorStop(0, 'rgba(232,255,71,0.18)');
@@ -1848,13 +2076,13 @@ function buildForecastChart(params, type, periodKey) {
   gF.addColorStop(0, 'rgba(71,200,255,0.14)');
   gF.addColorStop(1, 'rgba(71,200,255,0)');
 
-  fcChart = new Chart(ctx, {
+  const newChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels,
       datasets: [
         { label: 'Факт',    data: actual,   borderColor: '#e8ff47',             backgroundColor: gA, borderWidth: 2.5, pointRadius: 0, tension: 0.4, fill: true, spanGaps: false },
-        { label: 'Прогноз', data: forecast, borderColor: 'rgba(71,200,255,0.7)', backgroundColor: gF, borderWidth: 2, borderDash: [5, 4], pointRadius: 0, tension: 0.4, fill: true, spanGaps: false },
+        { label: 'Прогноз', data: forecast, borderColor: 'rgba(71,200,255,0.7)', backgroundColor: gF, borderWidth: 2, borderDash:[5,4], pointRadius: 0, tension: 0.4, fill: true, spanGaps: false },
       ]
     },
     options: {
@@ -1862,14 +2090,16 @@ function buildForecastChart(params, type, periodKey) {
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { display: false },
-        tooltip: { callbacks: { label: c => `${c.dataset.label}: ${fmt(c.parsed.y || 0)}` } }
+        tooltip: { callbacks: { label: c => `${c.dataset.label}: ${fmt(c.parsed.y||0)}` } }
       },
       scales: {
-        x: { grid: { color: '#1a2230' }, ticks: { maxTicksLimit: 8, font: { family: "'DM Mono'" } } },
-        y: { grid: { color: '#1a2230' }, ticks: { callback: v => fmt(v), font: { family: "'DM Mono'" } } }
+        x: { grid: { color: '#1a2230' }, ticks: { maxTicksLimit: 8, font: { family:"'DM Mono'" } } },
+        y: { grid: { color: '#1a2230' }, ticks: { callback: v => fmt(v), font: { family:"'DM Mono'" } } }
       }
     }
   });
+
+  setChart(newChart);
 }
 
 // ════════════════════════════════════════════════════════
@@ -1880,10 +2110,7 @@ function generateMockStats() {
     const d = new Date(); d.setDate(d.getDate() - (29 - i));
     return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' });
   });
-  return {
-    subs: 24300, views: 187400, videos: 47, days,
-    viewsData: days.map(() => Math.floor(3000 + Math.random() * 9000)),
-  };
+  return { subs: 24300, views: 187400, videos: 47, days, viewsData: days.map(() => Math.floor(3000 + Math.random() * 9000)) };
 }
 
 Chart.defaults.color       = '#4a5568';
@@ -1900,10 +2127,7 @@ function buildViewsChart(data) {
     type: 'line',
     data: {
       labels: data.days,
-      datasets: [{
-        data: data.viewsData, borderColor: '#e8ff47', backgroundColor: grad,
-        borderWidth: 2, pointRadius: 0, pointHoverRadius: 5, tension: 0.4, fill: true,
-      }]
+      datasets: [{ data: data.viewsData, borderColor: '#e8ff47', backgroundColor: grad, borderWidth: 2, pointRadius: 0, tension: 0.4, fill: true }]
     },
     options: {
       responsive: true,
@@ -1917,7 +2141,7 @@ function buildViewsChart(data) {
 }
 
 // ════════════════════════════════════════════════════════
-// ПОКАЗАТЬ ДАШБОРД
+// ДАШБОРД
 // ════════════════════════════════════════════════════════
 function showDashboard(user) {
   document.getElementById('login-screen').style.display = 'none';
@@ -1958,7 +2182,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
     const panel = document.getElementById(`tab-${tab}`);
     panel.classList.add('active');
     requestAnimationFrame(() => { panel.style.animation = ''; panel.classList.add('fade-up'); });
-    if (tab === 'forecast') showVideoList();
+    if (tab === 'forecast') { renderVideoList(); showVideoList(); }
   });
 });
 
@@ -1966,24 +2190,17 @@ document.querySelectorAll('.nav-item').forEach(item => {
 // ИНИЦИАЛИЗАЦИЯ — localStorage + API
 // ════════════════════════════════════════════════════════
 (async function init() {
-  // 1. Мгновенный вход из localStorage
   const cached = getUserFromLS();
   if (cached && cached.email) {
     showDashboard(cached);
-    // Фоновая верификация куки
     try {
       const res = await fetch(`${API_URL}/api/auth/me`, { method: 'GET', credentials: 'include' });
-      if (res.ok) {
-        const fresh = await res.json();
-        saveUserToLS(fresh);
-      } else {
-        localStorage.removeItem(LS_KEY);
-      }
-    } catch (e) { /* сеть недоступна — оставляем cached */ }
+      if (res.ok) { const fresh = await res.json(); saveUserToLS(fresh); }
+      else        { localStorage.removeItem(LS_KEY); }
+    } catch(e) {}
     return;
   }
 
-  // 2. Нет localStorage — идём к серверу
   try {
     const res = await fetch(`${API_URL}/api/auth/me`, { method: 'GET', credentials: 'include' });
     if (res.ok) {
@@ -1993,7 +2210,7 @@ document.querySelectorAll('.nav-item').forEach(item => {
     } else {
       document.getElementById('login-screen').style.display = 'flex';
     }
-  } catch (err) {
+  } catch(err) {
     console.warn('Auth check failed:', err);
     document.getElementById('login-screen').style.display = 'flex';
   }
@@ -2001,3 +2218,4 @@ document.querySelectorAll('.nav-item').forEach(item => {
 </script>
 </body>
 </html>
+```
