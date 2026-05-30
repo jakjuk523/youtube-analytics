@@ -2144,6 +2144,7 @@ function buildViewsChart(data) {
 // ДАШБОРД
 // ════════════════════════════════════════════════════════
 function showDashboard(user) {
+  saveUserToLS(user);
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('dashboard').style.display    = 'flex';
 
