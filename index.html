@@ -2215,7 +2215,14 @@ document.querySelectorAll('.nav-item').forEach(item => {
     document.getElementById('login-screen').style.display = 'flex';
   }
 })();
+  (function checkAuthOnLoad() {
+    const savedUser = getUserFromLS();
+    if (savedUser) {
+        showDashboard(savedUser);
+    } else {
+        document.getElementById('login-screen').style.display = 'flex';
+    }
+})();
 </script>
 </body>
 </html>
-```
