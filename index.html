@@ -185,7 +185,7 @@
       50%       { opacity: 0.4; transform: scale(0.8); }
     }
 
-    /* ── METRIC CARDS ── */
+    /* ── CARDS ── */
     .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
 
     .metric-card {
@@ -211,7 +211,6 @@
     .delta-down { color: var(--red); }
     .metric-icon { position: absolute; top: 20px; right: 20px; font-size: 22px; opacity: 0.15; }
 
-    /* ── CHART CARD ── */
     .chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 24px; }
     .chart-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
     .chart-title { font-size: 15px; font-weight: 700; }
@@ -248,67 +247,113 @@
     .impact-fill  { height: 100%; border-radius: 2px; background: var(--accent); }
     .impact-pct   { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent); font-weight: 500; }
 
-    /* ══════════════════════════════════════
+    /* ══════════════════════════════════
+       CALCULATOR STYLES
+    ══════════════════════════════════ */
+
+    .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .calc-block {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 24px 26px;
+    }
+
+    .calc-block-title {
+      font-size: 14px; font-weight: 800; margin-bottom: 4px;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .calc-block-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 20px; }
+
+    .calc-fields { display: flex; flex-direction: column; gap: 12px; margin-bottom: 18px; }
+
+    .calc-field { display: flex; flex-direction: column; gap: 5px; }
+    .calc-field label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .calc-input {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 10px; padding: 10px 14px;
+      color: var(--text); font-family: 'DM Mono', monospace; font-size: 14px; font-weight: 500;
+      outline: none; transition: border-color 0.2s; width: 100%;
+    }
+
+    .calc-input:focus { border-color: var(--accent); }
+    .calc-input::placeholder { color: var(--muted); }
+
+    .calc-result {
+      background: var(--bg); border: 1px solid rgba(232,255,71,0.2);
+      border-radius: 12px; padding: 16px 18px;
+    }
+
+    .calc-result-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; }
+    .calc-result-value { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; color: var(--accent); }
+    .calc-result-sub   { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 4px; }
+
+    .calc-divider { border: none; border-top: 1px solid var(--border); margin: 28px 0; }
+
+    /* ══════════════════════════════════
        FORECAST STYLES
-    ══════════════════════════════════════ */
+    ══════════════════════════════════ */
 
-    .fc-top-bar {
-      display: flex; align-items: center; gap: 12px;
-      flex-wrap: wrap; margin-bottom: 20px;
-    }
+    .video-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
 
-    .video-selector {
-      flex: 1; min-width: 220px;
+    .video-item {
+      display: flex; align-items: center; gap: 14px;
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 12px; padding: 11px 16px;
-      color: var(--text); font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 600;
-      cursor: pointer; appearance: none; outline: none; transition: border-color 0.2s;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath fill='%234a5568' d='M5 7L0 2h10z'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 14px center; padding-right: 34px;
+      border-radius: 12px; padding: 14px 18px;
+      cursor: pointer; transition: all 0.15s;
     }
 
-    .video-selector:focus { border-color: var(--accent); }
+    .video-item:hover { border-color: rgba(232,255,71,0.3); background: rgba(232,255,71,0.02); }
+    .video-item.selected { border-color: var(--accent); background: rgba(232,255,71,0.04); }
 
-    .fmt-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      border-radius: 20px; padding: 7px 14px;
-      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
-      border: 1px solid; flex-shrink: 0;
+    .video-item-icon { font-size: 20px; flex-shrink: 0; }
+    .video-item-info { flex: 1; min-width: 0; }
+    .video-item-title { font-size: 13px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .video-item-meta  { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 3px; }
+
+    .video-item-badge {
+      font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500;
+      border-radius: 6px; padding: 3px 9px; border: 1px solid; flex-shrink: 0;
     }
 
-    .fmt-badge.long  { background: rgba(232,255,71,0.08);  border-color: rgba(232,255,71,0.3);  color: var(--accent); }
-    .fmt-badge.short { background: rgba(71,200,255,0.08);  border-color: rgba(71,200,255,0.3);  color: var(--accent2); }
+    .vib-long  { color: var(--accent);  border-color: rgba(232,255,71,0.3);  background: rgba(232,255,71,0.06); }
+    .vib-short { color: var(--accent2); border-color: rgba(71,200,255,0.3);  background: rgba(71,200,255,0.06); }
 
-    .period-tabs {
-      display: flex; gap: 4px;
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: 4px; flex-shrink: 0;
+    .sim-new-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: var(--surface); border: 1px dashed var(--border);
+      border-radius: 12px; padding: 16px;
+      font-size: 14px; font-weight: 700; color: var(--muted);
+      cursor: pointer; transition: all 0.15s;
     }
 
-    .period-tab {
-      padding: 7px 13px; border-radius: 7px;
-      font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500;
-      color: var(--muted); cursor: pointer; transition: all 0.15s;
-      border: none; background: transparent;
-    }
+    .sim-new-btn:hover { border-color: var(--accent2); color: var(--accent2); background: rgba(71,200,255,0.04); }
 
-    .period-tab.active { background: var(--accent); color: var(--bg); font-weight: 700; }
-    .period-tab:hover:not(.active) { color: var(--text); }
-
-    /* Facts row */
+    /* Facts screen */
     .facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
 
     .fact-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 14px; padding: 16px 18px;
-      position: relative; overflow: hidden; transition: border-color 0.2s;
+      border-radius: 14px; padding: 16px 18px; position: relative; overflow: hidden;
     }
 
-    .fact-card:hover { border-color: rgba(232,255,71,0.25); }
-    .fact-icon  { position: absolute; top: 12px; right: 12px; font-size: 16px; opacity: 0.12; }
+    .fact-icon  { position: absolute; top: 12px; right: 12px; font-size: 15px; opacity: 0.12; }
     .fact-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 7px; }
     .fact-value { font-size: 20px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 3px; }
     .fact-sub   { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
+
+    .facts-extra { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+
+    .facts-extra-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 16px 20px;
+    }
+
+    .fe-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+    .fe-value { font-size: 22px; font-weight: 800; margin-bottom: 4px; }
+    .fe-bar-track { height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+    .fe-bar-fill  { height: 100%; border-radius: 3px; transition: width 0.5s; }
 
     /* Swipe bar */
     .swipe-card {
@@ -327,15 +372,43 @@
     .swipe-labels { display: flex; justify-content: space-between; }
     .swipe-lbl { font-family: 'DM Mono', monospace; font-size: 10px; }
 
-    /* Sliders section */
-    .sliders-card {
-      background: var(--surface); border: 1px solid rgba(232,255,71,0.15);
-      border-radius: 16px; padding: 24px 26px; margin-bottom: 18px;
+    .open-sim-btn {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 14px;
+      background: rgba(71,200,255,0.06); border: 1px solid rgba(71,200,255,0.25);
+      border-radius: 12px; margin-bottom: 20px;
+      font-size: 14px; font-weight: 700; color: var(--accent2);
+      cursor: pointer; transition: all 0.15s;
     }
 
-    .sliders-hd { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
-    .sliders-title { font-size: 14px; font-weight: 800; }
-    .sliders-sub { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-bottom: 20px; }
+    .open-sim-btn:hover { background: rgba(71,200,255,0.1); border-color: rgba(71,200,255,0.5); }
+
+    /* Simulator */
+    .sim-header {
+      display: flex; align-items: center; gap: 12px;
+      background: var(--surface); border: 1px solid rgba(232,255,71,0.15);
+      border-radius: 14px; padding: 14px 18px; margin-bottom: 18px;
+    }
+
+    .sim-header-icon { font-size: 22px; }
+    .sim-header-title { font-size: 14px; font-weight: 800; }
+    .sim-header-sub   { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .back-btn {
+      display: flex; align-items: center; gap: 6px;
+      margin-left: auto; padding: 7px 14px; border-radius: 8px;
+      font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted);
+      border: 1px solid var(--border); background: transparent;
+      cursor: pointer; transition: all 0.15s; flex-shrink: 0;
+    }
+
+    .back-btn:hover { color: var(--text); border-color: var(--muted); }
+
+    /* Sliders */
+    .sliders-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 22px 24px; margin-bottom: 18px;
+    }
 
     .sliders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 
@@ -343,6 +416,7 @@
     .sl-row   { display: flex; justify-content: space-between; align-items: center; }
     .sl-name  { font-size: 13px; font-weight: 700; }
     .sl-val   { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--accent); font-weight: 500; }
+    .sl-hint  { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
 
     .sl-input {
       -webkit-appearance: none; width: 100%; height: 5px;
@@ -360,7 +434,28 @@
       background: var(--accent); cursor: pointer;
     }
 
-    /* Score row */
+    /* Period tabs */
+    .period-tabs-wrap {
+      margin-bottom: 18px;
+    }
+
+    .period-tabs-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+
+    .period-tabs {
+      display: flex; flex-wrap: wrap; gap: 4px;
+    }
+
+    .period-tab {
+      padding: 7px 12px; border-radius: 7px;
+      font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500;
+      color: var(--muted); cursor: pointer; transition: all 0.15s;
+      border: 1px solid var(--border); background: var(--surface);
+    }
+
+    .period-tab.active { background: var(--accent); color: var(--bg); font-weight: 700; border-color: var(--accent); }
+    .period-tab:hover:not(.active) { color: var(--text); border-color: var(--muted); }
+
+    /* Score */
     .score-row {
       display: grid; grid-template-columns: auto 1fr; gap: 22px;
       background: var(--surface); border: 1px solid var(--border);
@@ -444,7 +539,7 @@
     .wb-warn   { background: rgba(255,159,71,0.1);  color: var(--orange); }
     .wb-danger { background: rgba(255,71,87,0.1);   color: var(--red);    }
 
-    /* Secret card */
+    /* Secret */
     .secret-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 16px; padding: 22px 26px; margin-bottom: 18px;
@@ -473,10 +568,8 @@
     .si-text { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text); line-height: 1.6; }
     .si-text strong { color: var(--accent); font-weight: 500; }
 
-    /* forecast chart */
     .fc-chart-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 26px; }
 
-    /* animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -493,7 +586,7 @@
 </head>
 <body>
 
-<!-- ════════════════ LOGIN ════════════════ -->
+<!-- ════════════ LOGIN ════════════ -->
 <div id="login-screen">
   <div class="login-card">
     <div class="logo-mark">▶</div>
@@ -512,7 +605,7 @@
   </div>
 </div>
 
-<!-- ════════════════ DASHBOARD ════════════════ -->
+<!-- ════════════ DASHBOARD ════════════ -->
 <div id="dashboard" style="display:none">
 
   <aside id="sidebar">
@@ -522,9 +615,10 @@
     </div>
 
     <nav>
-      <div class="nav-item active" data-tab="stats">  <span class="nav-icon">📊</span> Статистика  </div>
-      <div class="nav-item"        data-tab="forecast"><span class="nav-icon">📈</span> Прогноз     </div>
-      <div class="nav-item"        data-tab="ai">      <span class="nav-icon">✦</span>  Советы от ИИ</div>
+      <div class="nav-item active" data-tab="stats">    <span class="nav-icon">📊</span> Статистика       </div>
+      <div class="nav-item"        data-tab="forecast"> <span class="nav-icon">📈</span> Прогноз ролика   </div>
+      <div class="nav-item"        data-tab="calc">     <span class="nav-icon">🧮</span> Калькулятор метрик</div>
+      <div class="nav-item"        data-tab="ai">       <span class="nav-icon">✦</span>  Советы от ИИ     </div>
     </nav>
 
     <div class="sidebar-bottom">
@@ -588,7 +682,7 @@
       </div>
     </div>
 
-    <!-- ▸ ПРОГНОЗ -->
+    <!-- ▸ ПРОГНОЗ РОЛИКА -->
     <div class="tab-panel" id="tab-forecast">
       <div class="page-header">
         <div>
@@ -598,67 +692,78 @@
         <div class="badge-live" style="background:rgba(71,200,255,0.08);border-color:rgba(71,200,255,0.25);color:var(--accent2)">✦ AI MODEL</div>
       </div>
 
-      <!-- Топ-бар: выбор видео + формат + период -->
-      <div class="fc-top-bar">
-        <select class="video-selector" id="video-select">
-          <option value="0">📹 Как набрать 10 000 подписчиков за 3 месяца</option>
-          <option value="1">📹 5 ошибок новичков на YouTube — разбор</option>
-          <option value="2">⚡ #Shorts — Секрет вирального ролика за 60 сек</option>
-          <option value="3">⚡ #Shorts — Лайфхак для монтажа</option>
-          <option value="4">📹 Полный гайд по YouTube SEO 2025</option>
-          <option value="sim">🧪 + Симулировать новое видео</option>
-        </select>
-        <div class="fmt-badge long" id="fmt-badge">📹 Long-form</div>
-        <div class="period-tabs">
-          <button class="period-tab active" data-p="1"  onclick="setPeriod(1)">1 д</button>
-          <button class="period-tab"        data-p="3"  onclick="setPeriod(3)">3 д</button>
-          <button class="period-tab"        data-p="7"  onclick="setPeriod(7)">7 д</button>
-          <button class="period-tab"        data-p="30" onclick="setPeriod(30)">30 д</button>
+      <!-- Список видео -->
+      <div id="fc-video-list">
+        <div class="video-list" id="video-list-items"></div>
+        <div class="sim-new-btn" id="sim-new-btn" onclick="openSimulator(null)">
+          <span>＋</span> Симулировать новое видео
         </div>
       </div>
 
-      <!-- БЛОК: реальное видео -->
-      <div id="real-video-block">
-        <!-- Факты ролика -->
+      <!-- Экран реальных фактов -->
+      <div id="fc-facts-screen" style="display:none">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+          <button class="back-btn" onclick="showVideoList()">← Назад</button>
+          <div>
+            <div style="font-size:15px;font-weight:800" id="fc-facts-title">—</div>
+            <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:2px" id="fc-facts-meta">—</div>
+          </div>
+        </div>
+
+        <!-- Карточки фактов -->
         <div class="facts-grid">
           <div class="fact-card">
             <div class="fact-icon">👁</div>
             <div class="fact-label">Просмотры</div>
-            <div class="fact-value" id="fv-views">—</div>
-            <div class="fact-sub"  id="fv-views-sub">всего</div>
+            <div class="fact-value" id="ff-views">—</div>
+            <div class="fact-sub">всего</div>
           </div>
           <div class="fact-card">
             <div class="fact-icon">👍</div>
             <div class="fact-label">Лайки</div>
-            <div class="fact-value" id="fv-likes">—</div>
-            <div class="fact-sub"  id="fv-likes-sub">—</div>
+            <div class="fact-value" id="ff-likes">—</div>
+            <div class="fact-sub" id="ff-likes-sub">—</div>
           </div>
           <div class="fact-card">
             <div class="fact-icon">💬</div>
             <div class="fact-label">Комментарии</div>
-            <div class="fact-value" id="fv-comments">—</div>
-            <div class="fact-sub"  id="fv-comments-sub">—</div>
+            <div class="fact-value" id="ff-comments">—</div>
+            <div class="fact-sub" id="ff-comments-sub">—</div>
           </div>
           <div class="fact-card">
             <div class="fact-icon">↗</div>
-            <div class="fact-label">Поделились</div>
-            <div class="fact-value" id="fv-shares">—</div>
-            <div class="fact-sub"  id="fv-shares-sub">репостов</div>
+            <div class="fact-label">Репосты</div>
+            <div class="fact-value" id="ff-shares">—</div>
+            <div class="fact-sub">поделились</div>
           </div>
         </div>
 
-        <!-- Swipe bar (только Shorts) -->
-        <div class="swipe-card" id="swipe-block" style="display:none">
+        <!-- Long-form extra facts -->
+        <div id="ff-long-extra" class="facts-extra" style="display:none">
+          <div class="facts-extra-card">
+            <div class="fe-label">CTR (кликабельность)</div>
+            <div class="fe-value" id="ff-ctr" style="color:var(--accent)">—</div>
+            <div class="fe-bar-track"><div class="fe-bar-fill" id="ff-ctr-bar" style="background:linear-gradient(90deg,var(--accent),#c8d400);width:0%"></div></div>
+          </div>
+          <div class="facts-extra-card">
+            <div class="fe-label">Удержание аудитории</div>
+            <div class="fe-value" id="ff-ret" style="color:var(--accent2)">—</div>
+            <div class="fe-bar-track"><div class="fe-bar-fill" id="ff-ret-bar" style="background:linear-gradient(90deg,var(--accent2),#0088cc);width:0%"></div></div>
+          </div>
+        </div>
+
+        <!-- Shorts swipe -->
+        <div class="swipe-card" id="ff-swipe-block" style="display:none">
           <div class="swipe-hd">
             <div>
               <div class="swipe-title">Просмотрено vs Свайпнуто</div>
-              <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:3px">Ключевой сигнал алгоритма Shorts</div>
+              <div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:3px">Ключевой сигнал алгоритма Shorts — строго 100%</div>
             </div>
-            <div class="swipe-pct-txt" id="swipe-pct-txt">—</div>
+            <div class="swipe-pct-txt" id="ff-swipe-txt">—</div>
           </div>
           <div class="swipe-track">
-            <div class="swipe-viewed-bar" id="swipe-viewed-bar" style="width:65%"></div>
-            <div class="swipe-swiped-bar" id="swipe-swiped-bar" style="width:35%"></div>
+            <div class="swipe-viewed-bar" id="ff-swipe-viewed" style="width:65%"></div>
+            <div class="swipe-swiped-bar" id="ff-swipe-swiped" style="width:35%"></div>
           </div>
           <div class="swipe-labels">
             <span class="swipe-lbl" style="color:var(--accent2)">👁 Досмотрели</span>
@@ -666,183 +771,291 @@
           </div>
         </div>
 
-        <!-- Слайдеры для тонкой настройки реального видео -->
-        <div class="sliders-card">
-          <div class="sliders-hd"><span style="font-size:16px">🎛</span><span class="sliders-title">Настройка параметров прогноза</span></div>
-          <p class="sliders-sub">Двигайте ползунки — ИИ пересчитывает прогноз мгновенно.</p>
-          <div class="sliders-grid" id="sliders-long">
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">CTR (кликабельность)</span><span class="sl-val" id="sv-ctr">5.0%</span></div>
-              <input type="range" class="sl-input" id="si-ctr" min="1" max="30" step="0.1" value="5" oninput="onSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Удержание аудитории</span><span class="sl-val" id="sv-ret">50%</span></div>
-              <input type="range" class="sl-input" id="si-ret" min="10" max="100" step="1" value="50" oninput="onSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Просмотры в 1-й волне</span><span class="sl-val" id="sv-vel">1 000</span></div>
-              <input type="range" class="sl-input" id="si-vel" min="100" max="50000" step="100" value="1000" oninput="onSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Вовлечённость (лайки+комм)</span><span class="sl-val" id="sv-eng">4.0%</span></div>
-              <input type="range" class="sl-input" id="si-eng" min="0.5" max="20" step="0.1" value="4" oninput="onSlide()">
-            </div>
-          </div>
-          <div class="sliders-grid" id="sliders-short" style="display:none;margin-top:0">
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Досмотрено до конца (%)</span><span class="sl-val" id="sv-viewed">80%</span></div>
-              <input type="range" class="sl-input" id="si-viewed" min="10" max="200" step="1" value="80" oninput="onSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Свайпнуто (%)</span><span class="sl-val" id="sv-swiped">20%</span></div>
-              <input type="range" class="sl-input" id="si-swiped" min="0" max="100" step="1" value="20" oninput="onSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Удержание Shorts (%)</span><span class="sl-val" id="sv-sret">100%</span></div>
-              <input type="range" class="sl-input" id="si-sret" min="10" max="200" step="1" value="100" oninput="onSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Просмотры в 1-й час</span><span class="sl-val" id="sv-svel">5 000</span></div>
-              <input type="range" class="sl-input" id="si-svel" min="100" max="200000" step="100" value="5000" oninput="onSlide()">
-            </div>
-          </div>
-        </div>
+        <button class="open-sim-btn" id="open-sim-from-facts">
+          🎛️ Запустить ИИ-симулятор ролика
+        </button>
       </div>
 
-      <!-- БЛОК: симулятор нового видео -->
-      <div id="sim-block" style="display:none">
-        <div class="sliders-card">
-          <div class="sliders-hd"><span style="font-size:18px">🧪</span><span class="sliders-title">ИИ-Симулятор нового видео</span></div>
-          <p class="sliders-sub">Канал пустой? Задайте параметры ползунками — ИИ мгновенно рассчитает прогноз волн и напишет вердикт.</p>
-
-          <div style="display:flex;gap:8px;margin-bottom:20px">
-            <button class="period-tab active" id="sim-btn-long"  onclick="setSimType('long')"  style="border-radius:8px">📹 Long-form</button>
-            <button class="period-tab"        id="sim-btn-short" onclick="setSimType('short')" style="border-radius:8px">⚡ Shorts</button>
-          </div>
-
-          <div class="sliders-grid" id="sim-sliders-long">
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">CTR (%)</span><span class="sl-val" id="ssv-ctr">5.0%</span></div>
-              <input type="range" class="sl-input" id="ssi-ctr" min="1" max="30" step="0.1" value="5" oninput="onSimSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Удержание (%)</span><span class="sl-val" id="ssv-ret">50%</span></div>
-              <input type="range" class="sl-input" id="ssi-ret" min="10" max="100" step="1" value="50" oninput="onSimSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Просмотры в 1-й волне</span><span class="sl-val" id="ssv-vel">1 000</span></div>
-              <input type="range" class="sl-input" id="ssi-vel" min="100" max="50000" step="100" value="1000" oninput="onSimSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Вовлечённость (%)</span><span class="sl-val" id="ssv-eng">4.0%</span></div>
-              <input type="range" class="sl-input" id="ssi-eng" min="0.5" max="20" step="0.1" value="4" oninput="onSimSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Поделились (шт.)</span><span class="sl-val" id="ssv-shr">200</span></div>
-              <input type="range" class="sl-input" id="ssi-shr" min="0" max="10000" step="10" value="200" oninput="onSimSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Базовые просмотры</span><span class="sl-val" id="ssv-base">10 000</span></div>
-              <input type="range" class="sl-input" id="ssi-base" min="100" max="1000000" step="100" value="10000" oninput="onSimSlide()">
-            </div>
-          </div>
-
-          <div class="sliders-grid" id="sim-sliders-short" style="display:none">
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Досмотрено до конца (%)</span><span class="sl-val" id="ssv-viewed">65%</span></div>
-              <input type="range" class="sl-input" id="ssi-viewed" min="10" max="200" step="1" value="65" oninput="onSimSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Свайпнуто (%)</span><span class="sl-val" id="ssv-swiped">35%</span></div>
-              <input type="range" class="sl-input" id="ssi-swiped" min="0" max="100" step="1" value="35" oninput="onSimSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Удержание Shorts (%)</span><span class="sl-val" id="ssv-sret">80%</span></div>
-              <input type="range" class="sl-input" id="ssi-sret" min="10" max="200" step="1" value="80" oninput="onSimSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Просмотры в 1-й час</span><span class="sl-val" id="ssv-svel">5 000</span></div>
-              <input type="range" class="sl-input" id="ssi-svel" min="100" max="200000" step="100" value="5000" oninput="onSimSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Лайки / просмотры (%)</span><span class="sl-val" id="ssv-slike">4.0%</span></div>
-              <input type="range" class="sl-input" id="ssi-slike" min="0.5" max="20" step="0.1" value="4" oninput="onSimSlide()">
-            </div>
-            <div class="sl-field">
-              <div class="sl-row"><span class="sl-name">Базовые просмотры Shorts</span><span class="sl-val" id="ssv-sbase">50 000</span></div>
-              <input type="range" class="sl-input" id="ssi-sbase" min="1000" max="5000000" step="1000" value="50000" oninput="onSimSlide()">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Score + ИИ-вердикт -->
-      <div class="score-row">
-        <div class="score-donut">
-          <svg width="94" height="94" viewBox="0 0 94 94">
-            <circle class="score-bg" cx="47" cy="47" r="39"/>
-            <circle class="score-fg" id="score-circle" cx="47" cy="47" r="39"
-              stroke="#e8ff47" stroke-dasharray="245" stroke-dashoffset="73"/>
-          </svg>
-          <div class="score-inner">
-            <div class="score-num" id="score-num">70</div>
-            <div class="score-lbl">SCORE</div>
-          </div>
-        </div>
-        <div class="score-details">
-          <div class="score-title" id="score-title">Хороший потенциал</div>
-          <div class="score-desc"  id="score-desc">Анализ загружается...</div>
-          <div class="score-tags"  id="score-tags"></div>
-        </div>
-      </div>
-
-      <!-- Волны -->
-      <div class="waves-grid">
-        <div class="wave-card w1">
-          <div class="wave-lbl">🌊 Волна 1 — Подписчики</div>
-          <div class="wave-val" id="w1-val">—</div>
-          <div class="wave-sub" id="w1-sub">просмотров</div>
-          <span class="wave-badge wb-ok" id="w1-badge">—</span>
-        </div>
-        <div class="wave-card w2">
-          <div class="wave-lbl">🌊 Волна 2 — Browse Features</div>
-          <div class="wave-val" id="w2-val">—</div>
-          <div class="wave-sub" id="w2-sub">просмотров</div>
-          <span class="wave-badge wb-ok" id="w2-badge">—</span>
-        </div>
-        <div class="wave-card w3">
-          <div class="wave-lbl">🌊 Волна 3 — Suggested / Feed</div>
-          <div class="wave-val" id="w3-val">—</div>
-          <div class="wave-sub" id="w3-sub">просмотров</div>
-          <span class="wave-badge wb-ok" id="w3-badge">—</span>
-        </div>
-      </div>
-
-      <!-- Секрет успеха -->
-      <div class="secret-card">
-        <div class="secret-hd">
-          <span style="font-size:18px">🔑</span>
-          <span class="secret-ttl">Секрет успеха этого ролика</span>
-          <span class="secret-badge">ИИ-анализ</span>
-        </div>
-        <div class="secret-items" id="secret-items">
-          <div class="secret-item"><span class="si-icon">⏳</span><span class="si-text">Загрузка...</span></div>
-        </div>
-      </div>
-
-      <!-- График -->
-      <div class="fc-chart-card">
-        <div class="chart-card-header">
+      <!-- Симулятор -->
+      <div id="fc-sim-screen" style="display:none">
+        <div class="sim-header">
+          <span class="sim-header-icon">🧪</span>
           <div>
-            <div class="chart-title">Прогноз просмотров по волнам</div>
-            <div class="chart-sub">Реальные данные + ИИ-прогноз</div>
+            <div class="sim-header-title" id="sim-screen-title">ИИ-Симулятор</div>
+            <div class="sim-header-sub"   id="sim-screen-sub">Двигайте ползунки — ИИ пересчитывает прогноз мгновенно</div>
           </div>
-          <div class="chart-legend">
-            <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Факт</div>
-            <div class="legend-item"><div class="legend-dot" style="background:rgba(71,200,255,0.7)"></div>Прогноз</div>
+          <button class="back-btn" id="sim-back-btn">← Назад к фактам</button>
+        </div>
+
+        <!-- LONG-FORM: 3 ползунка -->
+        <div class="sliders-card" id="sim-sliders-long" style="display:none">
+          <div style="font-size:13px;font-weight:800;margin-bottom:16px;color:var(--accent)">📹 Параметры Long-form</div>
+          <div class="sliders-grid">
+            <div class="sl-field">
+              <div class="sl-row"><span class="sl-name">CTR</span><span class="sl-val" id="slv-ctr">5.0%</span></div>
+              <div class="sl-hint">Диапазон: 1% — 30%</div>
+              <input type="range" class="sl-input" id="sli-ctr" min="1" max="30" step="0.1" value="5" oninput="onSimChange()">
+            </div>
+            <div class="sl-field">
+              <div class="sl-row"><span class="sl-name">Удержание аудитории</span><span class="sl-val" id="slv-ret">50%</span></div>
+              <div class="sl-hint">Диапазон: 10% — 100%</div>
+              <input type="range" class="sl-input" id="sli-ret" min="10" max="100" step="1" value="50" oninput="onSimChange()">
+            </div>
+            <div class="sl-field" style="grid-column:1/-1">
+              <div class="sl-row"><span class="sl-name">Начальный темп просмотров</span><span class="sl-val" id="slv-tempo">1 000 / сут</span></div>
+              <div class="sl-hint">Просмотры в первые сутки</div>
+              <input type="range" class="sl-input" id="sli-tempo" min="100" max="100000" step="100" value="1000" oninput="onSimChange()">
+            </div>
           </div>
         </div>
-        <canvas id="forecastChart" height="80"></canvas>
+
+        <!-- SHORTS: 4 ползунка -->
+        <div class="sliders-card" id="sim-sliders-short" style="display:none">
+          <div style="font-size:13px;font-weight:800;margin-bottom:16px;color:var(--accent2)">⚡ Параметры Shorts</div>
+          <div class="sliders-grid">
+            <div class="sl-field">
+              <div class="sl-row"><span class="sl-name">Удержание Shorts</span><span class="sl-val" id="slv-sret">80%</span></div>
+              <div class="sl-hint">10% — 250% (>100% = лупинг)</div>
+              <input type="range" class="sl-input" id="sli-sret" min="10" max="250" step="1" value="80" oninput="onSimChange()">
+            </div>
+            <div class="sl-field">
+              <div class="sl-row"><span class="sl-name">Заинтересованные зрители</span><span class="sl-val" id="slv-sint">50%</span></div>
+              <div class="sl-hint">Процент вовлечённых</div>
+              <input type="range" class="sl-input" id="sli-sint" min="1" max="100" step="1" value="50" oninput="onSimChange()">
+            </div>
+            <div class="sl-field">
+              <div class="sl-row"><span class="sl-name">Процент свайпа</span><span class="sl-val" id="slv-swipe">30%</span></div>
+              <div class="sl-hint">Свайпнули (View vs Swiped)</div>
+              <input type="range" class="sl-input" id="sli-swipe" min="10" max="100" step="1" value="30" oninput="onSimChange()">
+            </div>
+            <div class="sl-field">
+              <div class="sl-row"><span class="sl-name">Просмотры 1-й волны</span><span class="sl-val" id="slv-swave">5 000</span></div>
+              <div class="sl-hint">Охват при первом запуске</div>
+              <input type="range" class="sl-input" id="sli-swave" min="100" max="500000" step="100" value="5000" oninput="onSimChange()">
+            </div>
+          </div>
+        </div>
+
+        <!-- LONG-FORM: мега-таймлайн -->
+        <div id="period-block-long" style="display:none">
+          <div class="period-tabs-wrap">
+            <div class="period-tabs-label">Горизонт прогноза — Long-form (вечнозелёный контент)</div>
+            <div class="period-tabs" id="period-tabs-long">
+              <button class="period-tab active" data-pl="1h">1 час</button>
+              <button class="period-tab" data-pl="12h">12 часов</button>
+              <button class="period-tab" data-pl="24h">24 часа</button>
+              <button class="period-tab" data-pl="48h">48 часов</button>
+              <button class="period-tab" data-pl="7d">7 суток</button>
+              <button class="period-tab" data-pl="15d">15 суток</button>
+              <button class="period-tab" data-pl="24d">24 суток</button>
+              <button class="period-tab" data-pl="30d">30 суток</button>
+              <button class="period-tab" data-pl="3mo">3 месяца</button>
+              <button class="period-tab" data-pl="6mo">6 месяцев</button>
+              <button class="period-tab" data-pl="9mo">9 месяцев</button>
+              <button class="period-tab" data-pl="1y">1 год</button>
+              <button class="period-tab" data-pl="1.5y">1.5 года</button>
+              <button class="period-tab" data-pl="2y">2 года</button>
+              <button class="period-tab" data-pl="3y">3 года</button>
+              <button class="period-tab" data-pl="4y">4 года</button>
+              <button class="period-tab" data-pl="5y">5 лет</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SHORTS: период -->
+        <div id="period-block-short" style="display:none">
+          <div class="period-tabs-wrap">
+            <div class="period-tabs-label">Горизонт прогноза — Shorts</div>
+            <div class="period-tabs" id="period-tabs-short">
+              <button class="period-tab active" data-ps="1h">1 час</button>
+              <button class="period-tab" data-ps="6h">6 часов</button>
+              <button class="period-tab" data-ps="24h">24 часа</button>
+              <button class="period-tab" data-ps="3d">3 дня</button>
+              <button class="period-tab" data-ps="7d">7 дней</button>
+              <button class="period-tab" data-ps="30d">30 дней</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Score -->
+        <div class="score-row">
+          <div class="score-donut">
+            <svg width="94" height="94" viewBox="0 0 94 94">
+              <circle class="score-bg" cx="47" cy="47" r="39"/>
+              <circle class="score-fg" id="score-circle" cx="47" cy="47" r="39"
+                stroke="#e8ff47" stroke-dasharray="245" stroke-dashoffset="73"/>
+            </svg>
+            <div class="score-inner">
+              <div class="score-num" id="score-num">—</div>
+              <div class="score-lbl">SCORE</div>
+            </div>
+          </div>
+          <div class="score-details">
+            <div class="score-title" id="score-title">Выберите ролик</div>
+            <div class="score-desc"  id="score-desc">Настройте параметры — ИИ выдаст вердикт.</div>
+            <div class="score-tags"  id="score-tags"></div>
+          </div>
+        </div>
+
+        <!-- Волны -->
+        <div class="waves-grid">
+          <div class="wave-card w1">
+            <div class="wave-lbl">🌊 Волна 1 — Запуск</div>
+            <div class="wave-val" id="w1-val">—</div>
+            <div class="wave-sub" id="w1-sub">просмотров</div>
+            <span class="wave-badge wb-ok" id="w1-badge">—</span>
+          </div>
+          <div class="wave-card w2">
+            <div class="wave-lbl">🌊 Волна 2 — Рекомендации</div>
+            <div class="wave-val" id="w2-val">—</div>
+            <div class="wave-sub" id="w2-sub">просмотров</div>
+            <span class="wave-badge wb-ok" id="w2-badge">—</span>
+          </div>
+          <div class="wave-card w3">
+            <div class="wave-lbl">🌊 Волна 3 — Долгий хвост</div>
+            <div class="wave-val" id="w3-val">—</div>
+            <div class="wave-sub" id="w3-sub">просмотров</div>
+            <span class="wave-badge wb-ok" id="w3-badge">—</span>
+          </div>
+        </div>
+
+        <!-- Секрет успеха -->
+        <div class="secret-card">
+          <div class="secret-hd">
+            <span style="font-size:18px">🔑</span>
+            <span class="secret-ttl">Секрет успеха этого ролика</span>
+            <span class="secret-badge">ИИ-анализ</span>
+          </div>
+          <div class="secret-items" id="secret-items">
+            <div class="secret-item"><span class="si-icon">⏳</span><span class="si-text">Настройте ползунки для получения анализа.</span></div>
+          </div>
+        </div>
+
+        <!-- График -->
+        <div class="fc-chart-card">
+          <div class="chart-card-header">
+            <div>
+              <div class="chart-title">Прогноз просмотров</div>
+              <div class="chart-sub" id="fc-chart-sub">—</div>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div>Факт</div>
+              <div class="legend-item"><div class="legend-dot" style="background:rgba(71,200,255,0.7)"></div>Прогноз</div>
+            </div>
+          </div>
+          <canvas id="forecastChart" height="80"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- ▸ КАЛЬКУЛЯТОР МЕТРИК -->
+    <div class="tab-panel" id="tab-calc">
+      <div class="page-header">
+        <div>
+          <h2 class="page-title">Калькулятор метрик</h2>
+          <p class="page-sub">ИИ-конвертер данных Творческой студии YouTube</p>
+        </div>
+        <div class="badge-live" style="background:rgba(57,255,154,0.08);border-color:rgba(57,255,154,0.25);color:var(--green)">🧮 AUTO CALC</div>
+      </div>
+
+      <!-- SHORTS блок -->
+      <div style="font-size:15px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+        <span style="font-size:20px">⚡</span> Shorts
+      </div>
+
+      <div class="calc-grid" style="margin-bottom:28px">
+        <!-- Удержание Shorts -->
+        <div class="calc-block">
+          <div class="calc-block-title">Удержание Shorts</div>
+          <div class="calc-block-sub">Среднее время просмотра ÷ Длина видео × 100%</div>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label>Длина видео (сек)</label>
+              <input type="number" class="calc-input" id="cs-len" placeholder="например: 6" min="1" oninput="calcShortRet()">
+            </div>
+            <div class="calc-field">
+              <label>Среднее время просмотра (сек)</label>
+              <input type="number" class="calc-input" id="cs-avg" placeholder="например: 9" min="0" oninput="calcShortRet()">
+            </div>
+          </div>
+          <div class="calc-result">
+            <div class="calc-result-label">Удержание Shorts</div>
+            <div class="calc-result-value" id="cr-sret">—</div>
+            <div class="calc-result-sub" id="cr-sret-hint">Введите данные для расчёта</div>
+          </div>
+        </div>
+
+        <!-- View vs Swiped -->
+        <div class="calc-block">
+          <div class="calc-block-title">Просмотрено vs Свайпнуто</div>
+          <div class="calc-block-sub">Итоговое соотношение в процентах (сумма = 100%)</div>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label>Сколько человек посмотрело</label>
+              <input type="number" class="calc-input" id="cs-viewed" placeholder="например: 8000" min="0" oninput="calcSwipe()">
+            </div>
+            <div class="calc-field">
+              <label>Сколько человек свайпнуло</label>
+              <input type="number" class="calc-input" id="cs-swiped" placeholder="например: 2000" min="0" oninput="calcSwipe()">
+            </div>
+          </div>
+          <div class="calc-result">
+            <div class="calc-result-label">Результат</div>
+            <div class="calc-result-value" id="cr-swipe">—</div>
+            <div class="calc-result-sub"   id="cr-swipe-hint">Введите данные для расчёта</div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="calc-divider">
+
+      <!-- LONG-FORM блок -->
+      <div style="font-size:15px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px">
+        <span style="font-size:20px">📹</span> Long-form
+      </div>
+
+      <div class="calc-grid">
+        <!-- Заинтересованность аудитории -->
+        <div class="calc-block">
+          <div class="calc-block-title">Заинтересованность аудитории</div>
+          <div class="calc-block-sub">Заинтересованных зрителей ÷ Всего просмотров × 100%</div>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label>Всего просмотров ролика</label>
+              <input type="number" class="calc-input" id="cl-views" placeholder="например: 1000" min="1" oninput="calcInterest()">
+            </div>
+            <div class="calc-field">
+              <label>Количество заинтересованных зрителей</label>
+              <input type="number" class="calc-input" id="cl-int" placeholder="например: 700" min="0" oninput="calcInterest()">
+            </div>
+          </div>
+          <div class="calc-result">
+            <div class="calc-result-label">Заинтересованность аудитории</div>
+            <div class="calc-result-value" id="cr-int">—</div>
+            <div class="calc-result-sub"   id="cr-int-hint">Введите данные для расчёта</div>
+          </div>
+        </div>
+
+        <!-- CTR -->
+        <div class="calc-block">
+          <div class="calc-block-title">CTR — Кликабельность обложки</div>
+          <div class="calc-block-sub">Кликов ÷ Показов обложки × 100%</div>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label>Всего показов обложки (Impressions)</label>
+              <input type="number" class="calc-input" id="cl-impr" placeholder="например: 50000" min="1" oninput="calcCTR()">
+            </div>
+            <div class="calc-field">
+              <label>Количество кликов</label>
+              <input type="number" class="calc-input" id="cl-clicks" placeholder="например: 2500" min="0" oninput="calcCTR()">
+            </div>
+          </div>
+          <div class="calc-result">
+            <div class="calc-result-label">CTR</div>
+            <div class="calc-result-value" id="cr-ctr">—</div>
+            <div class="calc-result-sub"   id="cr-ctr-hint">Введите данные для расчёта</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -880,7 +1093,7 @@
         <div class="tip-card">
           <div class="tip-tag">⏱ Длительность</div>
           <div class="tip-title">Оптимальная длина видео — 12–16 минут</div>
-          <div class="tip-body">Ваши видео длиннее 18 минут теряют 60% зрителей до середины. Видео 12–16 мин показывают Audience Retention выше 55%, что улучшает позиции в рекомендациях.</div>
+          <div class="tip-body">Видео длиннее 18 минут теряют 60% зрителей до середины. Видео 12–16 мин показывают Retention выше 55%, что улучшает позиции в рекомендациях.</div>
           <div class="tip-impact">
             <div class="impact-label">Влияние</div>
             <div class="impact-bar"><div class="impact-fill" style="width:74%"></div></div>
@@ -900,7 +1113,7 @@
         <div class="tip-card">
           <div class="tip-tag">💬 Вовлечённость</div>
           <div class="tip-title">Задавайте вопрос на 2-й минуте видео</div>
-          <div class="tip-body">Призыв к комментарию в начале видео увеличивает количество комментариев на 3x. Алгоритм учитывает скорость комментирования в первый час после публикации.</div>
+          <div class="tip-body">Призыв к комментарию в начале видео увеличивает количество комментариев на 3x. Алгоритм учитывает скорость комментирования в первый час.</div>
           <div class="tip-impact">
             <div class="impact-label">Влияние</div>
             <div class="impact-bar"><div class="impact-fill" style="width:91%"></div></div>
@@ -923,7 +1136,7 @@
   </main>
 </div>
 
-<!-- ════════════════ JAVASCRIPT ════════════════ -->
+<!-- ════════════ JS ════════════ -->
 <script>
 // ═══════════════════════════════════════════════════════
 // ▼▼▼ ВСТАВЬТЕ ВАШ ДОМЕН VERCEL ▼▼▼
@@ -933,20 +1146,7 @@ const API_URL = "https://youtube-analytics-ruddy.vercel.app";
 
 const LS_KEY = 'ytmetrics_user';
 
-// ── Helpers ───────────────────────────────────────────
-const fmt = n => {
-  if (n == null || isNaN(n)) return '—';
-  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
-  if (n >= 1_000)     return (n / 1_000).toFixed(1) + 'K';
-  return String(Math.round(n));
-};
-
-const pctStr = (a, b) => b ? (a / b * 100).toFixed(1) + '%' : '—';
-
-// ════════════════════════════════════════════════════════
-// АВТОРИЗАЦИЯ + КУКИ localStorage
-// ════════════════════════════════════════════════════════
-
+// ── Авторизация (нетронута) ───────────────────────────
 document.getElementById('login-btn').addEventListener('click', () => {
   window.location.href = `${API_URL}/api/auth/google`;
 });
@@ -968,271 +1168,609 @@ function getUserFromLS() {
   } catch(e) { return null; }
 }
 
+// ── Helpers ───────────────────────────────────────────
+const fmt = n => {
+  if (n == null || isNaN(n)) return '—';
+  if (n >= 1_000_000) return (n / 1_000_000).toFixed(1) + 'M';
+  if (n >= 1_000)     return (n / 1_000).toFixed(1) + 'K';
+  return String(Math.round(n));
+};
+
+const pctOf = (a, b) => b ? ((a / b) * 100).toFixed(1) + '%' : '—';
+
 // ════════════════════════════════════════════════════════
-// ДАННЫЕ ВИДЕО (mock — в реальном проекте замените на YouTube Data API)
+// КАЛЬКУЛЯТОР
+// ════════════════════════════════════════════════════════
+function calcShortRet() {
+  const len = parseFloat(document.getElementById('cs-len').value);
+  const avg = parseFloat(document.getElementById('cs-avg').value);
+  const el  = document.getElementById('cr-sret');
+  const hint= document.getElementById('cr-sret-hint');
+
+  if (!len || !avg || len <= 0) { el.textContent = '—'; hint.textContent = 'Введите данные'; return; }
+
+  const ret = (avg / len) * 100;
+  el.textContent   = ret.toFixed(1) + '%';
+  el.style.color   = ret >= 100 ? 'var(--green)' : ret >= 70 ? 'var(--accent)' : 'var(--orange)';
+
+  if (ret >= 120) hint.textContent = '🔄 Зрители пересматривают — мощный луп-сигнал для алгоритма';
+  else if (ret >= 100) hint.textContent = '✅ Отлично — досматривают до конца и начинают снова';
+  else if (ret >= 70)  hint.textContent = '✓ Хорошо — большинство досматривает до конца';
+  else if (ret >= 50)  hint.textContent = '⚠ Средне — часть зрителей уходит раньше конца';
+  else                 hint.textContent = '❌ Низко — нужно переработать первые секунды';
+}
+
+function calcSwipe() {
+  const viewed = parseFloat(document.getElementById('cs-viewed').value);
+  const swiped = parseFloat(document.getElementById('cs-swiped').value);
+  const el     = document.getElementById('cr-swipe');
+  const hint   = document.getElementById('cr-swipe-hint');
+
+  if (!viewed && !swiped) { el.textContent = '—'; hint.textContent = 'Введите данные'; return; }
+
+  const total   = (viewed || 0) + (swiped || 0);
+  if (total === 0) { el.textContent = '—'; hint.textContent = 'Сумма равна нулю'; return; }
+
+  const vpct = ((viewed || 0) / total * 100).toFixed(1);
+  const spct = ((swiped || 0) / total * 100).toFixed(1);
+  el.textContent = `${vpct}% / ${spct}%`;
+  el.style.color = parseFloat(vpct) >= 70 ? 'var(--green)' : parseFloat(vpct) >= 50 ? 'var(--accent)' : 'var(--red)';
+
+  if (parseFloat(vpct) >= 80)      hint.textContent = '🚀 Отлично — алгоритм активно продвигает';
+  else if (parseFloat(vpct) >= 65) hint.textContent = '✓ Хорошо — досматривают чаще чем свайпают';
+  else if (parseFloat(vpct) >= 50) hint.textContent = '⚠ Средне — половина уходит, нужен сильный крючок';
+  else                             hint.textContent = '❌ Много свайпов — перерабатывайте первые 2 секунды';
+}
+
+function calcInterest() {
+  const views = parseFloat(document.getElementById('cl-views').value);
+  const ints  = parseFloat(document.getElementById('cl-int').value);
+  const el    = document.getElementById('cr-int');
+  const hint  = document.getElementById('cr-int-hint');
+
+  if (!views || views <= 0) { el.textContent = '—'; hint.textContent = 'Введите данные'; return; }
+
+  const pct = (ints / views) * 100;
+  el.textContent = pct.toFixed(1) + '%';
+  el.style.color = pct >= 60 ? 'var(--green)' : pct >= 40 ? 'var(--accent)' : 'var(--orange)';
+
+  if (pct >= 70)      hint.textContent = '🎯 Высокая заинтересованность — аудитория вовлечена';
+  else if (pct >= 50) hint.textContent = '✓ Нормально — больше половины остаётся';
+  else if (pct >= 30) hint.textContent = '⚠ Ниже нормы — контент теряет зрителей на середине';
+  else                hint.textContent = '❌ Низкая заинтересованность — нужен реструктуринг';
+}
+
+function calcCTR() {
+  const impr   = parseFloat(document.getElementById('cl-impr').value);
+  const clicks = parseFloat(document.getElementById('cl-clicks').value);
+  const el     = document.getElementById('cr-ctr');
+  const hint   = document.getElementById('cr-ctr-hint');
+
+  if (!impr || impr <= 0) { el.textContent = '—'; hint.textContent = 'Введите данные'; return; }
+
+  const ctr = (clicks / impr) * 100;
+  el.textContent = ctr.toFixed(2) + '%';
+  el.style.color = ctr >= 5 ? 'var(--green)' : ctr >= 3 ? 'var(--accent)' : 'var(--red)';
+
+  if (ctr >= 7)      hint.textContent = '🚀 Отличный CTR — превью и заголовок работают идеально';
+  else if (ctr >= 5) hint.textContent = '✓ Хороший CTR — выше среднего по платформе';
+  else if (ctr >= 3) hint.textContent = '⚠ Средний CTR — есть потенциал для улучшения превью';
+  else               hint.textContent = '❌ Низкий CTR — срочно меняйте превью или заголовок';
+}
+
+// ════════════════════════════════════════════════════════
+// ДАННЫЕ ВИДЕО (mock)
 // ════════════════════════════════════════════════════════
 const VIDEOS = [
   {
     id: 0, type: 'long',
     title: 'Как набрать 10 000 подписчиков за 3 месяца',
     views: 18400, likes: 1140, comments: 312, shares: 430,
-    ctr: 6.2, retention: 52, velocity: 2100, engagement: 6.2,
+    ctr: 6.2, retention: 52,
+    meta: '18.4K просмотров · 4 дня назад',
   },
   {
     id: 1, type: 'long',
-    title: '5 ошибок новичков на YouTube',
+    title: '5 ошибок новичков на YouTube — полный разбор',
     views: 5820, likes: 181, comments: 44, shares: 67,
-    ctr: 4.1, retention: 38, velocity: 820, engagement: 3.9,
+    ctr: 4.1, retention: 38,
+    meta: '5.8K просмотров · 12 дней назад',
   },
   {
     id: 2, type: 'short',
-    title: '#Shorts — Секрет вирального ролика',
+    title: '#Shorts — Секрет вирального ролика за 60 сек',
     views: 41000, likes: 2100, comments: 310, shares: 890,
-    viewedRatio: 80, swipedRatio: 20, retentionShort: 130, velocityShort: 8400, likeRate: 5.1,
+    viewedRatio: 80, swipedRatio: 20, retentionShort: 130,
+    meta: '41K просмотров · 2 дня назад',
   },
   {
     id: 3, type: 'short',
-    title: '#Shorts — Лайфхак для монтажа',
+    title: '#Shorts — Лайфхак для монтажа которому не учат',
     views: 11200, likes: 360, comments: 48, shares: 120,
-    viewedRatio: 48, swipedRatio: 52, retentionShort: 74, velocityShort: 3200, likeRate: 3.2,
+    viewedRatio: 48, swipedRatio: 52, retentionShort: 74,
+    meta: '11.2K просмотров · 8 дней назад',
   },
   {
     id: 4, type: 'long',
-    title: 'Полный гайд по YouTube SEO 2025',
+    title: 'Полный гайд по YouTube SEO в 2025 году',
     views: 22800, likes: 1780, comments: 490, shares: 720,
-    ctr: 7.8, retention: 61, velocity: 3400, engagement: 9.9,
+    ctr: 7.8, retention: 61,
+    meta: '22.8K просмотров · 21 день назад',
   },
 ];
 
-// ── Состояние ─────────────────────────────────────────
-let curPeriod  = 1;
-let curSimType = 'long';
-let isSimMode  = false;
-let fcChart    = null;
-let vcChart    = null;
+// ── Состояние прогноза ────────────────────────────────
+let curVideo     = null; // выбранное видео или null (симулятор)
+let simMode      = false; // открыт ли симулятор
+let curPeriodKey = null;  // текущий ключ периода
+let fcChart      = null;
+let vcChart      = null;
+
+// Периоды Long-form → количество точек и метки
+const LONG_PERIODS = {
+  '1h':   { pts: 12,  label: '1 час',    unit: '5мин', days: 1/24 },
+  '12h':  { pts: 12,  label: '12 часов', unit: '1ч',   days: 0.5 },
+  '24h':  { pts: 24,  label: '24 часа',  unit: '1ч',   days: 1 },
+  '48h':  { pts: 24,  label: '48 часов', unit: '2ч',   days: 2 },
+  '7d':   { pts: 28,  label: '7 суток',  unit: '6ч',   days: 7 },
+  '15d':  { pts: 30,  label: '15 суток', unit: '12ч',  days: 15 },
+  '24d':  { pts: 24,  label: '24 суток', unit: '1д',   days: 24 },
+  '30d':  { pts: 30,  label: '30 суток', unit: '1д',   days: 30 },
+  '3mo':  { pts: 36,  label: '3 месяца', unit: '2.5д', days: 90 },
+  '6mo':  { pts: 36,  label: '6 месяцев',unit: '5д',   days: 180 },
+  '9mo':  { pts: 36,  label: '9 месяцев',unit: '7.5д', days: 270 },
+  '1y':   { pts: 36,  label: '1 год',    unit: '10д',  days: 365 },
+  '1.5y': { pts: 36,  label: '1.5 года', unit: '15д',  days: 547 },
+  '2y':   { pts: 36,  label: '2 года',   unit: '20д',  days: 730 },
+  '3y':   { pts: 36,  label: '3 года',   unit: '30д',  days: 1095 },
+  '4y':   { pts: 36,  label: '4 года',   unit: '40д',  days: 1460 },
+  '5y':   { pts: 36,  label: '5 лет',    unit: '50д',  days: 1825 },
+};
+
+const SHORT_PERIODS = {
+  '1h':  { pts: 12, label: '1 час',    unit: '5мин', days: 1/24 },
+  '6h':  { pts: 12, label: '6 часов',  unit: '30мин',days: 0.25 },
+  '24h': { pts: 24, label: '24 часа',  unit: '1ч',   days: 1 },
+  '3d':  { pts: 18, label: '3 дня',    unit: '4ч',   days: 3 },
+  '7d':  { pts: 28, label: '7 дней',   unit: '6ч',   days: 7 },
+  '30d': { pts: 30, label: '30 дней',  unit: '1д',   days: 30 },
+};
+
+// ════════════════════════════════════════════════════════
+// СПИСОК ВИДЕО
+// ════════════════════════════════════════════════════════
+function renderVideoList() {
+  const container = document.getElementById('video-list-items');
+  container.innerHTML = VIDEOS.map(v => `
+    <div class="video-item" data-id="${v.id}" onclick="selectVideo(${v.id})">
+      <span class="video-item-icon">${v.type === 'short' ? '⚡' : '📹'}</span>
+      <div class="video-item-info">
+        <div class="video-item-title">${v.title}</div>
+        <div class="video-item-meta">${v.meta}</div>
+      </div>
+      <span class="video-item-badge ${v.type === 'short' ? 'vib-short' : 'vib-long'}">${v.type === 'short' ? 'Shorts' : 'Long-form'}</span>
+    </div>
+  `).join('');
+}
+
+function showVideoList() {
+  document.getElementById('fc-video-list').style.display   = 'block';
+  document.getElementById('fc-facts-screen').style.display = 'none';
+  document.getElementById('fc-sim-screen').style.display   = 'none';
+  curVideo  = null;
+  simMode   = false;
+}
+
+function selectVideo(id) {
+  curVideo = VIDEOS.find(v => v.id === id);
+  if (!curVideo) return;
+
+  document.querySelectorAll('.video-item').forEach(el => {
+    el.classList.toggle('selected', parseInt(el.dataset.id) === id);
+  });
+
+  showFactsScreen(curVideo);
+}
+
+// ════════════════════════════════════════════════════════
+// ЭКРАН ФАКТОВ
+// ════════════════════════════════════════════════════════
+function showFactsScreen(v) {
+  document.getElementById('fc-video-list').style.display   = 'none';
+  document.getElementById('fc-sim-screen').style.display   = 'none';
+  document.getElementById('fc-facts-screen').style.display = 'block';
+
+  document.getElementById('fc-facts-title').textContent = v.title;
+  document.getElementById('fc-facts-meta').textContent  = v.meta + ' · ' + (v.type === 'short' ? '⚡ Shorts' : '📹 Long-form');
+
+  // Основные факты
+  document.getElementById('ff-views').textContent         = fmt(v.views);
+  document.getElementById('ff-likes').textContent         = fmt(v.likes);
+  document.getElementById('ff-likes-sub').textContent     = pctOf(v.likes, v.views) + ' от просмотров';
+  document.getElementById('ff-comments').textContent      = fmt(v.comments);
+  document.getElementById('ff-comments-sub').textContent  = pctOf(v.comments, v.likes) + ' от лайков';
+  document.getElementById('ff-shares').textContent        = fmt(v.shares);
+
+  if (v.type === 'long') {
+    document.getElementById('ff-long-extra').style.display  = 'grid';
+    document.getElementById('ff-swipe-block').style.display = 'none';
+
+    document.getElementById('ff-ctr').textContent       = v.ctr + '%';
+    document.getElementById('ff-ctr-bar').style.width   = Math.min(v.ctr / 15 * 100, 100) + '%';
+    document.getElementById('ff-ret').textContent       = v.retention + '%';
+    document.getElementById('ff-ret-bar').style.width   = v.retention + '%';
+  } else {
+    document.getElementById('ff-long-extra').style.display  = 'none';
+    document.getElementById('ff-swipe-block').style.display = 'block';
+
+    const viewed = v.viewedRatio;
+    const swiped = v.swipedRatio;
+    document.getElementById('ff-swipe-viewed').style.width = viewed + '%';
+    document.getElementById('ff-swipe-swiped').style.width = swiped + '%';
+    document.getElementById('ff-swipe-txt').textContent    = `Посмотрели ${viewed}% / Свайпнули ${swiped}%`;
+  }
+}
+
+document.getElementById('open-sim-from-facts').addEventListener('click', () => {
+  if (curVideo) openSimulator(curVideo);
+});
+
+// ════════════════════════════════════════════════════════
+// СИМУЛЯТОР
+// ════════════════════════════════════════════════════════
+function openSimulator(video) {
+  simMode  = true;
+  curVideo = video;
+
+  document.getElementById('fc-video-list').style.display   = 'none';
+  document.getElementById('fc-facts-screen').style.display = 'none';
+  document.getElementById('fc-sim-screen').style.display   = 'block';
+
+  const type = video ? video.type : 'long'; // по умолчанию long для нового
+
+  document.getElementById('sim-screen-title').textContent = video
+    ? `Симулятор: ${video.title.substring(0, 40)}${video.title.length > 40 ? '…' : ''}`
+    : 'ИИ-Симулятор нового видео';
+
+  document.getElementById('sim-screen-sub').textContent = video
+    ? `${type === 'short' ? 'Shorts' : 'Long-form'} · Двигайте ползунки — ИИ пересчитывает прогноз мгновенно`
+    : 'Канал пустой или хотите смоделировать — задайте параметры';
+
+  // Кнопка назад
+  const backBtn = document.getElementById('sim-back-btn');
+  backBtn.textContent = video ? '← Назад к фактам' : '← Назад к списку';
+  backBtn.onclick = video ? () => showFactsScreen(video) : () => showVideoList();
+
+  // Показ нужных слайдеров и периодов
+  document.getElementById('sim-sliders-long').style.display  = type === 'long'  ? 'block' : 'none';
+  document.getElementById('sim-sliders-short').style.display = type === 'short' ? 'block' : 'none';
+  document.getElementById('period-block-long').style.display  = type === 'long'  ? 'block' : 'none';
+  document.getElementById('period-block-short').style.display = type === 'short' ? 'block' : 'none';
+
+  // Предзаполнение слайдеров реальными данными
+  if (video && type === 'long') {
+    document.getElementById('sli-ctr').value   = video.ctr       || 5;
+    document.getElementById('sli-ret').value   = video.retention || 50;
+    document.getElementById('sli-tempo').value = Math.round(video.views / 7) || 1000;
+  } else if (video && type === 'short') {
+    document.getElementById('sli-sret').value  = video.retentionShort || 80;
+    document.getElementById('sli-sint').value  = Math.round((100 - video.swipedRatio)) || 50;
+    document.getElementById('sli-swipe').value = video.swipedRatio || 30;
+    document.getElementById('sli-swave').value = video.views || 5000;
+  }
+
+  // Выставляем начальный период
+  if (type === 'long') {
+    curPeriodKey = '24h';
+    setActivePeriodTab('long', '24h');
+  } else {
+    curPeriodKey = '24h';
+    setActivePeriodTab('short', '24h');
+  }
+
+  syncSliderLabels(type);
+  onSimChange();
+}
+
+function setActivePeriodTab(type, key) {
+  const containerId = type === 'long' ? 'period-tabs-long' : 'period-tabs-short';
+  const attr        = type === 'long' ? 'data-pl' : 'data-ps';
+  document.querySelectorAll(`#${containerId} .period-tab`).forEach(t => {
+    t.classList.toggle('active', t.getAttribute(attr) === key);
+  });
+}
+
+// Period tab click handlers
+document.getElementById('period-tabs-long').addEventListener('click', e => {
+  const btn = e.target.closest('.period-tab');
+  if (!btn) return;
+  const key = btn.getAttribute('data-pl');
+  if (!key) return;
+  curPeriodKey = key;
+  setActivePeriodTab('long', key);
+  onSimChange();
+});
+
+document.getElementById('period-tabs-short').addEventListener('click', e => {
+  const btn = e.target.closest('.period-tab');
+  if (!btn) return;
+  const key = btn.getAttribute('data-ps');
+  if (!key) return;
+  curPeriodKey = key;
+  setActivePeriodTab('short', key);
+  onSimChange();
+});
+
+// ── Синхронизация лейблов слайдеров ──────────────────
+function syncSliderLabels(type) {
+  if (type === 'long') {
+    const ctr   = parseFloat(document.getElementById('sli-ctr').value);
+    const ret   = parseFloat(document.getElementById('sli-ret').value);
+    const tempo = parseFloat(document.getElementById('sli-tempo').value);
+    document.getElementById('slv-ctr').textContent   = ctr.toFixed(1) + '%';
+    document.getElementById('slv-ret').textContent   = ret + '%';
+    document.getElementById('slv-tempo').textContent = fmt(tempo) + ' / сут';
+  } else {
+    const sret  = parseFloat(document.getElementById('sli-sret').value);
+    const sint  = parseFloat(document.getElementById('sli-sint').value);
+    const swipe = parseFloat(document.getElementById('sli-swipe').value);
+    const swave = parseFloat(document.getElementById('sli-swave').value);
+    document.getElementById('slv-sret').textContent  = sret + '%';
+    document.getElementById('slv-sint').textContent  = sint + '%';
+    document.getElementById('slv-swipe').textContent = swipe + '%';
+    document.getElementById('slv-swave').textContent = fmt(swave);
+  }
+}
+
+// ── Главная функция при изменении слайдеров/периода ──
+function onSimChange() {
+  if (!simMode) return;
+  const type = getSimType();
+  syncSliderLabels(type);
+  const params = getSimParams(type);
+  renderSimulator(params, type);
+}
+
+function getSimType() {
+  if (curVideo) return curVideo.type;
+  return 'long'; // симулятор нового видео — long по умолчанию
+}
+
+function getSimParams(type) {
+  if (type === 'long') {
+    return {
+      ctr:   parseFloat(document.getElementById('sli-ctr').value)   || 5,
+      ret:   parseFloat(document.getElementById('sli-ret').value)    || 50,
+      tempo: parseFloat(document.getElementById('sli-tempo').value)  || 1000,
+    };
+  } else {
+    return {
+      sret:  parseFloat(document.getElementById('sli-sret').value)  || 80,
+      sint:  parseFloat(document.getElementById('sli-sint').value)   || 50,
+      swipe: parseFloat(document.getElementById('sli-swipe').value)  || 30,
+      swave: parseFloat(document.getElementById('sli-swave').value)  || 5000,
+    };
+  }
+}
 
 // ════════════════════════════════════════════════════════
 // SCORE
 // ════════════════════════════════════════════════════════
-function scoreLong(ctr, retention, velocity, engagement, shares) {
-  const c = parseFloat(ctr)       || 0;
-  const r = parseFloat(retention) || 0;
-  const v = parseFloat(velocity)  || 0;
-  const e = parseFloat(engagement)|| 0;
-  const s = parseFloat(shares)    || 0;
-  const score =
-    Math.min((c  / 10)   * 30, 30) +
-    Math.min((r  / 70)   * 25, 25) +
-    Math.min((v  / 5000) * 25, 25) +
-    Math.min((e  / 12)   * 15, 15) +
-    Math.min((s  / 1500) * 5,  5);
-  return Math.min(Math.round(score), 100);
-}
-
-function scoreShort(viewedRatio, retentionShort, velocityShort, likeRate) {
-  const vr = parseFloat(viewedRatio)    || 0;
-  const rs = parseFloat(retentionShort) || 0;
-  const vs = parseFloat(velocityShort)  || 0;
-  const lr = parseFloat(likeRate)       || 0;
-  const score =
-    Math.min((vr / 90)    * 35, 35) +
-    Math.min((rs / 140)   * 30, 30) +
-    Math.min((vs / 20000) * 20, 20) +
-    Math.min((lr / 12)    * 15, 15);
-  return Math.min(Math.round(score), 100);
+function calcScore(params, type) {
+  if (type === 'long') {
+    const { ctr, ret, tempo } = params;
+    const s =
+      Math.min((ctr  / 10)    * 35, 35) +
+      Math.min((ret  / 80)    * 35, 35) +
+      Math.min((tempo/ 20000) * 30, 30);
+    return Math.min(Math.round(s), 100);
+  } else {
+    const { sret, sint, swipe, swave } = params;
+    const viewedPct = 100 - swipe;
+    const s =
+      Math.min((sret   / 150)   * 30, 30) +
+      Math.min((viewedPct / 85) * 30, 30) +
+      Math.min((sint   / 80)    * 20, 20) +
+      Math.min((swave  / 50000) * 20, 20);
+    return Math.min(Math.round(s), 100);
+  }
 }
 
 function scoreStyle(s) {
-  if (s >= 78) return { color: '#39ff9a', label: 'Отличный потенциал 🚀' };
-  if (s >= 55) return { color: '#e8ff47', label: 'Хороший потенциал' };
-  if (s >= 35) return { color: '#ff9f47', label: 'Средний потенциал' };
-  return              { color: '#ff4757', label: 'Слабый потенциал' };
+  if (s >= 78) return { color: 'var(--green)',  label: 'Отличный потенциал 🚀' };
+  if (s >= 55) return { color: 'var(--accent)', label: 'Хороший потенциал' };
+  if (s >= 35) return { color: 'var(--orange)', label: 'Средний потенциал' };
+  return              { color: 'var(--red)',    label: 'Слабый потенциал' };
 }
 
 // ════════════════════════════════════════════════════════
-// ПРОГНОЗ ВОЛН
+// ВОЛНЫ
 // ════════════════════════════════════════════════════════
-function projectWaves(params, period, type) {
+function calcWaves(params, type, periodKey) {
+  const pObj = type === 'long' ? LONG_PERIODS[periodKey] : SHORT_PERIODS[periodKey];
+  const days = pObj ? pObj.days : 1;
+
   if (type === 'long') {
-    const { ctr, retention, velocity, engagement, shares, baseViews } = params;
-    const q = Math.max(0.05, (ctr / 5) * (retention / 50) * (velocity / 1000));
-    const eBoost = 1 + Math.min(engagement / 12, 0.5);
-    const sBoost = 1 + Math.min((shares || 0) / 2000, 0.4);
-    const base   = baseViews || velocity * 8;
-    const w1 = Math.round(base * 0.10 * Math.min(period, 1));
-    const w2 = Math.round(base * 0.40 * Math.min(period / 3, 1) * q * eBoost);
-    const w3 = Math.round(base * 0.50 * Math.min(period / 7, 1) * q * sBoost);
-    return { w1: Math.max(w1, 10), w2: Math.max(w2, 10), w3: Math.max(w3, 10) };
+    const { ctr, ret, tempo } = params;
+    const q = Math.max(0.05, (ctr / 5) * (ret / 50));
+    // Long-form: вечнозелёный контент растёт медленно, но долго
+    const w1 = Math.round(tempo * Math.min(days, 1) * q);
+    const w2 = Math.round(tempo * Math.min(days / 3, 3) * q * 1.5);
+    // Долгий хвост нарастает нелинейно
+    const longTailFactor = days > 30 ? Math.pow(days / 30, 0.6) : days / 30;
+    const w3 = Math.round(tempo * longTailFactor * q * 0.8);
+    return {
+      w1: Math.max(w1, 10),
+      w2: Math.max(w2, 10),
+      w3: Math.max(w3, 10),
+    };
   } else {
-    const { viewedRatio, retentionShort, velocityShort, likeRate, baseViews } = params;
-    const q    = Math.max(0.05, (viewedRatio / 70) * (retentionShort / 100));
-    const base = baseViews || velocityShort * 6;
-    const w1   = Math.round(base * 0.20 * Math.min(period, 1));
-    const w2   = Math.round(base * 0.50 * Math.min(period / 1, 1) * q);
-    const w3   = Math.round(base * 0.30 * Math.min(period / 3, 1) * q);
-    return { w1: Math.max(w1, 10), w2: Math.max(w2, 10), w3: Math.max(w3, 10) };
+    const { sret, sint, swipe, swave } = params;
+    const viewedPct = 100 - swipe;
+    const q = Math.max(0.05, (viewedPct / 70) * (sret / 100));
+    const w1 = Math.round(swave * Math.min(days, 1));
+    const w2 = Math.round(swave * Math.min(days * 3, 5) * q * (sint / 50));
+    const w3 = Math.round(swave * Math.min(days / 3, 4) * q);
+    return {
+      w1: Math.max(w1, 10),
+      w2: Math.max(w2, 10),
+      w3: Math.max(w3, 10),
+    };
   }
 }
 
 // ════════════════════════════════════════════════════════
 // ИИ-ВЕРДИКТ
 // ════════════════════════════════════════════════════════
-function buildVerdict(params, score, waves, period, type) {
-  const pLabel = period === 1 ? '24 часа' : period === 3 ? '3 дня' : period === 7 ? '7 дней' : '30 дней';
+function buildVerdict(params, score, waves, type, periodKey) {
+  const pObj   = type === 'long' ? LONG_PERIODS[periodKey] : SHORT_PERIODS[periodKey];
+  const pLabel = pObj ? pObj.label : '—';
 
   if (type === 'long') {
-    const { ctr, retention, velocity, engagement, shares } = params;
-    const ctrInfo  = ctr >= 6   ? `высокий CTR ${ctr}% — превью и заголовок работают отлично`
-                   : ctr >= 4   ? `средний CTR ${ctr}% — есть потенциал для роста`
+    const { ctr, ret, tempo } = params;
+    const ctrInfo  = ctr >= 7   ? `высокий CTR ${ctr}% — превью и заголовок цепляют`
+                   : ctr >= 4.5 ? `хороший CTR ${ctr}%`
                                 : `низкий CTR ${ctr}% — превью нужно переработать`;
-    const retInfo  = retention >= 60 ? `сильное удержание ${retention}% — зрители смотрят большую часть`
-                   : retention >= 40  ? `нормальное удержание ${retention}%`
-                                      : `слабое удержание ${retention}% — зрители уходят рано`;
-    const shrInfo  = (shares || 0) > 500 ? ` Высокая вирусность: ${fmt(shares)} репостов — ролик расходится за пределы YouTube.` : '';
-    const loopInfo = retention > 70 ? ` Удержание выше 70% намекает на цикличный контент — зрители пересматривают ключевые моменты.` : '';
-    const predict  = score >= 55
-      ? ` Мой прогноз: через ${pLabel} ролик выйдет на вторую волну Browse Features и наберёт ~${fmt(waves.w2)} просмотров.`
-      : ` Для второй волны нужно улучшить удержание выше 45% и CTR выше 4%.`;
-
-    return `Ролик показывает ${ctrInfo} и ${retInfo}.${shrInfo}${loopInfo}${predict}`;
-  } else {
-    const { viewedRatio, swipedRatio, retentionShort, velocityShort } = params;
-    const loopInfo = retentionShort > 100
-      ? ` Удержание ${retentionShort}% означает, что каждый зритель пересматривает ролик в среднем ${(retentionShort / 100).toFixed(1)} раза — мощнейший сигнал зациклённости (loop) для алгоритма.`
+    const retInfo  = ret >= 60  ? `сильное удержание ${ret}% — зрители смотрят большую часть`
+                   : ret >= 40  ? `нормальное удержание ${ret}%`
+                                : `слабое удержание ${ret}% — зрители уходят слишком рано`;
+    const evergreenNote = periodKey && LONG_PERIODS[periodKey] && LONG_PERIODS[periodKey].days >= 90
+      ? ` За ${pLabel} "вечнозелёный" контент с таким CTR может накопить до ${fmt(waves.w1 + waves.w2 + waves.w3)} суммарных просмотров.`
       : '';
-    const viewInfo = viewedRatio >= 70
-      ? `${viewedRatio}% зрителей досматривают Short до конца`
-      : `Только ${viewedRatio}% досматривают, ${swipedRatio || (100 - viewedRatio)}% свайпают — нужно переработать первые 2 секунды`;
-    const predict  = score >= 55
-      ? ` Первая волна активна (${fmt(velocityShort)}/ч). Прогноз: через ${pLabel} ролик выстрелит на второй волне до ~${fmt(waves.w2)} просмотров.`
-      : ` Для вирусного роста нужен viewedRatio выше 70%.`;
-
-    return `${viewInfo}.${loopInfo}${predict}`;
+    const predict = score >= 55
+      ? ` Прогноз на ${pLabel}: первая волна ~${fmt(waves.w1)} → рекомендации ~${fmt(waves.w2)} → долгий хвост ~${fmt(waves.w3)}.`
+      : ` Для попадания в рекомендации нужно удержание выше 45% и CTR выше 4.5%.`;
+    return `Ролик показывает ${ctrInfo} и ${retInfo}.${predict}${evergreenNote}`;
+  } else {
+    const { sret, sint, swipe, swave } = params;
+    const viewedPct = 100 - swipe;
+    const loopNote  = sret > 100
+      ? ` Удержание ${sret}% — зрители пересматривают в среднем ${(sret / 100).toFixed(1)} раза (луп). Это мощнейший сигнал для алгоритма Shorts.`
+      : '';
+    const swipeNote = viewedPct >= 70
+      ? `${viewedPct}% досматривают до конца — алгоритм активно продвигает в Feed.`
+      : `Только ${viewedPct}% досматривают. Нужно улучшить первые 2–3 секунды.`;
+    const predict   = score >= 55
+      ? ` За ${pLabel}: запуск ~${fmt(waves.w1)} → Feed ~${fmt(waves.w2)} → хвост ~${fmt(waves.w3)}.`
+      : ` Для вирусного распространения нужен viewedRatio выше 70%.`;
+    return `${swipeNote}${loopNote}${predict}`;
   }
 }
 
 // ════════════════════════════════════════════════════════
 // СЕКРЕТЫ УСПЕХА
 // ════════════════════════════════════════════════════════
-function buildSecrets(params, score, type) {
+function buildSecrets(params, score, type, periodKey) {
   const items = [];
 
   if (type === 'long') {
-    const { ctr, retention, velocity, engagement, shares, likes, comments, views } = params;
+    const { ctr, ret, tempo } = params;
+    const pObj = LONG_PERIODS[periodKey];
+    const isLong = pObj && pObj.days >= 90;
 
     if (ctr >= 6)
-      items.push({ icon: '🎯', text: `<strong>CTR ${ctr}%</strong> — значительно выше нормы (4–5%). Превью и заголовок мгновенно захватывают внимание: кликают гораздо чаще конкурентов.` });
-    else if (ctr < 4)
-      items.push({ icon: '⚠️', text: `<strong>CTR ${ctr}%</strong> — ниже нормы. Именно это тормозит рост: алгоритм видит низкий интерес и сокращает показы. Смените превью.` });
-
-    if (retention >= 55)
-      items.push({ icon: '⏱', text: `<strong>Удержание ${retention}%</strong> — зрители смотрят больше половины ролика. Это главный сигнал для продвижения в Suggested Videos и Browse Features.` });
+      items.push({ icon: '🎯', text: `<strong>CTR ${ctr}%</strong> — выше нормы (4–5%). Превью и заголовок мгновенно захватывают внимание: алгоритм видит высокий интерес и увеличивает показы.` });
     else
-      items.push({ icon: '⚠️', text: `<strong>Удержание ${retention}%</strong> — зрители уходят до середины. Проверьте первые 30 секунд и добавьте "крючок" в начало.` });
+      items.push({ icon: '⚠️', text: `<strong>CTR ${ctr}%</strong> — ниже нормы. Смените превью или заголовок: именно это тормозит рост показов алгоритмом.` });
 
-    if (retention > 70)
-      items.push({ icon: '🔄', text: `<strong>Цикличный контент</strong> — высокое удержание ${retention}% говорит о том, что зрители возвращаются к ключевым моментам. Это защищает ролик от "смерти" алгоритма.` });
+    if (ret >= 55)
+      items.push({ icon: '⏱', text: `<strong>Удержание ${ret}%</strong> — зрители смотрят больше половины. Это главный сигнал для попадания в Suggested Videos.` });
+    else
+      items.push({ icon: '⚠️', text: `<strong>Удержание ${ret}%</strong> — зрители уходят до середины. Добавьте сильный "крючок" в первые 30 секунд и пообещайте ценность в начале.` });
 
-    if ((shares || 0) > 400)
-      items.push({ icon: '📤', text: `<strong>${fmt(shares)} репостов</strong> — ролик активно распространяется вне YouTube. Это ускоряет попадание в тренды и увеличивает внешний трафик.` });
+    if (isLong)
+      items.push({ icon: '🌱', text: `<strong>Вечнозелёный контент</strong> — на горизонте ${pObj.label} этот ролик продолжает получать просмотры из поиска и рекомендаций, не теряя актуальности. CTR + Удержание определяют его "срок жизни".` });
 
-    const commLike = views ? (comments / likes) : 0;
-    if (commLike > 0.2)
-      items.push({ icon: '💬', text: `<strong>Высокое соотношение комментариев (${(commLike * 100).toFixed(0)}% от лайков)</strong> — аудитория не просто смотрит, а обсуждает. Алгоритм засчитывает это как максимальную вовлечённость.` });
-
-    if (velocity >= 2000)
-      items.push({ icon: '🚀', text: `<strong>Скорость роста ${fmt(velocity)}/ч</strong> в первые часы — это выше порогового значения для выхода в Browse Features. Алгоритм уже заметил ролик.` });
+    if (tempo >= 5000)
+      items.push({ icon: '🚀', text: `<strong>Начальный темп ${fmt(tempo)}/сут</strong> — быстрый старт. Алгоритм YouTube оценивает первые 24–48 часов для принятия решения о масштабировании.` });
 
   } else {
-    const { viewedRatio, swipedRatio, retentionShort, velocityShort, likeRate } = params;
+    const { sret, sint, swipe, swave } = params;
+    const viewedPct = 100 - swipe;
 
-    if (viewedRatio >= 75)
-      items.push({ icon: '✅', text: `<strong>${viewedRatio}% зрителей досматривают ролик до конца</strong> — исключительный результат для Shorts. Алгоритм активно распространяет ролик в Shorts Feed.` });
-    else if ((swipedRatio || (100 - viewedRatio)) > 50)
-      items.push({ icon: '⚠️', text: `<strong>${swipedRatio || (100 - viewedRatio)}% свайпают ролик</strong> — большинство уходит. Главная проблема: первые 2–3 секунды недостаточно цепляют.` });
+    if (sret > 100)
+      items.push({ icon: '🔄', text: `<strong>Удержание ${sret}%</strong> — зрители пересматривают ролик в среднем ${(sret / 100).toFixed(1)} раза. Это циклический луп (loop) — сильнейший сигнал для алгоритма Shorts Feed.` });
+    else if (sret >= 80)
+      items.push({ icon: '✅', text: `<strong>Удержание ${sret}%</strong> — большинство досматривает до конца. Алгоритм расценивает это как качественный контент.` });
+    else
+      items.push({ icon: '⚠️', text: `<strong>Удержание ${sret}%</strong> — зрители уходят раньше конца. Переработайте первые 2 секунды: именно они удерживают или теряют аудиторию.` });
 
-    if (retentionShort > 100)
-      items.push({ icon: '🔄', text: `<strong>Удержание ${retentionShort}%</strong> — зрители пересматривают ролик в среднем ${(retentionShort / 100).toFixed(1)} раза. Это циклический луп (loop) — мощнейший сигнал для алгоритма Shorts.` });
+    if (viewedPct >= 75)
+      items.push({ icon: '✅', text: `<strong>${viewedPct}% досматривают</strong> — высокий показатель. Shorts Feed активно распространяет ролик новой аудитории.` });
+    else
+      items.push({ icon: '⚠️', text: `<strong>${swipe}% свайпают</strong> — слишком много. Добавьте динамику или текстовый крючок в самое начало видео.` });
 
-    if (likeRate >= 5)
-      items.push({ icon: '👍', text: `<strong>Лайк-рейт ${likeRate}%</strong> — выше нормы (4%). Высокая кнопка "лайк" ускоряет распространение в Shorts Feed.` });
+    if (sint >= 60)
+      items.push({ icon: '💡', text: `<strong>Заинтересованность ${sint}%</strong> — аудитория вовлечена. Высокий процент заинтересованных зрителей ускоряет попадание в рекомендуемые.` });
 
-    if (velocityShort >= 5000)
-      items.push({ icon: '⚡', text: `<strong>${fmt(velocityShort)} просмотров за первый час</strong> — быстрый старт. Алгоритм Shorts оценивает именно первые часы для решения о массовом продвижении.` });
+    if (swave >= 10000)
+      items.push({ icon: '⚡', text: `<strong>${fmt(swave)} просмотров в первой волне</strong> — мощный старт. Алгоритм Shorts оценивает стартовую скорость для решения о масштабировании.` });
   }
 
   if (items.length === 0)
-    items.push({ icon: '📊', text: 'Метрики в пределах нормы. Для улучшения прогноза сосредоточьтесь на первых 30 секундах видео и качестве превью.' });
+    items.push({ icon: '📊', text: 'Метрики в норме. Для улучшения прогноза работайте над первыми секундами видео и качеством превью.' });
 
   return items;
 }
 
 // ════════════════════════════════════════════════════════
-// ОБНОВЛЕНИЕ UI ПРОГНОЗА
+// РЕНДЕР СИМУЛЯТОРА
 // ════════════════════════════════════════════════════════
-function renderForecast(params, type) {
-  const period = curPeriod;
+function renderSimulator(params, type) {
+  const periodKey = curPeriodKey || (type === 'long' ? '24h' : '24h');
+  const score  = calcScore(params, type);
+  const ss     = scoreStyle(score);
+  const waves  = calcWaves(params, type, periodKey);
+  const pObj   = type === 'long' ? LONG_PERIODS[periodKey] : SHORT_PERIODS[periodKey];
 
   // Score
-  let score;
-  if (type === 'long') {
-    score = scoreLong(params.ctr, params.retention, params.velocity, params.engagement, params.shares);
-  } else {
-    score = scoreShort(params.viewedRatio, params.retentionShort, params.velocityShort, params.likeRate);
-  }
-
-  const ss     = scoreStyle(score);
   const circ   = 245;
   const offset = circ - (score / 100) * circ;
-
   document.getElementById('score-num').textContent              = score;
   document.getElementById('score-circle').style.stroke         = ss.color;
   document.getElementById('score-circle').style.strokeDashoffset = offset;
   document.getElementById('score-title').textContent           = ss.label;
-
-  // Волны
-  const waves = projectWaves(params, period, type);
-  const pLabel = period === 1 ? 'за 1 день' : `за ${period} дней`;
-
-  document.getElementById('w1-val').textContent = fmt(waves.w1);
-  document.getElementById('w2-val').textContent = fmt(waves.w2);
-  document.getElementById('w3-val').textContent = fmt(waves.w3);
-  document.getElementById('w1-sub').textContent = type === 'long' ? 'подписчики (1-я волна)' : 'Shorts Feed — первый час';
-  document.getElementById('w2-sub').textContent = type === 'long' ? 'Browse Features' : `Shorts Feed ${pLabel}`;
-  document.getElementById('w3-sub').textContent = `Suggested ${pLabel}`;
-
-  const setWB = (id, score, good, ok) => {
-    const el = document.getElementById(id);
-    if (score >= good)      { el.textContent = '✓ Запущена'; el.className = 'wave-badge wb-good'; }
-    else if (score >= ok)   { el.textContent = '↗ В процессе'; el.className = 'wave-badge wb-ok'; }
-    else                    { el.textContent = '⏳ Прогноз'; el.className = 'wave-badge wb-warn'; }
-  };
-
-  setWB('w1-badge', score, 40, 25);
-  setWB('w2-badge', score, 60, 40);
-  setWB('w3-badge', score, 75, 55);
-
-  // Вердикт
-  document.getElementById('score-desc').textContent = buildVerdict(params, score, waves, period, type);
+  document.getElementById('score-desc').textContent            = buildVerdict(params, score, waves, type, periodKey);
 
   // Теги
   let tags = [];
   if (type === 'long') {
     tags.push({ c: params.ctr >= 5 ? 'green' : 'red',    t: `CTR ${params.ctr}%` });
-    tags.push({ c: params.retention >= 50 ? 'blue' : 'orange', t: `Удержание ${params.retention}%` });
-    tags.push({ c: params.velocity >= 1000 ? 'green' : 'orange', t: `+${fmt(params.velocity)}/ч` });
-    if ((params.shares || 0) > 200) tags.push({ c: 'yellow', t: `${fmt(params.shares)} репостов` });
+    tags.push({ c: params.ret >= 50 ? 'blue' : 'orange', t: `Удержание ${params.ret}%` });
+    tags.push({ c: params.tempo >= 2000 ? 'green' : 'yellow', t: `Темп ${fmt(params.tempo)}/сут` });
   } else {
-    tags.push({ c: params.viewedRatio >= 70 ? 'green' : 'red', t: `${params.viewedRatio}% досмотрели` });
-    tags.push({ c: params.retentionShort > 100 ? 'green' : 'blue', t: `Удержание ${params.retentionShort}%` });
-    tags.push({ c: params.likeRate >= 4 ? 'yellow' : 'orange', t: `Лайки ${params.likeRate}%` });
+    const vp = 100 - params.swipe;
+    tags.push({ c: params.sret > 100 ? 'green' : params.sret >= 70 ? 'blue' : 'orange', t: `Удержание ${params.sret}%` });
+    tags.push({ c: vp >= 70 ? 'green' : 'red', t: `Досмотрели ${vp}%` });
+    tags.push({ c: params.sint >= 50 ? 'yellow' : 'orange', t: `Интерес ${params.sint}%` });
   }
 
   document.getElementById('score-tags').innerHTML =
     tags.map(t => `<span class="stag ${t.c}">${t.t}</span>`).join('');
 
+  // Волны
+  document.getElementById('w1-val').textContent = fmt(waves.w1);
+  document.getElementById('w2-val').textContent = fmt(waves.w2);
+  document.getElementById('w3-val').textContent = fmt(waves.w3);
+
+  const pLabel = pObj ? pObj.label : '—';
+  document.getElementById('w1-sub').textContent = type === 'long' ? 'начальный запуск' : 'Shorts Feed — старт';
+  document.getElementById('w2-sub').textContent = type === 'long' ? `рекомендации (${pLabel})` : `Feed (${pLabel})`;
+  document.getElementById('w3-sub').textContent = `долгий хвост (${pLabel})`;
+
+  const setWB = (id, score, g, ok) => {
+    const el = document.getElementById(id);
+    if (score >= g)      { el.textContent = '✓ Сильная'; el.className = 'wave-badge wb-good'; }
+    else if (score >= ok){ el.textContent = '↗ Средняя'; el.className = 'wave-badge wb-ok'; }
+    else                 { el.textContent = '⏳ Слабая';  el.className = 'wave-badge wb-warn'; }
+  };
+
+  setWB('w1-badge', score, 50, 30);
+  setWB('w2-badge', score, 60, 40);
+  setWB('w3-badge', score, 75, 55);
+
   // Секреты
-  const secrets = buildSecrets(params, score, type);
+  const secrets = buildSecrets(params, score, type, periodKey);
   document.getElementById('secret-items').innerHTML =
     secrets.map(s => `
       <div class="secret-item">
@@ -1242,53 +1780,71 @@ function renderForecast(params, type) {
     `).join('');
 
   // График
-  buildForecastChart(params, period, type);
+  document.getElementById('fc-chart-sub').textContent = `${pLabel} · Горизонт прогноза`;
+  buildForecastChart(params, type, periodKey);
 }
 
 // ════════════════════════════════════════════════════════
 // ГРАФИК
 // ════════════════════════════════════════════════════════
-function buildForecastChart(params, period, type) {
-  const pts     = period === 1 ? 24 : period === 3 ? 36 : period === 7 ? 28 : 30;
-  const splitAt = Math.floor(pts * 0.35);
-  const labels  = [], actual = [], forecast = [];
+function buildForecastChart(params, type, periodKey) {
+  const pObj   = type === 'long' ? LONG_PERIODS[periodKey] : SHORT_PERIODS[periodKey];
+  const pts    = pObj ? pObj.pts : 24;
+  const days   = pObj ? pObj.days : 1;
+  const labels = Array.from({ length: pts }, (_, i) => {
+    if (!pObj) return `${i}`;
+    if (days < 1)        return `${Math.round(i * days / pts * 60 * (days >= 0.5 ? 60 : 1))}${days < 0.3 ? 'мин' : 'ч'}`;
+    if (days <= 3)       return `${Math.round(i * days * 24 / pts)}ч`;
+    if (days <= 60)      return `Д${Math.round(i * days / pts) + 1}`;
+    if (days <= 400)     return `М${Math.ceil(i * days / pts / 30) || 1}`;
+    return `Г${(i * days / pts / 365).toFixed(1)}`;
+  });
 
-  const baseViews = type === 'long'
-    ? (params.baseViews || params.velocity * 8 || 5000)
-    : (params.baseViews || params.velocityShort * 6 || 30000);
+  const splitAt = Math.floor(pts * 0.3);
+  const actual  = [];
+  const forecast = [];
 
-  const q = type === 'long'
-    ? Math.max(0.05, ((params.ctr || 5) / 5) * ((params.retention || 50) / 50))
-    : Math.max(0.05, ((params.viewedRatio || 65) / 70) * ((params.retentionShort || 80) / 100));
+  const qBase = type === 'long'
+    ? Math.max(0.05, (params.ctr / 5) * (params.ret / 50))
+    : Math.max(0.05, ((100 - params.swipe) / 70) * (params.sret / 100));
+
+  const baseScale = type === 'long' ? params.tempo : params.swave;
 
   for (let i = 0; i < pts; i++) {
-    labels.push(
-      period === 1  ? `${i}ч` :
-      period === 3  ? `${Math.floor(i * 2)}ч` :
-      period === 7  ? `Д${Math.floor(i / 4) + 1}` : `Д${i + 1}`
-    );
-
     const t = i / pts;
-    const peak = 0.22;
-    const curve = t <= peak
-      ? Math.pow(t / peak, 1.5)
-      : Math.exp(-(t - peak) * 3.8) * 0.85 + 0.08;
+    const peak = type === 'long' ? 0.15 : 0.25;
 
-    const noise = 1 + (Math.random() - 0.5) * 0.13;
-    const val   = Math.max(0, Math.round(baseViews * q * curve * noise));
+    let curve;
+    if (type === 'long') {
+      // Long-form: быстрый старт, затем медленный долгий хвост
+      if (t <= peak)     curve = Math.pow(t / peak, 1.2);
+      else if (days > 30) {
+        // Вечнозелёный: медленно спадает и поддерживается поиском
+        curve = Math.exp(-(t - peak) * 1.5) * 0.6 + 0.25 * Math.sin(t * Math.PI * 2) * 0.1 + 0.2;
+      } else {
+        curve = Math.exp(-(t - peak) * 4) * 0.9 + 0.08;
+      }
+    } else {
+      // Shorts: вертикальный рост, быстрый спад
+      if (t <= peak) curve = Math.pow(t / peak, 1.8);
+      else           curve = Math.exp(-(t - peak) * 5) * 0.95 + 0.04;
+    }
 
-    if (i <= splitAt) { actual.push(val); forecast.push(null); }
-    else               { actual.push(null); forecast.push(Math.max(0, Math.round(val * (0.88 + Math.random() * 0.24)))); }
+    const noise = 1 + (Math.random() - 0.5) * 0.14;
+    const val   = Math.max(0, Math.round(baseScale * qBase * curve * noise));
+
+    if (i <= splitAt) { actual.push(val);   forecast.push(null); }
+    else               { actual.push(null);  forecast.push(Math.max(0, Math.round(val * (0.88 + Math.random() * 0.24)))); }
   }
 
   const ctx = document.getElementById('forecastChart').getContext('2d');
   if (fcChart) { fcChart.destroy(); fcChart = null; }
 
-  const gA = ctx.createLinearGradient(0, 0, 0, 240);
+  const gA = ctx.createLinearGradient(0, 0, 0, 220);
   gA.addColorStop(0, 'rgba(232,255,71,0.18)');
   gA.addColorStop(1, 'rgba(232,255,71,0)');
 
-  const gF = ctx.createLinearGradient(0, 0, 0, 240);
+  const gF = ctx.createLinearGradient(0, 0, 0, 220);
   gF.addColorStop(0, 'rgba(71,200,255,0.14)');
   gF.addColorStop(1, 'rgba(71,200,255,0)');
 
@@ -1317,228 +1873,6 @@ function buildForecastChart(params, period, type) {
 }
 
 // ════════════════════════════════════════════════════════
-// ОБРАБОТКА СЛАЙДЕРОВ — РЕАЛЬНОЕ ВИДЕО
-// ════════════════════════════════════════════════════════
-function getSliderParams(type) {
-  if (type === 'long') {
-    return {
-      ctr:        parseFloat(document.getElementById('si-ctr').value)  || 5,
-      retention:  parseFloat(document.getElementById('si-ret').value)  || 50,
-      velocity:   parseFloat(document.getElementById('si-vel').value)  || 1000,
-      engagement: parseFloat(document.getElementById('si-eng').value)  || 4,
-    };
-  } else {
-    return {
-      viewedRatio:    parseFloat(document.getElementById('si-viewed').value) || 65,
-      swipedRatio:    parseFloat(document.getElementById('si-swiped').value) || 35,
-      retentionShort: parseFloat(document.getElementById('si-sret').value)   || 80,
-      velocityShort:  parseFloat(document.getElementById('si-svel').value)   || 5000,
-      likeRate:       4,
-    };
-  }
-}
-
-function syncSliderLabels(type, video) {
-  if (type === 'long') {
-    document.getElementById('si-ctr').value  = video.ctr        || 5;
-    document.getElementById('si-ret').value  = video.retention  || 50;
-    document.getElementById('si-vel').value  = video.velocity   || 1000;
-    document.getElementById('si-eng').value  = video.engagement || 4;
-    document.getElementById('sv-ctr').textContent  = (video.ctr        || 5) + '%';
-    document.getElementById('sv-ret').textContent  = (video.retention  || 50) + '%';
-    document.getElementById('sv-vel').textContent  = parseInt(video.velocity   || 1000).toLocaleString('ru');
-    document.getElementById('sv-eng').textContent  = (video.engagement || 4) + '%';
-    document.getElementById('sliders-long').style.display  = 'grid';
-    document.getElementById('sliders-short').style.display = 'none';
-  } else {
-    document.getElementById('si-viewed').value = video.viewedRatio    || 65;
-    document.getElementById('si-swiped').value = video.swipedRatio    || 35;
-    document.getElementById('si-sret').value   = video.retentionShort || 80;
-    document.getElementById('si-svel').value   = video.velocityShort  || 5000;
-    document.getElementById('sv-viewed').textContent = (video.viewedRatio    || 65) + '%';
-    document.getElementById('sv-swiped').textContent = (video.swipedRatio    || 35) + '%';
-    document.getElementById('sv-sret').textContent   = (video.retentionShort || 80) + '%';
-    document.getElementById('sv-svel').textContent   = parseInt(video.velocityShort || 5000).toLocaleString('ru');
-    document.getElementById('sliders-long').style.display  = 'none';
-    document.getElementById('sliders-short').style.display = 'grid';
-  }
-}
-
-function onSlide() {
-  if (isSimMode) return;
-  const sel   = document.getElementById('video-select').value;
-  const video = VIDEOS[parseInt(sel)];
-  if (!video) return;
-  const type   = video.type;
-  const params = { ...video, ...getSliderParams(type) };
-
-  // Обновляем лейблы
-  if (type === 'long') {
-    document.getElementById('sv-ctr').textContent  = parseFloat(document.getElementById('si-ctr').value).toFixed(1) + '%';
-    document.getElementById('sv-ret').textContent  = document.getElementById('si-ret').value + '%';
-    document.getElementById('sv-vel').textContent  = parseInt(document.getElementById('si-vel').value).toLocaleString('ru');
-    document.getElementById('sv-eng').textContent  = parseFloat(document.getElementById('si-eng').value).toFixed(1) + '%';
-  } else {
-    document.getElementById('sv-viewed').textContent = document.getElementById('si-viewed').value + '%';
-    document.getElementById('sv-swiped').textContent = document.getElementById('si-swiped').value + '%';
-    document.getElementById('sv-sret').textContent   = document.getElementById('si-sret').value + '%';
-    document.getElementById('sv-svel').textContent   = parseInt(document.getElementById('si-svel').value).toLocaleString('ru');
-    // обновляем swipe bar live
-    const v = parseInt(document.getElementById('si-viewed').value);
-    const s = parseInt(document.getElementById('si-swiped').value);
-    document.getElementById('swipe-viewed-bar').style.width = v + '%';
-    document.getElementById('swipe-swiped-bar').style.width = s + '%';
-    document.getElementById('swipe-pct-txt').textContent    = `${v}% / ${s}%`;
-  }
-
-  renderForecast(params, type);
-}
-
-// ════════════════════════════════════════════════════════
-// СИМУЛЯТОР НОВОГО ВИДЕО
-// ════════════════════════════════════════════════════════
-function getSimParams() {
-  if (curSimType === 'long') {
-    return {
-      type: 'long',
-      ctr:        parseFloat(document.getElementById('ssi-ctr').value)  || 5,
-      retention:  parseFloat(document.getElementById('ssi-ret').value)  || 50,
-      velocity:   parseFloat(document.getElementById('ssi-vel').value)  || 1000,
-      engagement: parseFloat(document.getElementById('ssi-eng').value)  || 4,
-      shares:     parseFloat(document.getElementById('ssi-shr').value)  || 200,
-      baseViews:  parseFloat(document.getElementById('ssi-base').value) || 10000,
-      views:      parseFloat(document.getElementById('ssi-base').value) || 10000,
-      likes:      0, comments: 0,
-    };
-  } else {
-    return {
-      type: 'short',
-      viewedRatio:    parseFloat(document.getElementById('ssi-viewed').value) || 65,
-      swipedRatio:    parseFloat(document.getElementById('ssi-swiped').value) || 35,
-      retentionShort: parseFloat(document.getElementById('ssi-sret').value)   || 80,
-      velocityShort:  parseFloat(document.getElementById('ssi-svel').value)   || 5000,
-      likeRate:       parseFloat(document.getElementById('ssi-slike').value)  || 4,
-      baseViews:      parseFloat(document.getElementById('ssi-sbase').value)  || 50000,
-      views:          parseFloat(document.getElementById('ssi-sbase').value)  || 50000,
-      likes: 0, comments: 0, shares: 0,
-    };
-  }
-}
-
-function onSimSlide() {
-  if (!isSimMode) return;
-
-  if (curSimType === 'long') {
-    document.getElementById('ssv-ctr').textContent  = parseFloat(document.getElementById('ssi-ctr').value).toFixed(1) + '%';
-    document.getElementById('ssv-ret').textContent  = document.getElementById('ssi-ret').value + '%';
-    document.getElementById('ssv-vel').textContent  = parseInt(document.getElementById('ssi-vel').value).toLocaleString('ru');
-    document.getElementById('ssv-eng').textContent  = parseFloat(document.getElementById('ssi-eng').value).toFixed(1) + '%';
-    document.getElementById('ssv-shr').textContent  = parseInt(document.getElementById('ssi-shr').value).toLocaleString('ru');
-    document.getElementById('ssv-base').textContent = parseInt(document.getElementById('ssi-base').value).toLocaleString('ru');
-  } else {
-    document.getElementById('ssv-viewed').textContent = document.getElementById('ssi-viewed').value + '%';
-    document.getElementById('ssv-swiped').textContent = document.getElementById('ssi-swiped').value + '%';
-    document.getElementById('ssv-sret').textContent   = document.getElementById('ssi-sret').value + '%';
-    document.getElementById('ssv-svel').textContent   = parseInt(document.getElementById('ssi-svel').value).toLocaleString('ru');
-    document.getElementById('ssv-slike').textContent  = parseFloat(document.getElementById('ssi-slike').value).toFixed(1) + '%';
-    document.getElementById('ssv-sbase').textContent  = parseInt(document.getElementById('ssi-sbase').value).toLocaleString('ru');
-  }
-
-  const p = getSimParams();
-  renderForecast(p, curSimType);
-}
-
-function setSimType(type) {
-  curSimType = type;
-  document.getElementById('sim-btn-long').className  = 'period-tab' + (type === 'long'  ? ' active' : '');
-  document.getElementById('sim-btn-short').className = 'period-tab' + (type === 'short' ? ' active' : '');
-  document.getElementById('sim-sliders-long').style.display  = type === 'long'  ? 'grid' : 'none';
-  document.getElementById('sim-sliders-short').style.display = type === 'short' ? 'grid' : 'none';
-
-  const fb = document.getElementById('fmt-badge');
-  fb.textContent = type === 'long' ? '📹 Long-form' : '⚡ Shorts';
-  fb.className   = 'fmt-badge ' + type;
-
-  onSimSlide();
-}
-
-// ════════════════════════════════════════════════════════
-// ВЫБОР ВИДЕО
-// ════════════════════════════════════════════════════════
-function onVideoSelect() {
-  const val = document.getElementById('video-select').value;
-
-  if (val === 'sim') {
-    isSimMode = true;
-    document.getElementById('real-video-block').style.display = 'none';
-    document.getElementById('sim-block').style.display        = 'block';
-    setSimType(curSimType);
-    return;
-  }
-
-  isSimMode = false;
-  document.getElementById('real-video-block').style.display = 'block';
-  document.getElementById('sim-block').style.display        = 'none';
-
-  const video = VIDEOS[parseInt(val)];
-  if (!video) return;
-
-  const type = video.type;
-
-  // fmt badge
-  const fb = document.getElementById('fmt-badge');
-  fb.textContent = type === 'long' ? '📹 Long-form' : '⚡ Shorts';
-  fb.className   = 'fmt-badge ' + type;
-
-  // Факты
-  document.getElementById('fv-views').textContent        = fmt(video.views);
-  document.getElementById('fv-views-sub').textContent    = 'всего просмотров';
-  document.getElementById('fv-likes').textContent        = fmt(video.likes);
-  document.getElementById('fv-likes-sub').textContent    = pctStr(video.likes, video.views) + ' от просмотров';
-  document.getElementById('fv-comments').textContent     = fmt(video.comments);
-  document.getElementById('fv-comments-sub').textContent = pctStr(video.comments, video.likes) + ' от лайков';
-  document.getElementById('fv-shares').textContent       = fmt(video.shares);
-  document.getElementById('fv-shares-sub').textContent   = 'репостов';
-
-  // Swipe block
-  if (type === 'short') {
-    document.getElementById('swipe-block').style.display      = 'block';
-    document.getElementById('swipe-viewed-bar').style.width   = video.viewedRatio + '%';
-    document.getElementById('swipe-swiped-bar').style.width   = video.swipedRatio + '%';
-    document.getElementById('swipe-pct-txt').textContent      = `${video.viewedRatio}% / ${video.swipedRatio}%`;
-  } else {
-    document.getElementById('swipe-block').style.display = 'none';
-  }
-
-  // Синхронизируем слайдеры
-  syncSliderLabels(type, video);
-
-  renderForecast(video, type);
-}
-
-document.getElementById('video-select').addEventListener('change', onVideoSelect);
-
-// ════════════════════════════════════════════════════════
-// ПЕРИОД
-// ════════════════════════════════════════════════════════
-function setPeriod(p) {
-  curPeriod = p;
-  document.querySelectorAll('.period-tab[data-p]').forEach(t => {
-    t.classList.toggle('active', parseInt(t.dataset.p) === p);
-  });
-
-  if (isSimMode) { onSimSlide(); return; }
-  const val = document.getElementById('video-select').value;
-  if (val !== 'sim') {
-    const video = VIDEOS[parseInt(val)];
-    if (video) {
-      const params = { ...video, ...getSliderParams(video.type) };
-      renderForecast(params, video.type);
-    }
-  }
-}
-
-// ════════════════════════════════════════════════════════
 // СТАТИСТИКА
 // ════════════════════════════════════════════════════════
 function generateMockStats() {
@@ -1547,8 +1881,7 @@ function generateMockStats() {
     return d.toLocaleDateString('ru-RU', { day: 'numeric', month: 'short' });
   });
   return {
-    subs: 24300, views: 187400, videos: 47,
-    days,
+    subs: 24300, views: 187400, videos: 47, days,
     viewsData: days.map(() => Math.floor(3000 + Math.random() * 9000)),
   };
 }
@@ -1568,9 +1901,8 @@ function buildViewsChart(data) {
     data: {
       labels: data.days,
       datasets: [{
-        data: data.viewsData, borderColor: '#e8ff47',
-        backgroundColor: grad, borderWidth: 2, pointRadius: 0,
-        pointHoverRadius: 5, tension: 0.4, fill: true,
+        data: data.viewsData, borderColor: '#e8ff47', backgroundColor: grad,
+        borderWidth: 2, pointRadius: 0, pointHoverRadius: 5, tension: 0.4, fill: true,
       }]
     },
     options: {
@@ -1610,7 +1942,8 @@ function showDashboard(user) {
   document.getElementById('stat-subs-delta').textContent  = '+1 240 за 30 дней';
   document.getElementById('stat-views-delta').textContent = '+18% к прошлому месяцу';
   buildViewsChart(d);
-  onVideoSelect();
+  renderVideoList();
+  showVideoList();
 }
 
 // ════════════════════════════════════════════════════════
@@ -1625,26 +1958,25 @@ document.querySelectorAll('.nav-item').forEach(item => {
     const panel = document.getElementById(`tab-${tab}`);
     panel.classList.add('active');
     requestAnimationFrame(() => { panel.style.animation = ''; panel.classList.add('fade-up'); });
-    if (tab === 'forecast') onVideoSelect();
+    if (tab === 'forecast') showVideoList();
   });
 });
 
 // ════════════════════════════════════════════════════════
-// ИНИЦИАЛИЗАЦИЯ — АВТОРИЗАЦИЯ + localStorage
+// ИНИЦИАЛИЗАЦИЯ — localStorage + API
 // ════════════════════════════════════════════════════════
 (async function init() {
-  // 1. Проверяем localStorage — мгновенный вход без запроса
+  // 1. Мгновенный вход из localStorage
   const cached = getUserFromLS();
   if (cached && cached.email) {
     showDashboard(cached);
-    // Фоновая верификация куки — тихо обновляем или разлогиниваем
+    // Фоновая верификация куки
     try {
       const res = await fetch(`${API_URL}/api/auth/me`, { method: 'GET', credentials: 'include' });
       if (res.ok) {
         const fresh = await res.json();
-        saveUserToLS(fresh); // обновляем кеш
+        saveUserToLS(fresh);
       } else {
-        // Кука протухла — убираем кеш, но не выкидываем сразу (UX-дружелюбно)
         localStorage.removeItem(LS_KEY);
       }
     } catch (e) { /* сеть недоступна — оставляем cached */ }
